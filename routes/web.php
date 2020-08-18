@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('main');
 
-route::get('novelty','NoveltyController@index')->name('novelty.index');
+route::get('/index','NoveltyController@index')->name('novelty.index');
 
 
 route::get('novelty/create','NoveltyController@create')->name('novelty.create');
@@ -35,4 +35,5 @@ route::delete('novelty/{novelty]','NoveltyController@destroy')->name('novelty.de
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 

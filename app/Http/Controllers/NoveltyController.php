@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
 
 class NoveltyController extends Controller
 {
     public function index(){
-    	return view ('novelty.index');
+        $imagen= App\Imagen::all();
+    	return view ('novelty.index', compact('imagen'));
     }
 
     public function create(){
