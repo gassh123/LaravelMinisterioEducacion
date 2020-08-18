@@ -16,7 +16,7 @@
 
                     @foreach ($imagen as $item)
                 
-                <img src="storage/img/{{$item->URLimagen}}" alt="{{$item->name}}" width="450"> <br><br><br><br>
+                <img src="almacenamiento/img/{{$item->URLimagen}}" alt="{{$item->name}}" width="450"> <br><br><br><br>
 
                 @endforeach   
                 <div class="title m-b-md">
