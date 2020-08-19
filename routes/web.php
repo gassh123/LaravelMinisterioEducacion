@@ -16,19 +16,30 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('main');
-
+/*GALERIA DE FOTOS DE NOVEDADES*/
 route::get('/index','NoveltyController@index')->name('novelty.index');
 
+/*LISTADO DE FOTOS*/
+route::get('index/modify','NoveltyController@modify')->name('novelty.modify');
 
-route::get('novelty/create','NoveltyController@create')->name('novelty.create');
+/*AGREGAR NUEVA FOTO*/
+route::get('modify/add','NoveltyController@add')->name('novelty.add');
 
-route::post('novelty','NoveltyController@store')->name('novelty.store');
+/*FOTO AGREGADA CORRECTAMENTE*/
+route::post('add/store','NoveltyController@store')->name('novelty.store');
 
-route::get('novelty/{novelty}/edith','NoveltyController@edith')->name('novelty.edit');
+/*EDITAR NOVEDAD*/
+route::get('modify/edith/{id}','NoveltyController@edith')->name('novelty.edith');
+
+/*ACTUALIZAR NOVEDAD*/
+route::put('modify/edith/{id}','NoveltyController@update')->name('novelty.update');
+
+/*ELIMINAR NOVEDAD*/
+route::delete('modify/delete/{id}','NoveltyController@delete')->name('novelty.delete');
 
 route::match(['put','patch'],'novelty/{novelty}','NoveltyController@update')->name('novelty.update');
 
-route::delete('novelty/{novelty]','NoveltyController@destroy')->name('novelty.destroy');
+
 
 
 
