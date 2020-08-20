@@ -38,13 +38,7 @@ route::put('modify/edith/{id}','NoveltyController@update')->name('novelty.update
 route::delete('modify/delete/{id}','NoveltyController@delete')->name('novelty.delete');
 
 route::match(['put','patch'],'novelty/{novelty}','NoveltyController@update')->name('novelty.update');
-
-
-
-
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 

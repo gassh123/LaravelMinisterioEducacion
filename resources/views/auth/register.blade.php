@@ -38,6 +38,19 @@
                                 @enderror
                             </div>
                         </div>
+                       <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('rol ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="rol" type="rol" class="form-control @error('rol') is-invalid @enderror" name="rol" required autocomplete="new-rol">
+
+                                @error('rol')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
