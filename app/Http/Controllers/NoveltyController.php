@@ -59,7 +59,7 @@ class NoveltyController extends Controller
 
                 if ($datosNuevos->save()) {
                     # code...
-                    return back()->with('msj','Datos guardados con éxito.');
+                    return back()->with('mensaje','Novedad agregada.');
                 }else{
                     # code...
                     return back()->with('errormsj','Error al guardar los datos.');
@@ -86,14 +86,22 @@ class NoveltyController extends Controller
     }
     public function update(Request $request, $id){
         $rol = auth()->user()->rol;
+        $datosUpdate=App\Imagen::findOrFail($id);
         if($rol=='administrador'){
-            $datosUpdate=App\Imagen::findOrFail($id);
-            $datosUpdate->name=$request->name;
-            $datosUpdate->URLimagen=$request->URLimagen;
-
-            $datosUpdate->save();
-
-            return back()->with('mensaje','Novedad actualizada.');
+            if ($datosUpdate->name==$request->name && $datosUpdate->URLimagen==$request->URLimagen ) {
+                # code...
+                return back()->with('mensaje1','No modificó ningun dato.');
+                
+            }else{
+                $datosUpdate->name=$request->name;
+                $datosUpdate->URLimagen=$request->URLimagen;
+                $datosUpdate->save();
+    
+                return back()->with('mensaje','Novedad modificada.');
+                
+    
+            
+            }
         }else{
             return view('welcome');
 

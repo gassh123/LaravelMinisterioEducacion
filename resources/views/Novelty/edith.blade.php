@@ -23,22 +23,52 @@
                         @csrf
                         @if(session('mensaje'))
 
-                          <div class="alert alert-success" role="alert">{{ session('mensaje') }}</div>
+                          <div class="alert alert-success" role="alert">{{ session('mensaje') }}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                          <form action="" class="text-right" class="d-inline">
+                          <a href="{{ url('index/modify') }}">Atrás</a>
+                          
+                          </form>
+                          </div>
                         @endif
 
-                        @if(session()->has('errormsj'))
-                          <div class="alert alert-danger" role="alert">{{ session('errormsj') }}</div>
+                        @if(session()->has('mensaje1'))
+                          <div class="alert alert-danger" role="alert">{{ session('mensaje1') }}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                          <form action="" class="text-right" class="d-inline">
+                          <a href="{{ url('index/modify') }}">Atrás</a>
+                          
+                          </form>
+                          </div>
                         @endif
                         
-                      <div class="form-group">
-                        <label for="formGroupExampleInput">Image name</label>
+                        <div class="form-group">
+                        <label for="formGroupExampleInput">Novelty name</label>
                         <input type="text" class="form-control" id="name" name="name" value="{{($datos->name)}}">
                       </div>
-                      <div class="form-group">
-                      <label for="formGroupExampleInput">URL image</label>
-                        <input type="text" class="form-control" id="URLimagen" name="URLimagen" value="{{$datos->URLimagen}}">
+                      
+                      
+                      <div class="form-row">
+                      
+                        <div class="col">
+                        <label for="formGroupExampleInput">Image URL</label> 
+                          <input type="file" class="form-control-file" id="URLimagen" name="URLimagen" value="{{$datos->URLimagen}}">
+                        </div>
                         
+                          
+                      
+                        <div class="col">
+                        <label for="formGroupExampleInput">Image name</label>
+                        
+                          <input type="text" class="form-control" placeholder="Image name" id="URLimagen" name="URLimagen" value="{{$datos->URLimagen}}" readonly>
+                         
+                        </div>
                       </div>
+                      <br>
 
                       <button class="btn btn-warning" type="submit">Edit</button>
                      

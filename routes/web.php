@@ -19,6 +19,8 @@ Route::get('/', function () {
 /*GALERIA DE FOTOS DE NOVEDADES*/
 route::get('/index','NoveltyController@index')->name('novelty.index');
 
+
+
 /*LISTADO DE FOTOS*/
 route::get('index/modify','NoveltyController@modify')->name('novelty.modify');
 

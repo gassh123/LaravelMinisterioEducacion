@@ -44,6 +44,16 @@
   box-sizing: border-box;
 }
 
+.card-bodyImagen {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -4672,6 +4682,7 @@ input[type=button].btn-block {
   .navbar-expand-md > .container-xl {
     padding-right: 0;
     padding-left: 0;
+    
   }
 }
 
@@ -4679,10 +4690,12 @@ input[type=button].btn-block {
   .navbar-expand-md {
     flex-flow: row nowrap;
     justify-content: flex-start;
+    display: flex;
   }
 
   .navbar-expand-md .navbar-nav {
     flex-direction: row;
+    display:flex;
   }
 
   .navbar-expand-md .navbar-nav .dropdown-menu {

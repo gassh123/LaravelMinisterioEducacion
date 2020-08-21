@@ -14,15 +14,18 @@
                         </div>
                     @endif
 
-                   
-                <div class="title m-b-md">
-                    Bienvenido
-                </div>
+                <div class="content">
 
-                <div class="links">
-                    <a href="{{ url('/index') }}">Novedades</a>
-                    
-                </div>
+                   
+                    <div class="title m-b-md" class="text-center">
+                        Bienvenido
+                    </div>
+
+                    <div class="links">
+                        <a href="{{ url('/index') }}">Novedades</a>
+                        
+                    </div>
+                    </div>
             
                 </div>
             </div>
