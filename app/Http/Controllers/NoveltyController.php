@@ -16,8 +16,18 @@ class NoveltyController extends Controller
     
 
      public function index(){
-            $imagen= App\Imagen::all();
-            return view ('novelty.index', compact('imagen'));
+        $rol = auth()->user()->rol;
+            if($rol=='administrador'){
+                $imagen= App\Imagen::all();
+                return view ('novelty.index', compact('imagen'));}
+            else{
+                $imagen= App\Imagen::all();
+                return view('novelty.indexuser', compact('imagen'));
+            }
+            
+           
+        
+            
             //return auth()->user()->name;
             //return auth()->user()->rol;
       }      
