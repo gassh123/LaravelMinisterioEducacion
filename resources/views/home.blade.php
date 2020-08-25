@@ -17,9 +17,11 @@
                 <div class="content">
 
                    
-                    <div class="title m-b-md" class="text-center">
-                        Bienvenido
+                <div style="background-color: #92a8d1" class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">¡Bienvenidos!</h1>
                     </div>
+                </div>
 
                     <div class="links">
                         <a href="{{ url('/index') }}">Novedades</a>
