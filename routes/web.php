@@ -40,6 +40,9 @@ route::put('modify/edith/{id}','NoveltyController@update')->name('novelty.update
 /*ELIMINAR NOVEDAD*/
 route::delete('modify/delete/{id}','NoveltyController@delete')->name('novelty.delete');
 
+/*DECLARACION JURADA DE CARGO*/
+route::get('/F2', 'DeclaracionJurada@carga');
+
 route::match(['put','patch'],'novelty/{novelty}','NoveltyController@update')->name('novelty.update');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -140,9 +140,11 @@
                                     Coordinación de personal
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="/F2">F2 Declaración jurada de Cargo</a>
+                                    <a class="dropdown-item" href="#">Planta Funcional</a>
+                                    <a class="dropdown-item" href="#">Ver documentos</a>
+                                    <!-- el ultimo link es para coord. de persanal -->
+                                    <a class="dropdown-item" href="#">Administrar Documentos</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
