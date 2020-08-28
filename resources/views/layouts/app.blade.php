@@ -144,7 +144,7 @@
                                     <a class="dropdown-item" href="#">Planta Funcional</a>
                                     <a class="dropdown-item" href="#">Ver documentos</a>
                                     <!-- el ultimo link es para coord. de persanal -->
-                                    <a class="dropdown-item" href="#">Administrar Documentos</a>
+                                    <a class="dropdown-item" href="/administracion-documentos">Administrar Documentos</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">

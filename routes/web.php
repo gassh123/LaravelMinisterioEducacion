@@ -41,7 +41,11 @@ route::put('modify/edith/{id}','NoveltyController@update')->name('novelty.update
 route::delete('modify/delete/{id}','NoveltyController@delete')->name('novelty.delete');
 
 /*DECLARACION JURADA DE CARGO*/
-route::get('/F2', 'DeclaracionJurada@carga');
+route::get('/F2', 'DeclaracionJurada@vista');
+
+/*VISTA ADMINISTRACION DE DOCUMENTOS*/
+route::get('/administracion-documentos', 'AdministracionDocumentos@vista');
+route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
 
 route::match(['put','patch'],'novelty/{novelty}','NoveltyController@update')->name('novelty.update');
 Auth::routes();

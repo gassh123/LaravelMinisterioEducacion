@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class DeclaracionJurada extends Controller
 {
-    public function carga()
+    public function vista()
     {
         $hola = "hola";
         
