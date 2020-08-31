@@ -17,6 +17,7 @@ class CreateImagensTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->text('URLimagen')->nullable();
+            $table->text('InformationImage')->nullable();
             $table->timestamps();
         });
     }

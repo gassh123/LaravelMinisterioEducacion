@@ -50,7 +50,12 @@
                         <label for="formGroupExampleInput">Novelty name</label>
                         <input type="text" class="form-control" id="name" name="name" value="{{($datos->name)}}">
                       </div>
-                      
+
+                      <div class="form-group">
+
+                        <label for="exampleFormControlTextarea1">Image information</label>
+                          <textarea class="form-control" id="InformationImage" name="InformationImage" rows="3" value="{{($datos->InformationImage)}}"></textarea>
+                      </div>
                       
                       <div class="form-row">
                       
@@ -67,6 +72,7 @@
                           <input type="text" class="form-control" placeholder="Image name" id="URLimagen" name="URLimagen" value="{{$datos->URLimagen}}" readonly>
                          
                         </div>
+                        
                       </div>
                       <br>
 

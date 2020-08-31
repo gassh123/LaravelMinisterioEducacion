@@ -25,6 +25,9 @@ route::get('/indexuser','NoveltyController@index')->name('novelty.index');
 /*LISTADO DE FOTOS*/
 route::get('index/modify','NoveltyController@modify')->name('novelty.modify');
 
+/*INFORMACIÓN DE FOTOS*/
+route::get('index/infonovelty','NoveltyController@infonovelty')->name('novelty.infonovelty');
+
 /*AGREGAR NUEVA FOTO*/
 route::get('modify/add','NoveltyController@add')->name('novelty.add');
 

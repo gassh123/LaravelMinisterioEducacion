@@ -58,6 +58,11 @@
                         <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
                       </div>
                       <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Image information</label>
+                        <textarea class="form-control" id="InformationImage" name="InformationImage" rows="3" value="{{old('InformationImage')}}"></textarea>
+                      </div>
+                      
+                      <div class="form-group">
                         
                         <input accept="image/*" type="file" class="form-control-file" id="URLimagen" name="URLimagen" value="{{old('URLimagen')}}">
                       </div>

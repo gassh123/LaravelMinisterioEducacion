@@ -34,6 +34,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Imágen</th>
+                            <th scope="col">Información</th>
                             <th scope="col">Acción</th>
                             </tr>
                         </thead>
@@ -44,6 +45,7 @@
                             <th scope="row">{{$item->id}}</th>
                             <td>{{$item->name}}</td>
                             <td>{{$item->URLimagen}}</td>
+                            <td>{{$item->InformationImage}}</td>
                             <td>
                             <!--BOTON MODIFICAR-->
                             <a href="{{ url('modify/edith', $item) }}" class="btn btn-warning">Edit</a>
