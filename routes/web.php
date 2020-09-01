@@ -54,4 +54,15 @@ route::match(['put','patch'],'novelty/{novelty}','NoveltyController@update')->na
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+/*RUTA DE PLANILLA DE NOVEDADES*/
+
+route::get('Liquidacion/formulario',function()
+{
+    return view('Liquidacion/formulario');
+});
+
+route::get('Liquidacion/formularioDocente',function()
+{
+    return view('Liquidacion/formularioDocente');
+});
 
