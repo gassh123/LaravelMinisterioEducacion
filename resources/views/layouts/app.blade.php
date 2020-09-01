@@ -130,8 +130,8 @@
                                     Liquidación
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" class="navbar-nav">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Formularios</a>
+                                    <a class="dropdown-item" href="{{ url('/index') }}">Novedades de liquidaciones</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                     </div>
                                 </li>

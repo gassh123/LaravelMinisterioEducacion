@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('main');
+
+/*----------------------------------NOVEDADES---------------------------------------*/
 /*GALERIA DE FOTOS DE NOVEDADES*/
 route::get('/index','NoveltyController@index')->name('novelty.index');
 
@@ -43,6 +45,8 @@ route::put('modify/edith/{id}','NoveltyController@update')->name('novelty.update
 /*ELIMINAR NOVEDAD*/
 route::delete('modify/delete/{id}','NoveltyController@delete')->name('novelty.delete');
 
+/*------------------------------------DECLARACIONES JURADAS-----------------------------*/
+
 /*DECLARACION JURADA DE CARGO*/
 route::get('/F2', 'DeclaracionJurada@vista');
 
@@ -50,6 +54,11 @@ route::get('/F2', 'DeclaracionJurada@vista');
 route::get('/administracion-documentos', 'AdministracionDocumentos@vista');
 route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
 
+/*--------------------------------LIQUIDACIONES----------------------------------------*/
+route::get('/index','LiquidationController@index')->name('liquidation.index');
+route::get('index/altaybaja','LiquidationController@altaybaja')->name('liquidation.altaybaja');
+route::get('index/novedades','LiquidationController@novedades')->name('liquidation.novedades');
+route::get('index/otrasnovedades','LiquidationController@otrasnovedades')->name('liquidation.otrasnovedades');
 route::match(['put','patch'],'novelty/{novelty}','NoveltyController@update')->name('novelty.update');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

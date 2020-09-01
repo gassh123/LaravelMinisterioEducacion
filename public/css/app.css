@@ -43,6 +43,12 @@
 *::after {
   box-sizing: border-box;
 }
+.text-center-align {
+  text-align: center;
+}
+.text-right-align {
+  text-align: right;
+}
 .oculto{
   visibility: hidden;
   
@@ -280,6 +286,8 @@ svg {
 
 table {
   border-collapse: collapse;
+  
+  
 }
 
 caption {
@@ -1854,12 +1862,13 @@ pre code {
 }
 
 .table-bordered {
-  border: 1px solid #dee2e6;
+  border: 1px solid #0f1011;
+  border-color:"#000000";
 }
 
 .table-bordered th,
 .table-bordered td {
-  border: 1px solid #dee2e6;
+  border: 1px solid #0f1011;
 }
 
 .table-bordered thead th,
@@ -2076,8 +2085,8 @@ pre code {
 
 .table .thead-dark th {
   color: #fff;
-  background-color: #343a40;
-  border-color: #454d55;
+  background-color: #86888a;
+  border-color: #a1a2a3;
 }
 
 .table .thead-light th {
@@ -2088,7 +2097,7 @@ pre code {
 
 .table-dark {
   color: #fff;
-  background-color: #343a40;
+  background-color: #403438;
 }
 
 .table-dark th,
@@ -10946,7 +10955,7 @@ a.text-dark:focus {
 
   .table-bordered th,
   .table-bordered td {
-    border: 1px solid #dee2e6 !important;
+    border: 1px solid #0a0b0c !important;
   }
 
   .table-dark {
