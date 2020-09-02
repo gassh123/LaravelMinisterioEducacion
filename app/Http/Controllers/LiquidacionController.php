@@ -5,23 +5,23 @@ use Illuminate\Http\Request;
 use App;
 
 
-class LiquidationController extends Controller
+class LiquidacionController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
     public function index(){
-        return view('liquidation.index');
+        return view('liquidacion.index');
     }
     public function altaybaja(){
-        return view('liquidation.altaybaja');
+        return view('liquidacion.altaybaja');
     }
     public function novedades(){
-        return view('liquidation.novedades');
+        return view('liquidacion.novedades');
     }
     public function otrasnovedades(){
-        return view('liquidation.otrasnovedades');
+        return view('liquidacion.otrasnovedades');
     }
 }
 

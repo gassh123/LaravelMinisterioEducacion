@@ -55,10 +55,10 @@ route::get('/administracion-documentos', 'AdministracionDocumentos@vista');
 route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
 
 /*--------------------------------LIQUIDACIONES----------------------------------------*/
-route::get('/index','LiquidationController@index')->name('liquidation.index');
-route::get('index/altaybaja','LiquidationController@altaybaja')->name('liquidation.altaybaja');
-route::get('index/novedades','LiquidationController@novedades')->name('liquidation.novedades');
-route::get('index/otrasnovedades','LiquidationController@otrasnovedades')->name('liquidation.otrasnovedades');
+route::get('/index','LiquidacionController@index')->name('liquidacion.index');
+route::get('index/altaybaja','LiquidacionController@altaybaja')->name('liquidacion.altaybaja');
+route::get('index/novedades','LiquidacionController@novedades')->name('liquidacion.novedades');
+route::get('index/otrasnovedades','LiquidacionController@otrasnovedades')->name('liquidacion.otrasnovedades');
 route::match(['put','patch'],'novelty/{novelty}','NoveltyController@update')->name('novelty.update');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

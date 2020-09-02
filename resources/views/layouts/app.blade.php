@@ -130,7 +130,7 @@
                                     Liquidación
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" class="navbar-nav">
-                                    <a class="dropdown-item" href="#">Formularios</a>
+                                    <a class="dropdown-item" href="{{ url('Liquidacion/formularioDocente') }}">Formularios</a>
                                     <a class="dropdown-item" href="{{ url('/index') }}">Novedades de liquidaciones</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                     </div>
