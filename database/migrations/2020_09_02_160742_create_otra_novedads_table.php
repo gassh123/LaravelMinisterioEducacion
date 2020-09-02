@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class OtrosNovedades extends Migration
+class CreateOtraNovedadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class OtrosNovedades extends Migration
      */
     public function up()
     {
-        Schema::create('otros_novedades', function (Blueprint $table) {
+        Schema::create('otra_novedads', function (Blueprint $table) {
             $table->id();
-            $table->date('desde')->nullable();
-            $table->date('hasta')->nullable();
-            $table->integer('total')->nullable();
-            $table->text('tipo_novedad')->nullable();
-            $table->text('observaciones')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ class OtrosNovedades extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('otra_novedads');
     }
 }

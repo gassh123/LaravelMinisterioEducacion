@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DatosDocentes extends Migration
+class CreateInstitucionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class DatosDocentes extends Migration
      */
     public function up()
     {
-        Schema::create('datos_docentes', function (Blueprint $table) {
+        Schema::create('institucions', function (Blueprint $table) {
             $table->id();
-            $table->integer('dni')->nullable();
-            $table->text('nombre_apellido')->nullable();
-            $table->text('cargo')->nullable();
-            $table->text('caracter')->nullable();
-            $table->text('grado_seccion')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ class DatosDocentes extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('institucions');
     }
 }

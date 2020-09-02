@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Novedades extends Migration
+class CreateDatoDocentesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class Novedades extends Migration
      */
     public function up()
     {
-        Schema::create('novedades', function (Blueprint $table) {
+        Schema::create('dato_docentes', function (Blueprint $table) {
             $table->id();
-            $table->date('desde')->nullable();
-            $table->date('hasta')->nullable();
-            $table->integer('total')->nullable();
-            $table->text('articulo')->nullable();
-            $table->text('observaciones')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ class Novedades extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('dato_docentes');
     }
 }
