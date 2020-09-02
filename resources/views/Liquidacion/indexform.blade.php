@@ -19,17 +19,19 @@
 <br>
 <br>
 <div class="title m-b-md">
-<h4>Seleccione la planilla que desea ver</h4>
+<h4>¿Qué desea agregar?</h4>
 
 <div class="btn-group">
 
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Novedades de liquidación
+    Seleccionar
   </button>
   <div class="dropdown-menu dropdown-menu-right">
-  <a href="{{ url('index/altaybaja') }}" class="dropdown-item">Planilla de altas y bajas</a>
-  <a href="{{ url('index/novedades') }}" class="dropdown-item">Planilla de novedades</a>
-  <a href="{{ url('index/otrasnovedades') }}" class="dropdown-item">Otras novedades</a>
+  <a href="{{ url('indexform/institucionform') }}" class="dropdown-item">Institución</a>
+  <a href="{{ url('indexform/docenteform') }}" class="dropdown-item">Docente</a>
+  <a href="{{ url('indexform/altaybajaform') }}" class="dropdown-item">Alta y baja</a>
+  <a href="{{ url('indexform/novedadesform') }}" class="dropdown-item">Novedad</a>
+  <a href="{{ url('indexform/otrasnovedadesform') }}" class="dropdown-item">Otra novedad</a>
     
   </div>
 </div>

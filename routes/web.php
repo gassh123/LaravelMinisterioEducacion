@@ -55,10 +55,19 @@ route::get('/administracion-documentos', 'AdministracionDocumentos@vista');
 route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
 
 /*--------------------------------LIQUIDACIONES----------------------------------------*/
-route::get('/index','LiquidacionController@index')->name('liquidacion.index');
-route::get('index/altaybaja','LiquidacionController@altaybaja')->name('liquidacion.altaybaja');
-route::get('index/novedades','LiquidacionController@novedades')->name('liquidacion.novedades');
-route::get('index/otrasnovedades','LiquidacionController@otrasnovedades')->name('liquidacion.otrasnovedades');
+route::get('/indexliq','LiquidacionController@index')->name('liquidacion.indexliq');
+route::get('indexliq/altaybaja','LiquidacionController@altaybaja')->name('liquidacion.altaybaja');
+route::get('indexliq/novedades','LiquidacionController@novedades')->name('liquidacion.novedades');
+route::get('indexliq/otrasnovedades','LiquidacionController@otrasnovedades')->name('liquidacion.otrasnovedades');
+
+/*--------------------------------FORMULARIO DE NOVEDADES------------------------------*/
+route::get('/indexform','LiquidacionController@indexform')->name('liquidacion.indexform');
+route::get('indexform/institucionform','LiquidacionController@institucionform')->name('liquidacion.institucionform');
+route::get('indexform/docenteform','LiquidacionController@docenteform')->name('liquidacion.docenteform');
+route::get('indexform/altaybajaform','LiquidacionController@altaybajaform')->name('liquidacion.altaybajaform');
+route::get('indexform/novedadesform','LiquidacionController@novedadesform')->name('liquidacion.novedadesform');
+route::get('indexform/otrasnovedadesform','LiquidacionController@otrasnovedadesform')->name('liquidacion.otrasnovedadesform');
+
 route::match(['put','patch'],'novelty/{novelty}','NoveltyController@update')->name('novelty.update');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

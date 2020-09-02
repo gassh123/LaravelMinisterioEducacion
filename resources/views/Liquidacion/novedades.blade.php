@@ -13,7 +13,7 @@
                           </button>
 </div>
 @endif
-<a href="{{ url('/index') }}" class="btn btn-outline-primary">Volver</a>
+<a href="{{ url('/indexliq') }}" class="btn btn-outline-primary">Volver</a>
 <br><br>
 <div class="card">
               
