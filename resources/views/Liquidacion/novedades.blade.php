@@ -48,6 +48,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach ($novedad as $item)
                         <tr>
                         <th scope="row">1</th>
                         <td >99.999.999</td>
@@ -55,13 +56,14 @@
                         <td>D02</td>
                         <td>T/I/S/V</td>
                         <td>4 G</td>
-                        <td>2/3/20</td>
-                        <td>26/3/20</td>
-                        <td>15</td>
-                        <td >Lic. Art. 7.2.3</td>
-                        <td ></td>
-                        </tr>
+                        <td>{{$item->desde}}</td>
+                        <td>{{$item->hasta}}</td>
+                        <td>{{$item->total}}</td>
+                        <td >{{$item->articulo}}</td>
+                        <td >{{$item->observaciones}}</td>
                         
+                        </tr>
+                     @endforeach   
                     </tbody>
                     </table>
                 </div>

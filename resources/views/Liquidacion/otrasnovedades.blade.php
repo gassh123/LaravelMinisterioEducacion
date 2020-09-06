@@ -50,6 +50,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($otra_novedad as $item)
                         <tr>
                         <th scope="row">1</th>
                         <td >99.999.999</td>
@@ -57,13 +58,13 @@
                         <td>D02</td>
                         <td>T/I/S/V</td>
                         <td>4 G</td>
-                        <td>2/3/20</td>
-                        <td>28/02/21</td>
-                        <td>Ciclo lectivo</td>
-                        <td >Afectación – R.M N° 999999/2020</td>
-                        <td >Afectación por el Ciclo Lectivo 2020 </td>
+                        <td>{{$item->desde}}</td>
+                        <td>{{$item->hasta}}</td>
+                        <td>{{$item->total}}</td>
+                        <td >{{$item->tiponovedad}}</td>
+                        <td >{{$item->observaciones}}</td>
                         </tr>
-                        
+                     @endforeach   
                     </tbody>
                     </table>
                 </div>

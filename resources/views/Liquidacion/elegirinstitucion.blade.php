@@ -24,9 +24,34 @@
                 </div>
 </div>
 <br>
+
+<form method="POST" action="{{route('liquidacion.filtrarinstitucion')}}">
+                        @csrf
+                        <div class="form-group row">
+                            <label for="idinst" class="col-md-4 col-form-label text-md-right">{{ __('institucion_id') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="idinst" type="number" min="0" class="form-control @error('idinst') is-invalid @enderror" name="idinst" value="" required autocomplete="idinst" autofocus>
+
+                                @error('idinst')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Listo') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+<br>
+<!--TABLA ALTAS Y BAJAS-->
+
 <!--
-    <form>
-    
     <div class="form-group row">
         <label for="nombreesc" class="col-md-3 col-form-label text-md-right">{{ __('Nombre') }}</label>
             <div class="btn-group col-md-5 ">
@@ -129,67 +154,7 @@
             </div>
         </div>   
 
-    </div>
-  <br>
-  <div style="text-align: center;" >
-  <button type="button"  class="btn btn-primary">Listo</button>
-  </div>
-</form>-->
-<br>
-<!--TABLA ALTAS Y BAJAS-->
-<div class="card">
-              
-            
-                <div class="card-header">{{ __('Planilla de Altas y Bajas') }}
-                
-                </div>
-</div>
-         <br>       
-<table class="table table-bordered " >
-                    <thead class="table-dark">
-                        <tr>
-                        <th colspan="5"></th>
-                        <th colspan="1" class="text-right-align">Grado</th>
-                        <th colspan="3" class="text-center-align">Servicios en el mes</th>
-                        
-                        <th colspan="2"></th>
-                        </tr>
-                        <tr>
-                        <th scope="col">N°</th>
-                        <th scope="col">D.N.I</th>
-                        <th scope="col" style='width: 20%;'>Apellido y Nombres</th>
-                        <th scope="col">Cargo</th>
-                        <th scope="col">Carácter</th>
-                        <th scope="col">Sección</th>
-                        <th scope="col">Desde</th>
-                        <th scope="col">Hasta</th>
-                        <th scope="col">Total</th>
-                        <th scope="col" style='width: 20%;'>Motivo</th>
-                        <th scope="col"  >Observaciones</th>
-                        
-                        </tr>
-                    </thead>
-                    <tbody>
-                    
-                    @foreach ($altabaja as $item)
-                        <tr>   
-                        <th scope="row">1</th>
-                        <td >{{$item->Dni}}</td>
-                        <td >{{$item->ApellidoNombre}}</td>
-                        <td>{{$item->Cargo}}</td>
-                        <td>{{$item->Caracter}}</td>
-                        <td>{{$item->GradoSeccion}}</td>
-                     
-                        <td>{{$item->desdeAB}}</td>
-                        <td>{{$item->hastaAB}}</td>
-                        <td>{{$item->totalAB}}</td>
-                        <td >{{$item->motivo}}</td>
-                        <td >{{$item->observacionesAB}}</td>
-                        
-                        </tr>
-                    @endforeach    
-                    </tbody>
-                    </table>
-                </div>
-</div>
+    </div>-->
+    
+
 @endsection

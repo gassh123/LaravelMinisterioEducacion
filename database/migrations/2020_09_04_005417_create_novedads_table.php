@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAltaybajasTable extends Migration
+class CreateNovedadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class CreateAltaybajasTable extends Migration
      */
     public function up()
     {
-        Schema::create('altaybajas', function (Blueprint $table) {
+        Schema::create('novedads', function (Blueprint $table) {
             $table->id();
+            $table->date('desdeN')->nullable();
+            $table->date('hastaN')->nullable();
+            $table->integer('totalN')->nullable();
+            $table->text('articulo')->nullable();
+            $table->text('observacionesN')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreateAltaybajasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('altaybajas');
+        Schema::dropIfExists('novedads');
     }
 }

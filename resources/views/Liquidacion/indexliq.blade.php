@@ -27,7 +27,7 @@
     Novedades de liquidación
   </button>
   <div class="dropdown-menu dropdown-menu-right">
-  <a href="{{ url('indexliq/altaybaja') }}" class="dropdown-item">Planilla de altas y bajas</a>
+  <a href="{{ url('indexliq/elegirinstitucion') }}" class="dropdown-item">Planilla de altas y bajas</a>
   <a href="{{ url('indexliq/novedades') }}" class="dropdown-item">Planilla de novedades</a>
   <a href="{{ url('indexliq/otrasnovedades') }}" class="dropdown-item">Otras novedades</a>
     
