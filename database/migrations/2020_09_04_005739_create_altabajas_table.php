@@ -17,6 +17,7 @@ class CreateAltabajasTable extends Migration
             
             $table->id();
             $table->unsignedBigInteger('docente_id')->unsigned();
+            $table->unsignedBigInteger('institucion_id')->unsigned();
            // $table->text('tipoAB')->nullable();
             $table->date('desdeAB')->nullable();
             $table->date('hastaAB')->nullable();
@@ -25,7 +26,8 @@ class CreateAltabajasTable extends Migration
             $table->text('observacionesAB')->nullable();
             $table->timestamps();
 
-            $table->foreign('docente_id')->references('id')->on('docentes');            
+            $table->foreign('docente_id')->references('id')->on('docentes');       
+            $table->foreign('institucion_id')->references('id')->on('institucions');      
 
            
         });

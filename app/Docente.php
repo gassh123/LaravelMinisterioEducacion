@@ -17,6 +17,7 @@ class Docente extends Model
     public function institucion(){
        return $this->belongsTo(Institucion::Class, 'institucion_id');
     }
+    
 
   // public function altabajas(){
   //     return $this->belongsToMany(Altabaja::Class, 'clave_foranea')->withTimestamps();

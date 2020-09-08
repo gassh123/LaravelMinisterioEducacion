@@ -15,6 +15,7 @@ class CreateInstitucionsTable extends Migration
     {
         Schema::create('institucions', function (Blueprint $table) {
             $table->id();
+            
             $table->integer('cod_escuela')->unique();
             $table->text('Institucion')->unique();
             $table->text('ctg')->nullable();
@@ -25,6 +26,8 @@ class CreateInstitucionsTable extends Migration
             $table->text('departamento')->nullable();
             
             $table->timestamps();
+
+            
         });
     }
 

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use Illuminate\Support\Facades\DB;
+use App\Altabaja;
+use App\Docente;
+use App\Institucion;
+
 
 
 class LiquidacionController extends Controller
@@ -19,57 +23,60 @@ class LiquidacionController extends Controller
     }
     public function elegirinstitucion(){
         //return 'Hola';
-        return view('liquidacion.elegirinstitucion');
+        $institucion= App\Institucion::all();
+        
+       return view('liquidacion.elegirinstitucion', compact('institucion'));
+     
     }
     public function filtrarinstitucion(Request $request){
       //  $sql= 'SELECT * FROM docentes INNER JOIN institucions ON docentes.institucion_id=institucions.id';
         //$altabaja= DB::select($sql);
        // 
-        $request->validate([
-            'idinst'=>'required',
-        ]);
-        $datosNuevos=new App\Institucion;
-        $datosNuevos->idinst = $request->idinst;
+       $query=$request->get('search');
+       $institucion= Institucion::where('id','LIKE','%'.$query.'%')->paginate(5) ;
+       $inst= Altabaja::where('institucion_id','LIKE','%'.$query.'%')->paginate(5) ;
+       $instt= Docente::where('institucion_id','LIKE','%'.$query.'%')->paginate(5) ;
+       
+       // $datosNuevos=$request->institucion_id;
+       // $existencia = Altabaja::find($datosNuevos);
         
-        //$existencia = DB::table('institucions')   //realizo la sentencia para saber si existe
-        //    ->select('id')
-        //    ->where('id', '=', $datosNuevos)
-        //    ->get();
-       // $note = DB::table('docentes')->pluck('institucion_id');
-        $note2 = DB::table('institucions')->pluck('id');
+       // $existencia = DB::table('institucions')   //realizo la sentencia para saber si existe
+            //->select('id')
+         //   ->where('id', '=', $datosNuevos)
+          //  ->get();
+           // $note =  DB::table('altabajas')->where('institucion_id', $datosNuevos)->exists();
+            // \DB::table('altabajas')->pluck('institucion_id');
+       //  $note2 =DB::table('institucions')->pluck('id');
         //$institucion = Institucion::where('id', '=', Input::get('idinst'))->first();
-        $institucion = App\Institucion::firstOrNew(['id' => $datosNuevos]);
-        if ( $note2== $institucion) {
+       // $institucion = App\Institucion::firstOrNew(['id' => $datosNuevos]);
+      // 
+       // if ( $note2 == 0) {
                
                // return 'Anda';
-               
+               //return $note;
                 return  $this->altaybaja();
-            }else {
-                return 'No anda';
-            }
-       
-       // if ($datosNuevos) {
-            # code...
-        //    return ;
-       // }
-        //else{
-            # code...
-       //     return back()->with('mensaje','No agregó ninguna institución.');
-      //  }
+         //   }else {
+          //      return 'No anda';
+          //  }
+           // return 'Anda';
+      
     }
-    public function altaybaja(){
+    public function altaybaja(Request $request){
+       
+      //  $institucion= App\Institucion::all();
+      
         
-        //$docente=App\Docente::findOrFail(2);
-        //return $docente->altabajas;
-       // $institucion=App\Institucion::findOrFail(1);
-       // return $institucion->docentes;
-        $sql= 'SELECT * FROM docentes d, altabajas a, institucions i WHERE a.docente_id=d.id and d.institucion_id=i.id';
-        $altabaja= DB::select($sql);
-       // $institucion=App\Institucion::all();
-        //$docente=App\Docente::all();
+            $query=$request->get('search');
+            $institucion= Institucion::where('id','LIKE','%'.$query.'%')->paginate(5) ;
+            $inst= Altabaja::where('institucion_id','LIKE','%'.$query.'%')->paginate(5) ;
+            $instt= Docente::where('institucion_id','LIKE','%'.$query.'%')->paginate(5) ;
+        //    $sql= 'SELECT * FROM altabajas INNER JOIN docentes ON altabajas.docente_id = docentes.id';
+       // $altabaja= DB::select($sql);
+
+            return view ('liquidacion.altaybaja', compact('instt','institucion'), compact('inst'));
         
-       return view ('liquidacion.altaybaja', compact('altabaja'));
-       // return view ('liquidacion.altaybaja', compact('institucion'));
+      
+      
     }
     public function novedades(){
         $novedad= App\Novedad::all();
@@ -172,6 +179,7 @@ class LiquidacionController extends Controller
     public function addaltaybaja(Request $request){
         $request->validate([
 
+            'institucion_id'=>'required',
             'docente_id'=>'required',
             'desdeAB'=>'required',
             'hastaAB'=>'required',
@@ -184,6 +192,7 @@ class LiquidacionController extends Controller
                     
     
         $datosNuevos=new App\Altabaja;
+        $datosNuevos->institucion_id = $request->institucion_id;
         $datosNuevos->desdeAB = $request->desdeAB;
         $datosNuevos->docente_id = $request->docente_id;
         $datosNuevos->hastaAB = $request->hastaAB;

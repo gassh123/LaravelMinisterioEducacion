@@ -57,7 +57,7 @@ route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
 /*--------------------------------LIQUIDACIONES----------------------------------------*/
 route::get('/indexliq','LiquidacionController@index')->name('liquidacion.indexliq');
 route::get('indexliq/elegirinstitucion','LiquidacionController@elegirinstitucion')->name('liquidacion.elegirinstitucion');
-route::post('indexliq/elegirinstitucion','LiquidacionController@filtrarinstitucion')->name('liquidacion.filtrarinstitucion');
+
 route::get('indexliq/elegirinstitucion/altaybaja','LiquidacionController@altaybaja')->name('liquidacion.altaybaja');
 route::get('indexliq/novedades','LiquidacionController@novedades')->name('liquidacion.novedades');
 route::get('indexliq/otrasnovedades','LiquidacionController@otrasnovedades')->name('liquidacion.otrasnovedades');

@@ -2,53 +2,79 @@
 
 @section('content')
 <div class="container">
-   <!-- <div class="row justify-content-center">-->
-        <div class="col-md-20">
-        
-        @if(session('mensaje'))
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+            <!--  <div class="card-header">{{ __('Dashboard') }}</div>-->
 
-<div class="alert alert-danger" role="alert">{{ session('mensaje') }}
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-</div>
-@endif
-<a href="{{ url('/indexliq') }}" class="btn btn-outline-primary">Volver</a>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <a href="{{ url('/indexliq') }}" class="btn btn-outline-primary">Volver</a>
 <br><br>
-<!--DATOS INSTITUCION-->
-<div class="card">
-              
+                    <div class="content ">
+
+<br>
+<br>
+
+<form class="form-inline" action="{{route('liquidacion.altaybaja')}}">
+<label for="search" class="col-md-3 col-form-label text-md-right">{{ __('Seleccione una institución') }}</label>
             
-                <div class="card-header">{{ __('Ingrese los datos de la institución') }}
-                
-                </div>
+            <div class="col-md-3">
+                <input id="search" type="text" min="0" class="form-control @error('search') is-invalid @enderror" name="search" value="" required autocomplete="search" autofocus>
+
+                @error('search')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            </div>
+
+            
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Filtrar</button>
+        </form>
+<!--
+
+    
+            ----------------------------------------------------------------
+<div class="form-group row">
+        <label for="intitu_elegido" class="col-md-3 col-form-label text-md-right">{{ __('Seleccione una institución') }}</label>
+            <div class="btn-group col-md-5 ">
+        <select id="intitu_elegido" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" class="form-control @error('intitu_elegido') is-invalid @enderror" name="intitu_elegido"  required autocomplete="intitu_elegido">
+            Left-aligned but right aligned when large screen
+        <option value="">Instituciones</option>
+        @foreach ($institucion as $item)
+        <div class="dropdown-menu dropdown-menu-lg-right">
+            <option class="dropdown-item" type="button" value="$item->id">{{ $item->Institucion }}</option>
+            
+        </div>
+        @endforeach
+        
+        </select>
+        </div>
+        </div>-->
+    </div>
+  
 </div>
-<br>
+</div>
+</div>
 
-<form method="POST" action="{{route('liquidacion.filtrarinstitucion')}}">
-                        @csrf
-                        <div class="form-group row">
-                            <label for="idinst" class="col-md-4 col-form-label text-md-right">{{ __('institucion_id') }}</label>
+                
+            </div>
+                
 
-                            <div class="col-md-6">
-                                <input id="idinst" type="number" min="0" class="form-control @error('idinst') is-invalid @enderror" name="idinst" value="" required autocomplete="idinst" autofocus>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                                @error('idinst')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Listo') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-<br>
+
 <!--TABLA ALTAS Y BAJAS-->
 
 <!--

@@ -11,4 +11,5 @@ class Institucion extends Model
         return $this->hasMany(Docente::Class, 'institucion_id');
 
     }
+    
 }
