@@ -29,6 +29,7 @@ class CreateInstitucionsTable extends Migration
 
             
         });
+        
     }
 
     /**
@@ -39,5 +40,6 @@ class CreateInstitucionsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('institucions');
+      
     }
 }

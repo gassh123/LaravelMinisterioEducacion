@@ -6,10 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Institucion extends Model
 {
-    
-    public function docentes(){
-        return $this->hasMany(Docente::Class, 'institucion_id');
-
+    protected $fillable = [
+        'cod_escuela', 'Institucion', 'ctg', 'turno', 'domicilio', 'telefono', 'localidad', 'departamento'
+    ];
+    public function docentes()
+    {
+        return $this->belongsToMany('App\Docente','clave_foranea','institucion_id','docente_id');
     }
+
+    
     
 }

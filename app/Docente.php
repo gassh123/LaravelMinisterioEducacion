@@ -14,8 +14,12 @@ class Docente extends Model
         return $this->hasMany(Altabaja::Class, 'docente_id');
 
     }
-    public function institucion(){
-       return $this->belongsTo(Institucion::Class, 'institucion_id');
+    protected $fillable = [
+        'institucion_id','Dni', 'ApellidoNombre', 'Cargo', 'Caracter', 'GradoSeccion'
+    ];
+    public function instituciones()
+    {
+        return $this->belongsToMany('App\Institucion','clave_foranea','docente_id','institucion_id');
     }
     
 

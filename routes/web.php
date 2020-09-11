@@ -55,7 +55,18 @@ route::get('/administracion-documentos', 'AdministracionDocumentos@vista');
 route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
 
 /*--------------------------------LIQUIDACIONES----------------------------------------*/
+/*LISTADO DE PLANILLAS*/
+route::get('/filtplanillas','FormularioLiqController@filtlistado')->name('liquidacion.filtlistado');
+route::get('filtplanillas/planillas','FormularioLiqController@listado')->name('liquidacion.listado');
+/*AGREGAR NUEVA PLANILLA*/
+route::get('/addForm','FormularioLiqController@add')->name('liquidacion.add');
+
+/*PLANILLA AGREGADA CORRECTAMENTE*/
+route::post('planillas/addForm/store','FormularioLiqController@store')->name('liquidacion.store');
+
 route::get('/indexliq','LiquidacionController@index')->name('liquidacion.indexliq');
+route::get('/prueba','PivotController@prueba')->name('liquidacion.prueba');
+route::post('prueba/pruebaform','PivotController@pruebaform')->name('liquidacion.pruebaform');
 route::get('indexliq/elegirinstitucion','LiquidacionController@elegirinstitucion')->name('liquidacion.elegirinstitucion');
 
 route::get('indexliq/elegirinstitucion/altaybaja','LiquidacionController@altaybaja')->name('liquidacion.altaybaja');

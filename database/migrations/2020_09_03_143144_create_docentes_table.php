@@ -24,8 +24,10 @@ class CreateDocentesTable extends Migration
             $table->text('GradoSeccion')->nullable();
             $table->timestamps();
 
-            $table->foreign('institucion_id')->references('id')->on('institucions');
+            
         });
+
+        
     }
 
     /**
@@ -36,5 +38,6 @@ class CreateDocentesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('docentes');
+       
     }
 }

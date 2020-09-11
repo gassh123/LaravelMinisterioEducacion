@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Altabaja;
 use App\Docente;
 use App\Institucion;
+use App\clave_foranea;
 
 
 
@@ -16,6 +17,14 @@ class LiquidacionController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+    public function prueba(Docente $docente)
+    {  
+       
+        $docente = Docente::findOrFail(1);
+      //  $docente->instituciones;
+        return $docente->institucions;
+
     }
     /*LIQUIDACION*/
     public function index(){
@@ -70,10 +79,13 @@ class LiquidacionController extends Controller
             $institucion= Institucion::where('id','LIKE','%'.$query.'%')->paginate(5) ;
             $inst= Altabaja::where('institucion_id','LIKE','%'.$query.'%')->paginate(5) ;
             $instt= Docente::where('institucion_id','LIKE','%'.$query.'%')->paginate(5) ;
-        //    $sql= 'SELECT * FROM altabajas INNER JOIN docentes ON altabajas.docente_id = docentes.id';
-       // $altabaja= DB::select($sql);
+            //if ($inst) {
+               // $sql= 'SELECT * FROM altabajas INNER JOIN docentes ON altabajas.docente_id = docentes.id';
+             //   $altabaja= DB::select($sql);
+           // }
+        //    
 
-            return view ('liquidacion.altaybaja', compact('instt','institucion'), compact('inst'));
+            return view ('liquidacion.altaybaja', compact('inst','institucion'), compact('instt'));
         
       
       
@@ -152,14 +164,14 @@ class LiquidacionController extends Controller
             'ApellidoNombre'=>'required',
             'Cargo'=>'required',
             'Caracter'=>'required',
-            'GradoSeccion'=>'required',
-            
-
-        ]);
+            'GradoSeccion'=>'required', 
+            ]);
                     
     
         $datosNuevos=new App\Docente;
-        $datosNuevos->institucion_id = $request->institucion_id;
+        $nuevaClave=new clave_foranea();
+        $nuevaClave->institucion_id = $request->institucion_id;
+
         $datosNuevos->Dni = $request->Dni;
         $datosNuevos->ApellidoNombre = $request->ApellidoNombre;
         $datosNuevos->Cargo = $request->Cargo;
@@ -167,7 +179,7 @@ class LiquidacionController extends Controller
         $datosNuevos->GradoSeccion = $request->GradoSeccion;
         
 
-        if ($datosNuevos->save()) {
+        if ($datosNuevos->save() && $nuevaClave->save()) {
             # code...
             return back()->with('mensaje1','Docente agregado.');
         }else{
@@ -188,8 +200,7 @@ class LiquidacionController extends Controller
             'observacionesAB'=>'required',
             
 
-        ]);
-                    
+        ]);         
     
         $datosNuevos=new App\Altabaja;
         $datosNuevos->institucion_id = $request->institucion_id;

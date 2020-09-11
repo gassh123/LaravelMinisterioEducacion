@@ -19,6 +19,7 @@ class CreateAltabajasTable extends Migration
             $table->unsignedBigInteger('docente_id')->unsigned();
             $table->unsignedBigInteger('institucion_id')->unsigned();
            // $table->text('tipoAB')->nullable();
+           
             $table->date('desdeAB')->nullable();
             $table->date('hastaAB')->nullable();
             $table->integer('totalAB')->nullable();
