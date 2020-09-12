@@ -130,8 +130,8 @@
                                     Liquidación
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" class="navbar-nav">
-                                    <a class="dropdown-item" href="{{ url('/addForm') }}">Subir formularios</a>
-                                    <a class="dropdown-item" href="{{ url('/filtplanillas') }}">Ver formularios</a>
+                                    <a class="dropdown-item" href="{{ url('/addForm') }}">Subir formulario</a>
+                                    <a class="dropdown-item" href="{{ url('/filtplanillas') }}">Ver formulario</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                     </div>
                                 </li>
