@@ -102,3 +102,8 @@ route::get('Liquidacion/formularioDocente',function()
     return view('Liquidacion/formularioDocente');
 });
 
+/*********** RUTA DE DESCARGA ****************/
+route::get('Descarga/index','DescargaController@index');
+route::get('Descarga/descarga','DescargaController@descarga');
+route::get('Descarga/downloadDos','DescargaController@downloadDos');
+route::get('Descarga/downloadTres','DescargaController@downloadTres');
