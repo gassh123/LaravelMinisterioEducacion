@@ -42,7 +42,8 @@ route::delete('modify/delete/{id}','NoveltyController@delete')->name('novelty.de
 
 /*DECLARACION JURADA DE CARGO*/
 route::get('/F2', 'DeclaracionJurada@vista');
-
+//route::get('/descargaF2', 'DeclaracionJurada@imprimir')->name('descargaF2'); //creo que hay que cambiar por post
+route::post('/verF2', 'DeclaracionJurada@ver')->name('verF2');
 /*VISTA ADMINISTRACION DE DOCUMENTOS*/
 route::get('/administracion-documentos', 'AdministracionDocumentos@vista');
 route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
