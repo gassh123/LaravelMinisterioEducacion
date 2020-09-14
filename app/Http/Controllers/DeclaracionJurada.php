@@ -10,9 +10,6 @@ class DeclaracionJurada extends Controller
 {
     public function vista()
     {
-        $hola = "hola";
-        
-        
         return view('coordPersonal.declaracionJurada');
     }
     /*public function imprimir(){
