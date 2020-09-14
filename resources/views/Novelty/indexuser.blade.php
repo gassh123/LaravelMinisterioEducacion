@@ -1,6 +1,19 @@
 @extends('layouts.app')
-
 @section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+</head>
+<body>
+
+
+  
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -11,6 +24,7 @@
                         
                     
                 </div>
+                
 
                 <div class="card-body card-bodyImagen">
                     @if (session('status'))
@@ -18,14 +32,33 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    
 
                     @foreach ($imagen as $item)
+                    <div class=“button-container”>
+
+                    
+                     
+                  
+
+<br>
+                        ​<picture >
+                        
+                        
+                        <img  src="almacenamiento/img/{{$item->URLimagen}}" alt="{{$item->name}}" width="450" >
+                        <figcaption class="figure-caption">{{$item->InformationImage}}</figcaption>
+                        </picture>
+                    
+                        
+                     <br><br><br><br>
+                    
+                    </div>
                 
-                <img src="almacenamiento/img/{{$item->URLimagen}}" alt="{{$item->name}}" width="450"> <br><br><br><br>
+                
 
                 @endforeach   
                 <div class="title m-b-md">
-                    
+                
                 </div>
 
                 <div class="links">
@@ -38,4 +71,9 @@
         </div>
     </div>
 </div>
+
 @endsection
+<script type="text/javascript" src="{{ asset ('js/MostrarOcultar.js') }}">
+</script>
+</body>
+</html>
