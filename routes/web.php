@@ -70,7 +70,10 @@ route::get('/prueba','PivotController@prueba')->name('liquidacion.prueba');
 route::post('prueba/pruebaform','PivotController@pruebaform')->name('liquidacion.pruebaform');
 route::get('indexliq/elegirinstitucion','LiquidacionController@elegirinstitucion')->name('liquidacion.elegirinstitucion');
 
-route::get('indexliq/elegirinstitucion/altaybaja','LiquidacionController@altaybaja')->name('liquidacion.altaybaja');
+route::get('/altaybaja','AltaBajaController@altaybaja')->name('liquidacion.altaybaja');
+route::post('/altaybaja/post','AltaBajaController@altaybajapost')->name('liquidacion.altaybajapost');
+route::get('/pdfAltaBaja', 'AltaBajaController@ver')->name('liquidacion.pdfAltaBaja');
+route::delete('altaybaja/delete/{id}','AltaBajaController@delete')->name('liquidacion.delete');
 route::get('indexliq/novedades','LiquidacionController@novedades')->name('liquidacion.novedades');
 route::get('indexliq/otrasnovedades','LiquidacionController@otrasnovedades')->name('liquidacion.otrasnovedades');
 

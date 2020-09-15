@@ -16,19 +16,30 @@ class CreateAltabajasTable extends Migration
         Schema::create('altabajas', function (Blueprint $table) {
             
             $table->id();
-            $table->unsignedBigInteger('docente_id')->unsigned();
-            $table->unsignedBigInteger('institucion_id')->unsigned();
+            
            // $table->text('tipoAB')->nullable();
            
-            $table->date('desdeAB')->nullable();
-            $table->date('hastaAB')->nullable();
-            $table->integer('totalAB')->nullable();
-            $table->text('motivo')->nullable();
-            $table->text('observacionesAB')->nullable();
+           $table->integer('NumeroInst')->nullable();
+           $table->text('NombreInst')->nullable();
+           $table->text('TurnoInst')->nullable();
+           $table->text('DomicilioInst')->nullable();
+           $table->integer('TelefonoInst')->nullable();
+           $table->text('LocalidadInst')->nullable();
+           $table->text('DepartamentoInst')->nullable();
+           $table->integer('num')->nullable();
+           $table->integer('dni')->nullable();
+           $table->text('ApellidoNombre')->nullable();
+           $table->text('cargo')->nullable();
+           $table->text('caracter')->nullable();
+           $table->text('GradoSeccion')->nullable();
+            $table->date('Desde')->nullable();
+            $table->date('Hasta')->nullable();
+            $table->integer('Total')->nullable();
+            $table->text('Motivo')->nullable();
+            $table->text('Observaciones')->nullable();
             $table->timestamps();
 
-            $table->foreign('docente_id')->references('id')->on('docentes');       
-            $table->foreign('institucion_id')->references('id')->on('institucions');      
+           
 
            
         });
