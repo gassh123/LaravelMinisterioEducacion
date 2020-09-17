@@ -70,10 +70,18 @@ class AltaBajaController extends Controller
     public function ver(){
         
         //dd($request);
-        $pdf=\PDF::loadView('liquidacion.pdfAltaBaja');
-        return $pdf->download('PlanillaAltaBaja');
+        $pdf=\PDF::loadView('liquidacion.verpdfAltaBaja');
+        return $pdf->stream('PlanillaAltaBaja.pdf');
          
     }
+    public function descargar(){
+        $altabaja=App\Altabaja::all();
+        //dd($request);
+        $pdf=\PDF::loadView('liquidacion.descargarpdfAltaBaja', compact('altabaja'));
+        return $pdf->download('PlanillaAltaBaja.pdf');
+         
+    }
+   
     public function delete($id){
         
         

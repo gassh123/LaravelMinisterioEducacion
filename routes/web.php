@@ -57,38 +57,39 @@ route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
 
 /*--------------------------------LIQUIDACIONES----------------------------------------*/
 /*LISTADO DE PLANILLAS*/
-route::get('/filtplanillas','FormularioLiqController@filtlistado')->name('liquidacion.filtlistado');
-route::get('filtplanillas/planillas','FormularioLiqController@listado')->name('liquidacion.listado');
+//route::get('/filtplanillas','FormularioLiqController@filtlistado')->name('liquidacion.filtlistado');
+//route::get('filtplanillas/planillas','FormularioLiqController@listado')->name('liquidacion.listado');
 /*AGREGAR NUEVA PLANILLA*/
-route::get('/addForm','FormularioLiqController@add')->name('liquidacion.add');
+//route::get('/addForm','FormularioLiqController@add')->name('liquidacion.add');
 
 /*PLANILLA AGREGADA CORRECTAMENTE*/
-route::post('planillas/addForm/store','FormularioLiqController@store')->name('liquidacion.store');
+//route::post('planillas/addForm/store','FormularioLiqController@store')->name('liquidacion.store');
 
-route::get('/indexliq','LiquidacionController@index')->name('liquidacion.indexliq');
-route::get('/prueba','PivotController@prueba')->name('liquidacion.prueba');
-route::post('prueba/pruebaform','PivotController@pruebaform')->name('liquidacion.pruebaform');
-route::get('indexliq/elegirinstitucion','LiquidacionController@elegirinstitucion')->name('liquidacion.elegirinstitucion');
+//route::get('/indexliq','LiquidacionController@index')->name('liquidacion.indexliq');
+//route::get('/prueba','PivotController@prueba')->name('liquidacion.prueba');
+//route::post('prueba/pruebaform','PivotController@pruebaform')->name('liquidacion.pruebaform');
+//route::get('indexliq/elegirinstitucion','LiquidacionController@elegirinstitucion')->name('liquidacion.elegirinstitucion');
 
 route::get('/altaybaja','AltaBajaController@altaybaja')->name('liquidacion.altaybaja');
 route::post('/altaybaja/post','AltaBajaController@altaybajapost')->name('liquidacion.altaybajapost');
-route::get('/pdfAltaBaja', 'AltaBajaController@ver')->name('liquidacion.pdfAltaBaja');
+route::get('/VerpdfAltaBaja', 'AltaBajaController@ver')->name('liquidacion.verpdfAltaBaja');
+route::get('/DescargarpdfAltaBaja', 'AltaBajaController@descargar')->name('liquidacion.descargarpdfAltaBaja');
 route::delete('altaybaja/delete/{id}','AltaBajaController@delete')->name('liquidacion.delete');
-route::get('indexliq/novedades','LiquidacionController@novedades')->name('liquidacion.novedades');
-route::get('indexliq/otrasnovedades','LiquidacionController@otrasnovedades')->name('liquidacion.otrasnovedades');
+//route::get('indexliq/novedades','LiquidacionController@novedades')->name('liquidacion.novedades');
+//route::get('indexliq/otrasnovedades','LiquidacionController@otrasnovedades')->name('liquidacion.otrasnovedades');
 
 /*--------------------------------FORMULARIO DE LIQUIDACIONES------------------------------*/
-route::get('/indexform','LiquidacionController@indexform')->name('liquidacion.indexform');
-route::get('indexform/institucionform','LiquidacionController@institucionform')->name('liquidacion.institucionform');
-route::get('indexform/docenteform','LiquidacionController@docenteform')->name('liquidacion.docenteform');
-route::get('indexform/altaybajaform','LiquidacionController@altaybajaform')->name('liquidacion.altaybajaform');
-route::get('indexform/novedadesform','LiquidacionController@novedadesform')->name('liquidacion.novedadesform');
-route::get('indexform/otrasnovedadesform','LiquidacionController@otrasnovedadesform')->name('liquidacion.otrasnovedadesform');
-route::post('institucionform/addinstitucion','LiquidacionController@addinstitucion')->name('liquidacion.addinstitucion');
-route::post('institucionform/adddocente','LiquidacionController@adddocente')->name('liquidacion.adddocente');
-route::post('institucionform/addaltaybaja','LiquidacionController@addaltaybaja')->name('liquidacion.addaltaybaja');
-route::post('institucionform/addnovedades','LiquidacionController@addnovedades')->name('liquidacion.addnovedades');
-route::post('institucionform/addotrasnovedades','LiquidacionController@addotrasnovedades')->name('liquidacion.addotrasnovedades');
+//route::get('/indexform','LiquidacionController@indexform')->name('liquidacion.indexform');
+//route::get('indexform/institucionform','LiquidacionController@institucionform')->name('liquidacion.institucionform');
+//route::get('indexform/docenteform','LiquidacionController@docenteform')->name('liquidacion.docenteform');
+//route::get('indexform/altaybajaform','LiquidacionController@altaybajaform')->name('liquidacion.altaybajaform');
+//route::get('indexform/novedadesform','LiquidacionController@novedadesform')->name('liquidacion.novedadesform');
+//route::get('indexform/otrasnovedadesform','LiquidacionController@otrasnovedadesform')->name('liquidacion.otrasnovedadesform');
+//route::post('institucionform/addinstitucion','LiquidacionController@addinstitucion')->name('liquidacion.addinstitucion');
+//route::post('institucionform/adddocente','LiquidacionController@adddocente')->name('liquidacion.adddocente');
+//route::post('institucionform/addaltaybaja','LiquidacionController@addaltaybaja')->name('liquidacion.addaltaybaja');
+//route::post('institucionform/addnovedades','LiquidacionController@addnovedades')->name('liquidacion.addnovedades');
+//route::post('institucionform/addotrasnovedades','LiquidacionController@addotrasnovedades')->name('liquidacion.addotrasnovedades');
 
 route::match(['put','patch'],'novelty/{novelty}','NoveltyController@update')->name('novelty.update');
 Auth::routes();

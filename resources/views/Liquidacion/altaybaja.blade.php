@@ -75,14 +75,20 @@
         <br>   
         <div class="card">
                         <div class="card-header"> <b>Planilla de Altas y Bajas </b>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="{{route('liquidacion.verpdfAltaBaja')}}" target="blank" class="btn btn-secondary">Ver PDF</a>
+        <a href="{{route('liquidacion.descargarpdfAltaBaja')}}" class="btn btn-secondary">Descargar PDF</a>
+        
 </div>     
-                        
+</div>     
+  
                         
                         </div>
                 
                         
         </div>
-                <br> 
+        <br>
+        
                 @if(session('mensaje1'))
 
 <div class="alert alert-success" role="alert">{{ session('mensaje1') }}
@@ -102,7 +108,8 @@
 
 </div>
 <br>
-@endif      
+@endif   
+  
         <table class="table table-bordered " id="tablaAltaBaja" >
                         <thead class="thead-dark">
                                 <tr >
@@ -172,9 +179,7 @@
                         <button name="count_click" type="button" class="btn btn-primary mr-2" onclick="agregarFila()">Agregar Fila</button>
                         
                         <button type="submit" class="btn btn-success">Guardar</button>
-                        <form action="{{ route('liquidacion.pdfAltaBaja') }}">
-                                <input type='submit' name="boton_ver" value='Generar pdf' class='btn btn-info' data-toggle='confirmation' onclick='GuardarTrazado()' />
-                        </form>        
+                           
                 </div>
                 </div>
                 </form>
