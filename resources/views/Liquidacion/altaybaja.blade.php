@@ -176,8 +176,8 @@
                         <br>
                         <div class="form-group row">
                         <div class="col-sm-12" style="text-align:center">
-                        <button name="count_click" type="button" class="btn btn-primary mr-2" onclick="agregarFila()">Agregar Fila</button>
-                        
+                        <button name="count_click" type="button" class="btn btn-primary mr-2"  onclick="agregarFila()">Agregar Fila</button>
+                        <button name="count_click" type="button" class="btn btn-primary mr-2" onclick="eliminar()">Eliminar Fila</button>
                         <button type="submit" class="btn btn-success">Guardar</button>
                            
                 </div>
@@ -285,7 +285,7 @@
         </script>
         <script> 
         var i = 1
-        function agregarFila(){
+        function agregarFila() {
         var m = i++;
         document.getElementById("tablaAltaBaja").insertRow(-1).innerHTML = '<td><input type="number" min="0" style="width : 30px; heigth : 100px" name=num'+m+' value='+m+'></td>'
                                                                                 +'<td><input type="number" min="0" style="width : 70px; height: 30px; font-size: 60%;" name=dni'+m+'value="99.999.999"></td>'
@@ -299,21 +299,47 @@
                                                                                 +'<td><input type="text" style="width : 100px; heigth : 100px; font-size: 60%;" name=Motivo'+m+'value="BAJA por culminación de licencia de la Prof. María Reynoso"></td>'
                                                                                 +'<td><input type="text" style="width : 80px; heigth : 100px; font-size: 60%;" name=Observaciones'+m+'value="---"></td>'
                                                                         
-                                                                        
+                                                                                var filas=document.getElementById("tablaAltaBaja").getElementsByTagName("tr");
+                for(var i=0; i<filas.length; i++) {
+                    filas[i].onclick=onclickHandler;
+                }                                                                                                                                 
                                                                                 
         }
+        
 
-        function eliminarFila(){
-                var table = document.getElementById("tablaAltaBaja");
-                var rowCount = table.rows.length;
-                //console.log(rowCount);        
-                if(rowCount <= 1)
-                alert('No se puede eliminar el encabezado');
-                else
-                table.deleteRow(rowCount -1);
+        var seleccionado=null; //contiene la fila seleccionada
+        function onclickHandler() {
+                        if(seleccionado==this) {
+                            this.style.backgroundColor="transparent";
+                            seleccionado=null;
+                        }
+                        else {
+                            if(seleccionado!=null) 
+                                seleccionado.style.backgroundColor="transparent";
+                            this.style.backgroundColor="#92a8d1";
+                            seleccionado=this;
+                        }
+                        
         }
+                
+                var filas=document.getElementById("tablaAltaBaja").getElementsByTagName("tr");
+                for(var i=0; i<filas.length; i++) {
+                    filas[i].onclick=onclickHandler;
+                }
+               
+    tr.onclick=onclickHandler;
+    document.getElementById("tablaAltaBaja").appendChild(TR);
 
-        </script>
+function eliminar() {
+    if(seleccionado==null) return alert("Seleccione una fila haciendo click sobre ella");
+    seleccionado.parentNode.removeChild(seleccionado);
+
+}
+
+</script> 
+<script>
+        
+</script>        
         </div>
 
 @endsection

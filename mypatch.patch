@@ -1,0 +1,235 @@
+diff --git a/app/Http/Controllers/AltaBajaController.php b/app/Http/Controllers/AltaBajaController.php
+index 11b0562..f02ac74 100644
+--- a/app/Http/Controllers/AltaBajaController.php
++++ b/app/Http/Controllers/AltaBajaController.php
+@@ -83,5 +83,9 @@ class AltaBajaController extends Controller
+     
+ 
+         } 
++
++    public function destroy($id){
++        Altabaja::destroy($id);
++    }    
+ }
+ ?>
+\ No newline at end of file
+diff --git a/composer.lock b/composer.lock
+index 3dfb079..d7b5328 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -374,33 +374,35 @@
+         },
+         {
+             "name": "dompdf/dompdf",
+-            "version": "v0.8.5",
++            "version": "v0.8.6",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/dompdf/dompdf.git",
+-                "reference": "6782abfc090b132134cd6cea0ec6d76f0fce2c56"
++                "reference": "db91d81866c69a42dad1d2926f61515a1e3f42c5"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/6782abfc090b132134cd6cea0ec6d76f0fce2c56",
+-                "reference": "6782abfc090b132134cd6cea0ec6d76f0fce2c56",
++                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/db91d81866c69a42dad1d2926f61515a1e3f42c5",
++                "reference": "db91d81866c69a42dad1d2926f61515a1e3f42c5",
+                 "shasum": ""
+             },
+             "require": {
+                 "ext-dom": "*",
+                 "ext-mbstring": "*",
+-                "phenx/php-font-lib": "^0.5.1",
++                "phenx/php-font-lib": "^0.5.2",
+                 "phenx/php-svg-lib": "^0.3.3",
+                 "php": "^7.1"
+             },
+             "require-dev": {
++                "mockery/mockery": "^1.3",
+                 "phpunit/phpunit": "^7.5",
+                 "squizlabs/php_codesniffer": "^3.5"
+             },
+             "suggest": {
+                 "ext-gd": "Needed to process images",
+                 "ext-gmagick": "Improves image processing performance",
+-                "ext-imagick": "Improves image processing performance"
++                "ext-imagick": "Improves image processing performance",
++                "ext-zlib": "Needed for pdf stream compression"
+             },
+             "type": "library",
+             "extra": {
+@@ -436,7 +438,7 @@
+             ],
+             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
+             "homepage": "https://github.com/dompdf/dompdf",
+-            "time": "2020-02-20T03:52:51+00:00"
++            "time": "2020-08-30T22:54:22+00:00"
+         },
+         {
+             "name": "dragonmantank/cron-expression",
+@@ -869,16 +871,16 @@
+         },
+         {
+             "name": "laravel/framework",
+-            "version": "v7.28.1",
++            "version": "v7.28.2",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/laravel/framework.git",
+-                "reference": "f7493ab717ca2a9598b1db2d6a3bae8ac8c755e8"
++                "reference": "0956b0688d96565044074b77f521a653d9fce5fb"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/laravel/framework/zipball/f7493ab717ca2a9598b1db2d6a3bae8ac8c755e8",
+-                "reference": "f7493ab717ca2a9598b1db2d6a3bae8ac8c755e8",
++                "url": "https://api.github.com/repos/laravel/framework/zipball/0956b0688d96565044074b77f521a653d9fce5fb",
++                "reference": "0956b0688d96565044074b77f521a653d9fce5fb",
+                 "shasum": ""
+             },
+             "require": {
+@@ -1023,7 +1025,7 @@
+                 "framework",
+                 "laravel"
+             ],
+-            "time": "2020-09-09T15:02:46+00:00"
++            "time": "2020-09-15T14:48:02+00:00"
+         },
+         {
+             "name": "laravel/tinker",
+@@ -5985,6 +5987,7 @@
+             "keywords": [
+                 "tokenizer"
+             ],
++            "abandoned": true,
+             "time": "2019-09-17T06:23:10+00:00"
+         },
+         {
+diff --git a/public/js/app.js b/public/js/app.js
+index 5813df9..395c789 100644
+--- a/public/js/app.js
++++ b/public/js/app.js
+@@ -218,8 +218,8 @@ module.exports = function xhrAdapter(config) {
+         undefined;
+ 
+       if (xsrfValue) {
+-        requestHeaders[config.xsrfHeaderName] = xsrfValue;
+-      }
++       requestHeaders[config.xsrfHeaderName] = xsrfValue;
++     }
+     }
+ 
+     // Add headers to the request
+diff --git a/resources/views/Descarga/descarga.blade.php b/resources/views/Descarga/descarga.blade.php
+index 904bc87..926b957 100644
+--- a/resources/views/Descarga/descarga.blade.php
++++ b/resources/views/Descarga/descarga.blade.php
+@@ -11,19 +11,19 @@
+                       <svg class="bd-placeholder-img rounded-circle" width="140" height="140"  src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"></svg>
+                       <h4>ALTAS -BAJAS </h4>
+                       <p> Descargar palanilla de alta-baja</p>
+-                      <p><a class="btn btn-secondary" style="background-color: #e3f2fd href=" {{action('DescargaController@descarga')}}" role="button"> Descargar  &raquo;</a></p>
++                      <p><a class="btn btn-secondary" href=" {{action('DescargaController@descarga')}}" role="button"> Descargar  &raquo;</a></p>
+                     </div><!-- /.col-lg-4 -->
+                     <div class="col-lg-4">
+                         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"></svg>
+                         <h4>NOVEDAD</h4>
+                       <p>Descargar palanilla de novedad</p>
+-                      <p><a class="btn btn-secondary" style="background-color: #e3f2fd href="{{ action('DescargaController@downloadDos') }}" role="button">Descargar &raquo;</a></p>
++                      <p><a class="btn btn-secondary" href="{{ action('DescargaController@downloadDos') }}" role="button">Descargar &raquo;</a></p>
+                     </div><!-- /.col-lg-4 -->
+                     <div class="col-lg-4">
+                         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"></svg>
+                         <h4>OTRAS NOVEDAD</h4>
+                       <p>Descargar palanilla de otras novedad.</p>
+-                      <p><a class="btn btn-secondary" style="background-color: #e3f2fd href="{{ action('DescargaController@downloadTres') }}" role="button">Descargar &raquo;</a></p>
++                      <p><a class="btn btn-secondary"  href="{{ action('DescargaController@downloadTres') }}" role="button">Descargar &raquo;</a></p>
+                     </div><!-- /.col-lg-4 -->
+                   </div><!-- /.row -->
+ 
+diff --git a/resources/views/Liquidacion/altaybaja.blade.php b/resources/views/Liquidacion/altaybaja.blade.php
+index 31d2c81..3f1ee1f 100644
+--- a/resources/views/Liquidacion/altaybaja.blade.php
++++ b/resources/views/Liquidacion/altaybaja.blade.php
+@@ -144,7 +144,8 @@
+                                 <td>{{$item->Total}}</td>
+                                 <td>{{$item->Motivo}}</td>
+                                 <td>{{$item->Observaciones}}</td>
+-                                
++                                     
++                                 
+                                 </tr>
+                                 @endforeach
+ 
+@@ -160,7 +161,7 @@
+                                 <td><input type="number" min="0" style="width : 30px; heigth : 100px; " name=Total></td>
+                                 <td><input type="text" style="width : 100px; heigth : 100px; font-size: 60%;" name=Motivo></td>
+                                 <td><input type="text" style="width : 80px; heigth : 100px; font-size: 60%;" name=Observaciones></td>
+-                                
++                                 
+                                 </tr>
+                         </tbody>
+                         
+@@ -170,11 +171,16 @@
+                         <div class="form-group row">
+                         <div class="col-sm-12" style="text-align:center">
+                         <button name="count_click" type="button" class="btn btn-primary mr-2" onclick="agregarFila()">Agregar Fila</button>
+-                        
++
++                       
+                         <button type="submit" class="btn btn-success">Guardar</button>
+                         <form action="{{ route('liquidacion.pdfAltaBaja') }}">
+-                                <input type='submit' name="boton_ver" value='Generar pdf' class='btn btn-info' data-toggle='confirmation' onclick='GuardarTrazado()' />
+-                        </form>        
++                         <input type='submit' name="boton_ver" value='Generar pdf' class='btn btn-info' data-toggle='confirmation' onclick='GuardarTrazado()' />
++                        </form>     
++                          
++                               
++                                  
++
+                 </div>
+                 </div>
+                 </form>
+@@ -307,7 +313,13 @@
+                 else
+                 table.deleteRow(rowCount -1);
+         }
+-
++       function eliminaralgo(){
++        <label style="text-align:center" for="staticEmail" class="col-sm-1 col-form-label"><b><u>Numero a eliinar</b></u></label>
++                <div class="col-sm-3">
++                <input id="DomicilioInst" name="DomicilioInst" type="number"  class="form-control" id="staticEmail" value="" placeholder="Ingrese numero">
++                </div>
++       }
++                                 
+         </script>
+         </div>
+ 
+diff --git a/routes/web.php b/routes/web.php
+index 377a9b8..a706c8e 100644
+--- a/routes/web.php
++++ b/routes/web.php
+@@ -49,11 +49,11 @@ route::delete('modify/delete/{id}','NoveltyController@delete')->name('novelty.de
+ 
+ /*DECLARACION JURADA DE CARGO*/
+ route::get('/F2', 'DeclaracionJurada@vista');
+-//route::get('/descargaF2', 'DeclaracionJurada@imprimir')->name('descargaF2'); //creo que hay que cambiar por post
++route::get('/descargaF2', 'DeclaracionJurada@imprimir')->name('descargaF2'); //creo que hay que cambiar por post
+ route::post('/verF2', 'DeclaracionJurada@ver')->name('verF2');
+ /*VISTA ADMINISTRACION DE DOCUMENTOS*/
+-route::get('/administracion-documentos', 'AdministracionDocumentos@vista');
+-route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
++//route::get('/administracion-documentos', 'AdministracionDocumentos@vista');
++//composer update --no-scriptsroute::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
+ 
+ /*--------------------------------LIQUIDACIONES----------------------------------------*/
+ /*LISTADO DE PLANILLAS*/
+@@ -63,6 +63,7 @@ route::get('filtplanillas/planillas','FormularioLiqController@listado')->name('l
+ route::get('/addForm','FormularioLiqController@add')->name('liquidacion.add');
+ 
+ /*PLANILLA AGREGADA CORRECTAMENTE*/
++//route::get('/docente','AltaBajaController');
+ route::post('planillas/addForm/store','FormularioLiqController@store')->name('liquidacion.store');
+ 
+ route::get('/indexliq','LiquidacionController@index')->name('liquidacion.indexliq');
