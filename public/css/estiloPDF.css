@@ -1,0 +1,33 @@
+@page{
+    margin:-0m-0m;
+    font-size:1em;
+
+}
+.body{
+    margin:3cm 2cm 2cm;
+}
+.header{
+    position: fixed;
+    top:0cm;
+    left:0cm;
+    right: 0cm;
+    height: 0cm;
+    background-color: lavender;
+    color:white;
+    text-align: center;
+    line-height: 30px;
+
+
+}
+.footer{
+    position: fixed;
+    bottom: 0cm;
+    top:0cm;
+    left:0cm;
+    right: 0cm;
+    height: 0cm;
+    background-color: lavender;
+    color:white;
+    text-align: center;
+    line-height: 30px;
+}

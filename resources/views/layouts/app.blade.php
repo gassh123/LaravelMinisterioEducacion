@@ -129,7 +129,12 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Liquidación
                                     </a>
+
+                                    
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" class="navbar-nav">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Añadir
+                                    </a>
                                     <a class="dropdown-item" href="{{ url('/altaybaja') }}">Alta y baja</a>
                                     <a class="dropdown-item" href="{{ url('/filtplanillas') }}">Ver formulario</a>
                                     <a class="dropdown-item" href="{{action('DescargaController@index')}}">Descargar Planillañ</a>
