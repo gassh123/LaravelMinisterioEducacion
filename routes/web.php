@@ -112,3 +112,23 @@ route::get('Descarga/index','DescargaController@index');
 route::get('Descarga/descarga','DescargaController@descarga');
 route::get('Descarga/downloadDos','DescargaController@downloadDos');
 route::get('Descarga/downloadTres','DescargaController@downloadTres');
+
+/******* LLENADO DE INSTITUCION *****************/
+route::get('planillaInstitucion/index','InstitucionPlanillaController@create')->name('Liquidacion.novedad.create');
+route::post('planillaInstitucion/carga','InstitucionPlanillaController@store')->name('Liquidacion.novedad.Colegios');
+
+/***********LLENADO DE LA PLANILLA NOVEDADES ,DATOS DE LOS DOCENTES */
+route::get('planillaDocente/index','InstitucionPlanillaController@create')->name('LiquidacionCreare');
+route::post('planillaDocente/carga','NovedadPlanillaController@store')->name('Liquidacion.agregarDocente');
+/******************** BOTONES DE LA PLANILLA DE NOVEDADES :VER,DESCARGAR , GUARDAR , AGREGAR FILA , ELIMINAR FILA  ******/
+route::get('/Novedad','NovedadPlanillaControllerr@Novedad')->name('liquidacion.Novedad');
+route::get('/VerpdfNovedad', 'NovedadPlanillaController@ver')->name('liquidacion.novedad.verpdfNovedad');
+route::get('/DescargarpdfNovedad', 'NovedadPlanillaController@descargar')->name('Liquidacion.novedad.descargarpdfNovedad');
+route::delete('Novedad/delete/{id}','NovedadPlanillaController@delete')->name('liquidacion.delete');
+/******************* BOTONES DE LA PLANILA DE OTRAS NOVEDADES : VER , DESCARGAR , GUARDAR , AGREGAR FILA , ELIMINIAR */
+route::get('/otraNovedad','OtraNovedadController@Otranovedad')->name('liquidacion.Otranovedad');
+route::get('/OtroNVerpdfNovedad', 'OtraNovedadController@ver')->name('liquidacion.otroNov.verpdfOtraN');
+route::get('/OtroNDescargarpdfNovedad', 'OtraNovedadControllerr@descargar')->name('Liquidacion.otroNov.descargapdfOnov');
+route::delete('OtroNovedad/delete/{id}','OtraNovedadController@delete')->name('liquidacion.delete');
+
+

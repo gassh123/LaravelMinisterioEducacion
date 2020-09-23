@@ -14,30 +14,24 @@ class CreateAltabajasTable extends Migration
     public function up()
     {
         Schema::create('altabajas', function (Blueprint $table) {
-            
-            $table->id();
-            
-           // $table->text('tipoAB')->nullable();
-           
-           $table->integer('NumeroInst')->nullable();
-           $table->text('NombreInst')->nullable();
-           $table->text('TurnoInst')->nullable();
-           $table->text('DomicilioInst')->nullable();
-           $table->integer('TelefonoInst')->nullable();
-           $table->text('LocalidadInst')->nullable();
-           $table->text('DepartamentoInst')->nullable();
+        
+           $table->id();
            $table->integer('num')->nullable();
+           $table->BigInteger('colegio_id')->unsigned()->nullable();
            $table->integer('dni')->nullable();
-           $table->text('ApellidoNombre')->nullable();
-           $table->text('cargo')->nullable();
-           $table->text('caracter')->nullable();
-           $table->text('GradoSeccion')->nullable();
-            $table->date('Desde')->nullable();
-            $table->date('Hasta')->nullable();
-            $table->integer('Total')->nullable();
-            $table->text('Motivo')->nullable();
-            $table->text('Observaciones')->nullable();
-            $table->timestamps();
+           $table->string('ApellidoNommbre')->nullable();
+           $table->string('Cargo')->nullable();
+           $table->string('Caracter')->nullable();
+           $table->string('GradoSeccion')->nullable();
+           $table->date('desdeN')->nullable();
+           $table->date('hastaN')->nullable();
+           $table->integer('totalN')->nullable();
+           $table->text('articulo')->nullable();
+           $table->text('observacionesN')->nullable();
+           $table->timestamps();
+
+           $table->foreign('colegio_id')->references('id')->on('institucions');
+            
 
            
 

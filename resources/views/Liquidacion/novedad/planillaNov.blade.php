@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-   <!-- <div class="row justify-content-center">-->
+   <!-- <div class="row justify.content-center">-->
         <div class="col-md-20">
         
         @if(session('mensaje'))
@@ -16,7 +16,7 @@
 
 <br><br>
 
-<form method="POST" action="{{ route('liquidacion.altaybajapost') }}" >
+<form method="POST" action="{{ route('Liquidacion.agregarDocente') }}" >
         @csrf
         
         <br>
@@ -24,10 +24,10 @@
 
         <br>   
         <div class="card">
-                        <div class="card-header"> <b>Planilla de Altas y Bajas </b>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-        <a href="{{route('liquidacion.verpdfAltaBaja')}}" target="blank" class="btn btn-secondary">Ver PDF</a>
-        <a href="{{route('liquidacion.descargarpdfAltaBaja')}}" class="btn btn-secondary">Descargar PDF</a>
+        <div class="card-header"> <b>Planilla de NOVEDAD </b>
+        <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="{{action('NovedadPlanillaController@ver')}}" target="blank" class="btn btn-secondary">Ver PDF</a>
+        <a href="{{action('NovedadPlanillaController@descargar')}}" class="btn btn-secondary">Descargar PDF</a>
         
 </div>     
 </div>     
@@ -38,27 +38,27 @@
                         
         </div>
         <br>
+        @if(session('mensaje1'))
+
+        <div class="alert alert-success" role="alert">{{ session('mensaje1') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
         
-                @if(session('mensaje1'))
-
-<div class="alert alert-success" role="alert">{{ session('mensaje1') }}
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-
-</div>
-<br>
-@endif
-
-@if(session()->has('mensaje'))
-<div class="alert alert-danger" role="alert">{{ session('mensaje') }}
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-
-</div>
-<br>
-@endif   
+        </div>
+        <br>
+        @endif
+        
+        @if(session()->has('mensaje'))
+        <div class="alert alert-danger" role="alert">{{ session('mensaje') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        
+        </div>
+        <br>
+        @endif 
+  
   
         <table class="table table-bordered " id="tablaAltaBaja" >
                         <thead class="thead-dark">
@@ -71,6 +71,7 @@
                                 </tr>
                                 <tr>
                                 <th scope="col">N°</th>
+                                <th scope="col">codigo_id</th>
                                 <th scope="col">D.N.I</th>
                                 <th scope="col" style='width: 20%;'>Apellido y Nombres</th>
                                 <th scope="col">Cargo</th>
@@ -87,38 +88,23 @@
                         
                         <tbody>
                                
-                                @foreach ($altabaja as $item)
-
-                                <tr>
-                                <td>{{$item->num}}</td>
-                                <td>{{$item->dni}}</td>
-                                <td>{{$item->ApellidoNombre}}</td>
-                                <td>{{$item->cargo}}</td>
-                                <td>{{$item->caracter}}</td>
-                                <td>{{$item->GradoSeccion}}</td>
-                                <td>{{$item->Desde}}</td>
-                                <td>{{$item->Hasta}}</td>
-                                <td>{{$item->Total}}</td>
-                                <td>{{$item->Motivo}}</td>
-                                <td>{{$item->Observaciones}}</td>
-                                
-                                </tr>
-                                @endforeach
-
+                               
                                 <tr>
                                 <td><input type="number" min="0" style="width : 30px; heigth : 100px" name=num></td>
+                               
                                 <td><input type="hidder" min="0" value="{{$colegio_id}}" style="width : 30px; heigth : 100px" name="colegio_id" ></td>
-
+                                
+                                
                                 <td><input type="number" min="0" style="width : 70px; height: 30px; font-size: 60%;" name=dni></td>
-                                <td><input type="text" style="width : 100px; heigth : 100px; font-size: 60%;" name=ApellidoNombre></td>
-                                <td><input type="text" style="width : 50px; heigth : 100px; font-size: 60%;" name=cargo></td>
-                                <td><input type="text" style="width : 50px; heigth : 100px; font-size: 60%;" name=caracter></td>
+                                <td><input type="text" style="width : 100px; heigth : 100px; font-size: 60%;" name=ApellidoNommbre></td>
+                                <td><input type="text" style="width : 50px; heigth : 100px; font-size: 60%;" name=Cargo></td>
+                                <td><input type="text" style="width : 50px; heigth : 100px; font-size: 60%;" name=Caracter></td>
                                 <td><input type="text" style="width : 50px; heigth : 100px; font-size: 60%;" name=GradoSeccion></td>
-                                <td><input type="date" style="width : 100px; heigth : 100px; font-size: 60%;" name=Desde></td>
-                                <td><input type="date" style="width : 100px; height: 20px; font-size: 60%;" name=Hasta></td>
-                                <td><input type="number" min="0" style="width : 30px; heigth : 100px; " name=Total></td>
-                                <td><input type="text" style="width : 100px; heigth : 100px; font-size: 60%;" name=Motivo></td>
-                                <td><input type="text" style="width : 80px; heigth : 100px; font-size: 60%;" name=Observaciones></td>
+                                <td><input type="date" style="width : 100px; heigth : 100px; font-size: 60%;" name=desdeN></td>
+                                <td><input type="date" style="width : 100px; height: 20px; font-size: 60%;" name=hastaN></td>
+                                <td><input type="number" min="0" style="width : 30px; heigth : 100px; " name=totalN></td>
+                                <td><input type="text" style="width : 100px; heigth : 100px; font-size: 60%;" name=articulo></td>
+                                <td><input type="text" style="width : 80px; heigth : 100px; font-size: 60%;" name=observacionesN></td>
                                 
                                 </tr>
                         </tbody>

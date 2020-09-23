@@ -48,24 +48,19 @@ class AltaBajaController extends Controller
         $datosNuevos->LocalidadInst = $request->LocalidadInst;
         $datosNuevos->DepartamentoInst = $request->DepartamentoInst;*/
         $datosNuevos->num = $request->num;
+        $datosNuevos->colegio_id = $request->colegio_id;
         $datosNuevos->dni = $request->dni;
-        $datosNuevos->ApellidoNombre = $request->ApellidoNombre;
-        $datosNuevos->cargo = $request->cargo;
-        $datosNuevos->caracter = $request->caracter;
+        $datosNuevos->ApellidoNommbre = $request->ApellidoNommbre;
+        $datosNuevos->Cargo = $request->Cargo;
+        $datosNuevos->Caracter = $request->Caracter;
         $datosNuevos->GradoSeccion = $request->GradoSeccion;
-        $datosNuevos->Desde = $request->Desde;
-        $datosNuevos->Hasta = $request->Hasta;
-        $datosNuevos->Total = $request->Total;
-        $datosNuevos->Motivo = $request->Motivo;
-        $datosNuevos->Observaciones = $request->Observaciones;
-
-        if ($datosNuevos->save()) {
-            # code...
-            return back()->with('mensaje1','Alta/Baja agregada.');
-        }else{
-            # code...
-            return back()->with('mensaje','No agregó ningun Alta/Baja.');
-        }
+        $datosNuevos->desdeN = $request->desdeN;
+        $datosNuevos->hastaN = $request->hastaN;
+        $datosNuevos->totalN = $request->totalN;
+        $datosNuevos->articulo = $request->articulo;
+        $datosNuevos->observacionesN = $request->observacionesN;
+        $datosNuevos->save();
+        return view('Liquidacion.altaybaja')->with('colegio_id',$datosNuevos->colegio_id);
     }
     public function ver(){
         $altabaja=App\Altabaja::all();
