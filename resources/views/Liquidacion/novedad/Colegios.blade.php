@@ -3,7 +3,7 @@
 <div class="container">
    <!-- <div class="row justify-content-center">-->
         <div class="col-md-20">
-<br><br>
+
 
 <form method="POST" action="{{ route('Liquidacion.novedad.Colegios') }}" >
         @csrf
@@ -63,7 +63,27 @@
                 </div>
                 
                 
-        </div>  
-        <button type="submit" class="btn btn-dark">Guardar</button>
+        </div>
+        <br> 
+        </div>
+        </div>
+        <br>
+        <div class="card">
+        <div class="card-header"><b>Elegir tipo de planilla </b>
+                        </div>
+       
+       <select name="elegirplanilla" >
+        <option value="" disabled selected>Planillas</option>
+        <option value="altabaja">Alta-Baja</option>
+        <option value="novedades">Novedades</option>
+        <option value="otrasnovedades">Otras novedades</option>
+       </select>
+        
+</div>
+<br>
+<button type="submit" class="btn btn-dark">Guardar</button>
+</div>
+
+      
 </form>        
-    
+@endsection

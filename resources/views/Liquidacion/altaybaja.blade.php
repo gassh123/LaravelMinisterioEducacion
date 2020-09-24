@@ -16,7 +16,7 @@
 
 <br><br>
 
-<form method="POST" action="{{ route('liquidacion.altaybajapost') }}" >
+<form method="POST" action="{{ route('Liquidacion.altaybajapost') }}" >
         @csrf
         
         <br>
@@ -71,6 +71,7 @@
                                 </tr>
                                 <tr>
                                 <th scope="col">N°</th>
+                                <th scope="col">codigo_id</th>
                                 <th scope="col">D.N.I</th>
                                 <th scope="col" style='width: 20%;'>Apellido y Nombres</th>
                                 <th scope="col">Cargo</th>
@@ -87,23 +88,7 @@
                         
                         <tbody>
                                
-                                @foreach ($altabaja as $item)
-
-                                <tr>
-                                <td>{{$item->num}}</td>
-                                <td>{{$item->dni}}</td>
-                                <td>{{$item->ApellidoNombre}}</td>
-                                <td>{{$item->cargo}}</td>
-                                <td>{{$item->caracter}}</td>
-                                <td>{{$item->GradoSeccion}}</td>
-                                <td>{{$item->Desde}}</td>
-                                <td>{{$item->Hasta}}</td>
-                                <td>{{$item->Total}}</td>
-                                <td>{{$item->Motivo}}</td>
-                                <td>{{$item->Observaciones}}</td>
-                                
-                                </tr>
-                                @endforeach
+                               
 
                                 <tr>
                                 <td><input type="number" min="0" style="width : 30px; heigth : 100px" name=num></td>

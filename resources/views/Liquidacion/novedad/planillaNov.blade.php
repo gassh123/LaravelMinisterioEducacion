@@ -16,7 +16,7 @@
 
 <br><br>
 
-<form method="POST" action="{{ route('Liquidacion.agregarDocente') }}" >
+<form method="POST" action="{{ route('Liquidacion.agregarNovedad') }}" >
         @csrf
         
         <br>
@@ -24,7 +24,7 @@
 
         <br>   
         <div class="card">
-        <div class="card-header"> <b>Planilla de NOVEDAD </b>
+        <div class="card-header"> <b>Planilla de novedades </b>
         <div class="btn-group" role="group" aria-label="Basic example">
         <a href="{{action('NovedadPlanillaController@ver')}}" target="blank" class="btn btn-secondary">Ver PDF</a>
         <a href="{{action('NovedadPlanillaController@descargar')}}" class="btn btn-secondary">Descargar PDF</a>
@@ -87,6 +87,7 @@
                         </thead>
                         
                         <tbody>
+                       
                                
                                
                                 <tr>

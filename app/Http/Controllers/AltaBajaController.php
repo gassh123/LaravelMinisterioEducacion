@@ -15,38 +15,27 @@ class AltaBajaController extends Controller
         return view ('liquidacion.altaybaja', compact('altabaja'));
     }
     public function altaybajapost(Request $request){
-        $request->validate([
+        
+        $request->validate([ 
 
-          /*  'NumeroInst'=>'required',
-            'NombreInst'=>'required',
-            'TurnoInst'=>'required',
-            'DomicilioInst'=>'required',
-            'TelefonoInst'=>'required',
-            'LocalidadInst'=>'required',
-            'DepartamentoInst'=>'required',*/
+         
             'num'=>'required',
+            'colegio_id'=>'required',
             'dni'=>'required',
-            'ApellidoNombre'=>'required',
-            'cargo'=>'required',
-            'caracter'=>'required',
+            'ApellidoNommbre'=>'required',
+            'Cargo'=>'required',
+            'Caracter'=>'required',
             'GradoSeccion'=>'required',
-            'Desde'=>'required',
-            'Hasta'=>'required',
-            'Total'=>'required',
-            'Motivo'=>'required',
-            'Observaciones'=>'required',
+            'desdeN'=>'required',
+            'hastaN'=>'required',
+            'totalN'=>'required',
+            'articulo'=>'required',
+            'observacionesN'=>'required',
 
         ]);
                     
     
-        $datosNuevos=new App\Altabaja;
-       /* $datosNuevos->NumeroInst = $request->NumeroInst;
-        $datosNuevos->NombreInst = $request->NombreInst;
-        $datosNuevos->TurnoInst = $request->TurnoInst;
-        $datosNuevos->DomicilioInst = $request->DomicilioInst;
-        $datosNuevos->TelefonoInst = $request->TelefonoInst;
-        $datosNuevos->LocalidadInst = $request->LocalidadInst;
-        $datosNuevos->DepartamentoInst = $request->DepartamentoInst;*/
+        $datosNuevos=new Altabaja();
         $datosNuevos->num = $request->num;
         $datosNuevos->colegio_id = $request->colegio_id;
         $datosNuevos->dni = $request->dni;
@@ -60,7 +49,7 @@ class AltaBajaController extends Controller
         $datosNuevos->articulo = $request->articulo;
         $datosNuevos->observacionesN = $request->observacionesN;
         $datosNuevos->save();
-        return view('Liquidacion.altaybaja')->with('colegio_id',$datosNuevos->colegio_id);
+        return view('Liquidacion.altaybajapost')->with('colegio_id',$datosNuevos->colegio_id);
     }
     public function ver(){
         $altabaja=App\Altabaja::all();

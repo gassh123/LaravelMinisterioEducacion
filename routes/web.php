@@ -70,8 +70,9 @@ route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
 //route::post('prueba/pruebaform','PivotController@pruebaform')->name('liquidacion.pruebaform');
 //route::get('indexliq/elegirinstitucion','LiquidacionController@elegirinstitucion')->name('liquidacion.elegirinstitucion');
 
-route::get('/altaybaja','AltaBajaController@altaybaja')->name('liquidacion.altaybaja');
-route::post('/altaybaja/post','AltaBajaController@altaybajapost')->name('liquidacion.altaybajapost');
+
+route::post('/altaybaja/post','AltaBajaController@altaybajapost')->name('Liquidacion.altaybajapost');
+
 route::get('/VerpdfAltaBaja', 'AltaBajaController@ver')->name('liquidacion.verpdfAltaBaja');
 route::get('/DescargarpdfAltaBaja', 'AltaBajaController@descargar')->name('liquidacion.descargarpdfAltaBaja');
 route::delete('altaybaja/delete/{id}','AltaBajaController@delete')->name('liquidacion.delete');
@@ -119,7 +120,9 @@ route::post('planillaInstitucion/carga','InstitucionPlanillaController@store')->
 
 /***********LLENADO DE LA PLANILLA NOVEDADES ,DATOS DE LOS DOCENTES */
 route::get('planillaDocente/index','InstitucionPlanillaController@create')->name('LiquidacionCreare');
-route::post('planillaDocente/carga','NovedadPlanillaController@store')->name('Liquidacion.agregarDocente');
+route::get('planillaDocente/index/elegir','InstitucionPlanillaController@elegir')->name('Liquidacion.elegir');
+route::post('planillaDocente/elegir','InstitucionPlanillaController@elegirplanilla')->name('Liquidacion.elegirplanilla');
+route::post('planillaDocente/cargaNovedad','NovedadPlanillaController@store')->name('Liquidacion.agregarNovedad');
 /******************** BOTONES DE LA PLANILLA DE NOVEDADES :VER,DESCARGAR , GUARDAR , AGREGAR FILA , ELIMINAR FILA  ******/
 route::get('/Novedad','NovedadPlanillaControllerr@Novedad')->name('liquidacion.Novedad');
 route::get('/VerpdfNovedad', 'NovedadPlanillaController@ver')->name('liquidacion.novedad.verpdfNovedad');
