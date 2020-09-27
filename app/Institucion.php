@@ -12,6 +12,12 @@ class Institucion extends Model
         'num','cod_escuela', 'Institucion', 'ctg', 'turno', 'domicilio', 'telefono', 'localidad', 'departamento'
     ];
 
+    public function scopeInstituciones($query, $Institucion){
+        if ($Institucion) {
+            return $query->where ('Institucion','like',"%$Institucion%");
+        }
+    }
+
     protected $primaryKey='id';
     public function docentes()
     {

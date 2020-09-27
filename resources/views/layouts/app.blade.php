@@ -138,7 +138,7 @@
                                     <a class="dropdown-item" href="{{action('InstitucionPlanillaController@create') }}">Alta y baja</a>
                                     <a class="dropdown-item" href="{{ action('InstitucionPlanillaController@create') }}">LLENADO DE PLANILLA NOVEDAD</a>
                                     <a class="dropdown-item" href="{{ action('InstitucionPlanillaController@create') }}">LLENADO PLANILLA OTRAS NOVEDADES</a>
-                                    <a class="dropdown-item" href="{{ url('/filtplanillas') }}">Ver formulario</a>
+                                    <a class="dropdown-item" href="{{ url('/filtrar') }}">Filtrar planillas</a>
                                     <a class="dropdown-item" href="{{action('DescargaController@index')}}">Descargar Planillañ</a>
                                     </div>
                                 </li>

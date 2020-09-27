@@ -10,7 +10,7 @@ class OtraNovedadController extends Controller
         $altabaja= Otranovedad::all();
         return view ('liquidacion.otroNov.planillaOtraN', compact('altabaja'));
     }
-public function create(){
+public function create(){ 
         //$codigo= App\Novedad::all()
         return view ('Liquidacion.Otranovedad.planillaOtraN');
     }

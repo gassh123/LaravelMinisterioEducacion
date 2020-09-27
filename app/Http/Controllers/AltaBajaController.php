@@ -7,12 +7,20 @@ use App;
 use PDF;
 use Illuminate\Support\Facades\DB;
 use App\Altabaja;
+use App\Institucion;
 
 class AltaBajaController extends Controller
 {
-    public function altaybaja(){
-        $altabaja= App\Altabaja::all();
-        return view ('liquidacion.altaybaja', compact('altabaja'));
+    public function altaybaja(Request $request){
+        $institucion=$request->get('elegirinstitucion');
+            $filtro=Altabaja::where('colegio_id','LIKE',"%institucion%");
+        $altabaja= Altabaja::all();
+        $nombre=Institucion::All();
+        $altabajainst='SELECT altabajas.colegio_id FROM `altabajas`';
+        if ($institucion==$filtro) {
+            echo 'Listo';
+        }
+        return view ('Liquidacion.altaybaja', compact('altabaja'), compact('nombre'), compact('filtro'));
     }
     public function altaybajapost(Request $request){
         

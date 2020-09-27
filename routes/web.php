@@ -72,8 +72,9 @@ route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
 
 
 route::post('/altaybaja/post','AltaBajaController@altaybajapost')->name('Liquidacion.altaybajapost');
-
+route::get('/altaybaja', 'AltaBajaController@altaybaja')->name('Liquidacion.altaybaja');
 route::get('/VerpdfAltaBaja', 'AltaBajaController@ver')->name('liquidacion.verpdfAltaBaja');
+route::get('/filtrar', 'InstitucionPlanillaController@filtrado')->name('liquidacion.filtlistado');
 route::get('/DescargarpdfAltaBaja', 'AltaBajaController@descargar')->name('liquidacion.descargarpdfAltaBaja');
 route::delete('altaybaja/delete/{id}','AltaBajaController@delete')->name('liquidacion.delete');
 //route::get('indexliq/novedades','LiquidacionController@novedades')->name('liquidacion.novedades');
@@ -129,6 +130,7 @@ route::get('/VerpdfNovedad', 'NovedadPlanillaController@ver')->name('liquidacion
 route::get('/DescargarpdfNovedad', 'NovedadPlanillaController@descargar')->name('Liquidacion.novedad.descargarpdfNovedad');
 route::delete('Novedad/delete/{id}','NovedadPlanillaController@delete')->name('liquidacion.delete');
 /******************* BOTONES DE LA PLANILA DE OTRAS NOVEDADES : VER , DESCARGAR , GUARDAR , AGREGAR FILA , ELIMINIAR */
+route::get('/otraNovedad','OtraNovedadController@create')->name('Liquidacion.otroNov.planillaOtraN');
 route::get('/otraNovedad','OtraNovedadController@Otranovedad')->name('liquidacion.Otranovedad');
 route::get('/OtroNVerpdfNovedad', 'OtraNovedadController@ver')->name('liquidacion.otroNov.verpdfOtraN');
 route::get('/OtroNDescargarpdfNovedad', 'OtraNovedadControllerr@descargar')->name('Liquidacion.otroNov.descargapdfOnov');
