@@ -15,15 +15,14 @@ class CreateInstitucionsTable extends Migration
     {
         Schema::create('institucions', function (Blueprint $table) {
             $table->id();
-            
-            $table->integer('cod_escuela')->unique();
-            $table->text('Institucion')->unique();
-            $table->text('ctg')->nullable();
-            $table->text('turno')->nullable();
-            $table->text('domicilio')->nullable();
-            $table->integer('telefono')->nullable();
-            $table->text('localidad')->nullable();
-            $table->text('departamento')->nullable();
+            $table->integer('cod_escuela')->nullable();
+            $table->string('Institucion')->nullable();
+            $table->string('ctg')->nullable();
+            $table->string('turno')->nullable();
+            $table->string('domicilio')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('localidad')->nullable();
+            $table->string('departamento')->nullable();
             
             $table->timestamps();
 

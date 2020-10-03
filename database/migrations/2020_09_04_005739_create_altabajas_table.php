@@ -14,21 +14,26 @@ class CreateAltabajasTable extends Migration
     public function up()
     {
         Schema::create('altabajas', function (Blueprint $table) {
-            
-            $table->id();
-            $table->unsignedBigInteger('docente_id')->unsigned();
-            $table->unsignedBigInteger('institucion_id')->unsigned();
-           // $table->text('tipoAB')->nullable();
-           
-            $table->date('desdeAB')->nullable();
-            $table->date('hastaAB')->nullable();
-            $table->integer('totalAB')->nullable();
-            $table->text('motivo')->nullable();
-            $table->text('observacionesAB')->nullable();
-            $table->timestamps();
+        
+           $table->id();
+           $table->integer('num')->nullable();
+           $table->BigInteger('colegio_id')->unsigned()->nullable();
+           $table->integer('dni')->nullable();
+           $table->string('ApellidoNommbre')->nullable();
+           $table->string('Cargo')->nullable();
+           $table->string('Caracter')->nullable();
+           $table->string('GradoSeccion')->nullable();
+           $table->date('desdeN')->nullable();
+           $table->date('hastaN')->nullable();
+           $table->integer('totalN')->nullable();
+           $table->text('articulo')->nullable();
+           $table->text('observacionesN')->nullable();
+           $table->timestamps();
 
-            $table->foreign('docente_id')->references('id')->on('docentes');       
-            $table->foreign('institucion_id')->references('id')->on('institucions');      
+           $table->foreign('colegio_id')->references('id')->on('institucions');
+            
+
+           
 
            
         });

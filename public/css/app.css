@@ -43,6 +43,9 @@
 *::after {
   box-sizing: border-box;
 }
+div.dataTables_wrapper {
+  margin-bottom: 3em;
+}
 .text-center-align {
   text-align: center;
 }
