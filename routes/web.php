@@ -54,7 +54,7 @@ route::post('/verF2', 'DeclaracionJurada@ver')->name('verF2');
 /*VISTA ADMINISTRACION DE DOCUMENTOS*/
 route::get('/administracion-documentos', 'AdministracionDocumentos@vista');
 route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
-
+route::get('/eliminarDoc/{id}', 'AdministracionDocumentos@delete');
 /*--------------------------------LIQUIDACIONES----------------------------------------*/
 /*LISTADO DE PLANILLAS*/
 route::get('/filtplanillas','FormularioLiqController@filtlistado')->name('liquidacion.filtlistado');

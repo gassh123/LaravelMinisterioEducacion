@@ -104,25 +104,25 @@
     </table>
     <table style="width:102%;"  border=1>
       <tr>
-        <th style="width:5px"><p style="font-size: 60%; text-align:center">D</p></th>
-        <th style="width:20px"><p style="font-size: 55%; text-align:center">Dependencia o establecimiento</p></th>
-        <th style="width:15px"><p style="font-size: 55%; text-align:center">fecha de ingreso</p></th>
-        <th style="width:20px"><p style="font-size: 55%; text-align:center">cod. Cargo</p></th>
-        <th style="width:5px"><p style="font-size: 55%; text-align:center">AG</p></th>
-        <th style="width:5px"><p style="font-size: 55%; text-align:center">CR</p></th>
-        <th style="width:5px"><p style="font-size: 55%; text-align:center">Ant.</p></th>
-        <th style="width:20px"><p style="font-size: 55%; text-align:center">Asignatura o denominación del cargo</p></th>
-        <th style="width:10px"><p style="font-size: 60%; text-align:center">H</p></th>
-        <th style="width:10px"><p style="font-size: 60%; text-align:center">N</p></th>
-        <th style="width:10px"><p style="font-size: 60%; text-align:center">C</p></th>
-        <th style="width:10px"><p style="font-size: 60%; text-align:center">D</p></th>
-        <th style="width:10px"><p style="font-size: 60%; text-align:center">T</p></th>
-        <th style="width:20px"><p style="font-size: 60%; text-align:center">Lunes</p></th>
-        <th style="width:20px"><p style="font-size: 60%; text-align:center">Martes</p></th>
-        <th style="width:20px"><p style="font-size: 60%; text-align:center">Miérc</p></th>
-        <th style="width:20px"><p style="font-size: 60%; text-align:center">Jueves</p></th>
-        <th style="width:20px"><p style="font-size: 60%; text-align:center">Viernes</p></th>
-        <th style="width:30px"><p style="font-size: 57%; text-align:center">Firma Responsable</p></th>
+        <th style="width:5px; heigth : 25px; margin-top: 100px;"><p style="font-size: 60%; text-align:center">D</p></th>
+        <th style="width:20px; heigth : 25px"><p style="font-size: 55%; text-align:center">Dependencia o establecimiento</p></th>
+        <th style="width:20px; heigth : 25px"><p style="font-size: 55%; text-align:center">fecha de ingreso</p></th>
+        <th style="width:20px; heigth : 25px"><p style="font-size: 55%; text-align:center">cod. Cargo</p></th>
+        <th style="width:5px; heigth : 25px"><p style="font-size: 55%; text-align:center">AG</p></th>
+        <th style="width:5px; heigth : 25px"><p style="font-size: 55%; text-align:center">CR</p></th>
+        <th style="width:50px; heigth : 25px"><p style="font-size: 55%; text-align:center">Ant.</p></th>
+        <th style="width:20px; heigth : 25px"><p style="font-size: 55%; text-align:center">Asignatura o denominación del cargo</p></th>
+        <th style="width:10px; heigth : 25px"><p style="font-size: 60%; text-align:center">H</p></th>
+        <th style="width:10px; heigth : 25px"><p style="font-size: 60%; text-align:center">N</p></th>
+        <th style="width:10px; heigth : 25px"><p style="font-size: 60%; text-align:center">C</p></th>
+        <th style="width:10px; heigth : 25px"><p style="font-size: 60%; text-align:center">D</p></th>
+        <th style="width:10px; heigth : 25px"><p style="font-size: 60%; text-align:center">T</p></th>
+        <th style="width:15px; heigth : 25px"><p style="font-size: 60%; text-align:center">Lunes</p></th>
+        <th style="width:15px; heigth : 25px"><p style="font-size: 60%; text-align:center">Martes</p></th>
+        <th style="width:15px; heigth : 25px"><p style="font-size: 60%; text-align:center">Miérc</p></th>
+        <th style="width:15px; heigth : 25px"><p style="font-size: 60%; text-align:center">Jueves</p></th>
+        <th style="width:15px; heigth : 25px"><p style="font-size: 60%; text-align:center">Viernes</p></th>
+        <th style="width:20px; heigth : 25px"><p style="font-size: 57%; text-align:center">Firma Responsable</p></th>
       </tr>
       @for($i = 1; $i <= $request->cantidad ; $i++) 
         <tr>

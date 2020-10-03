@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-   
+    
     @if(session()->has('message'))
         <div class="row justify-content-center">
             <div class="alert alert-success">
@@ -10,11 +10,14 @@
             </div>
         </div>
     @else
-        <div class="row justify-content-center">
-            <div class="alert alert-primary" role="alert">
-            Aqui puede subir sus documentos con el boton "agregar"
-            </div>
-        </div>
+        @if ($documentos->isEmpty())
+            <div class="row justify-content-center">
+                <div class="alert alert-primary" role="alert">
+                Aqui puede subir sus documentos con el boton "agregar"
+                </div>
+            </div> 
+        @endif
+        
     @endif
     <div class="row justify-content-center">
         <div class="card">
@@ -40,6 +43,29 @@
                 </div>
             @endif
         </div>
+    </div>
+    <div class="row">
+        @foreach ($documentos as $documento)
+            @php
+                $extension = stristr($documento->name, '.');
+            @endphp
+            <div  class="card mx-auto mt-2" style="width: 18rem;">
+                <div class="card-body" HSPACE="10" VSPACE="10">
+                    <div class="mx-auto" style="width: 80%; height= 50%">
+                        <img src="@include('coordPersonal/imagenes_documentos')" width="80%" height="50%">
+                    </div>
+                    <h5 class="card-title" style="font-size: 110%">nombre del documento: {{str_replace($extension, "", $documento->name)}}</h5>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">Descripción</h6>
+                    <p class="card-text">{{$documento->info}}</p>
+                    <hr style="background-color: #6495ed">  
+                    <div class="mx-auto" style="width: 150px;">
+                        
+                        <a href="{{url('/eliminarDoc', ['id'=>$documento->id])}}" class="btn btn-danger mx-auto">Eliminar doc</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 </div>
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use PDF;
 use App;
@@ -19,7 +19,7 @@ class DeclaracionJurada extends Controller
 
     public function ver(Request $request){
         
-        //dd($request);
+        
         $vista = view('coordPersonal.pdfF2')->with('request', $request);
         $domp = App::make('dompdf.wrapper');
         $domp->loadHTML($vista);
@@ -28,7 +28,10 @@ class DeclaracionJurada extends Controller
             return $domp->stream();
         }
         elseif($request->input('boton_guardar')){
-            return $domp->download($fecha.'f2.pdf');
+            $usuario = Auth::user();
+            $f2 = $usuario->name.'_'.$fecha.'_DeclaracionJurada.pdf';
+            
+            return $domp->download($f2);
         }
         else{
             return $domp->stream();

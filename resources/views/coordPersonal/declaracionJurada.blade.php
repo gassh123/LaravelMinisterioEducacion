@@ -54,6 +54,26 @@
                     <th><p style="font-size: 60%">Viernes</p></th>
                     <th><p style="font-size: 60%">Firma Del Responsable</p></th>
                   </tr>
+                  <td><input type="text" style="width : 25px; heigth : 25px" name='id1' value='1'></td>
+                  <td><input type="text" style="width : 90px; height: 25px; font-size: 80%;" name='dependencia1'></td>
+                  <td><input type="date" style="width : 100px; heigth : 60px; font-size: 60%;" name='fecha1' value="00/00/00"></td>'
+                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='cargo1'></td>
+                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='ag1'></td>
+                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='cr1'></td>
+                  <td><input type="text" style="width : 90px; heigth : 30px; font-size: 80%;" name='ant1'></td>
+                  <td><input type="text" style="width : 90px; height: 25px; font-size: 80%;" name='asignatura1'></td>
+                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='h1'></td>
+                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='n1'></td>
+                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='c1'></td>
+                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='d1'></td>
+                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='t1'></td>
+                  <td style="text-align:center"><input type="checkbox"  name='lunes1'></td>'
+                  <td style="text-align:center"><input type="checkbox"  name='martes1'></td>
+                  <td style="text-align:center"><input type="checkbox"  name='mierc1'></td>
+                  <td style="text-align:center"><input type="checkbox"  name='jueves1'></td>
+                  <td style="text-align:center"><input type="checkbox"  name='viernes1'></td>
+                  <td style="text-align:center"><p name='firma1'>........</p></td>
+                  <input type="hidden" style="width : 25px; heigth : 25px" name=cantidad value='1'>
                 </thead>
                 <tbody></tbody>
               </table>
@@ -204,7 +224,7 @@
       }
    </script>
    <script> 
-      var i = 1
+      var i = 2
       function agregarFila(){
       var m = i++;
       document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<td><input type="text" style="width : 25px; heigth : 25px" name=id'+m+' value='+m+'></td>'
@@ -213,7 +233,7 @@
                                                                         +'<td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name=cargo'+m+'></td>'
                                                                         +'<td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name=ag'+m+'></td>'
                                                                         +'<td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name=cr'+m+'></td>'
-                                                                        +'<td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name=ant'+m+'></td>'
+                                                                        +'<td><input type="text" style="width : 90px; heigth : 30px; font-size: 80%;" name=ant'+m+'></td>'
                                                                         +'<td><input type="text" style="width : 90px; height: 25px; font-size: 80%;" name=asignatura'+m+'></td>'
                                                                         +'<td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name=h'+m+'></td>'
                                                                         +'<td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name=n'+m+'></td>'
