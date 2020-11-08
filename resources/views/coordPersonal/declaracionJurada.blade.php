@@ -33,7 +33,7 @@
               <br>
               <table border="1" class="table" id="tablaprueba">
                 <thead class="thead-dark">
-                  <tr style="width: 70px; height: 25px; ">
+                  <tr style="width: 70px; height: 25px;">
                     <th><p style="font-size: 70%">D</p></th>
                     <th><p style="font-size: 60%">Dependencia o Establecimiento</p></th>
                     <th><p style="font-size: 60%">Fecha de Ingreso</p></th>
@@ -56,7 +56,7 @@
                   </tr>
                   <td><input type="text" style="width : 25px; heigth : 25px" name='id1' value='1'></td>
                   <td><input type="text" style="width : 90px; height: 25px; font-size: 80%;" name='dependencia1'></td>
-                  <td><input type="date" style="width : 100px; heigth : 60px; font-size: 60%;" name='fecha1' value="00/00/00"></td>'
+                  <td><input type="date" style="width : 100px; heigth : 60px; font-size: 60%;" name='fecha1' value="00/00/00"></td>
                   <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='cargo1'></td>
                   <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='ag1'></td>
                   <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='cr1'></td>
@@ -67,7 +67,7 @@
                   <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='c1'></td>
                   <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='d1'></td>
                   <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='t1'></td>
-                  <td style="text-align:center"><input type="checkbox"  name='lunes1'></td>'
+                  <td style="text-align:center"><input type="checkbox"  name='lunes1'></td>
                   <td style="text-align:center"><input type="checkbox"  name='martes1'></td>
                   <td style="text-align:center"><input type="checkbox"  name='mierc1'></td>
                   <td style="text-align:center"><input type="checkbox"  name='jueves1'></td>
@@ -107,12 +107,17 @@
               <div class="form-group row">
                 <div class="col-sm-12" style="text-align:center">
                   <div class="col-sm-6 alert alert-success  mx-auto" role="alert">
-                    Opcional: puede agregar un dibujo de su firma en el formulario
+                    Opcional: puede agregar un dibujo de su firma en el recuadro o puede subir una foto de su firma 
+                    con el boton "seleccionar archivo"
                   </div>
                   <canvas id='canvas' style='border: 1px solid black' width="150" height="90">
                     <p>Tu navegador no soporta canvas</p>
                   </canvas>
                   <input type='hidden' name='imagen' id='imagen'/><br>
+                  <div class="col-6 mx-auto">
+                    <input type="file" class="form-control-file" id="firmaImg" name="firmaImg">
+                  </div>
+                  <br>
                   <button type='button' class='btn btn-info' onclick='LimpiarTrazado()'>Borrar firma</button>
                   <input type='submit' name="boton_guardar" value='Guardar pdf' class='btn btn-info' data-toggle='confirmation' onclick='GuardarTrazado()'/>
                   <input type='submit' name="boton_ver" value='Ver pdf' class='btn btn-info' data-toggle='confirmation' onclick='GuardarTrazado()'/>

@@ -19,7 +19,6 @@ class DeclaracionJurada extends Controller
 
     public function ver(Request $request){
         
-        
         $vista = view('coordPersonal.pdfF2')->with('request', $request);
         $domp = App::make('dompdf.wrapper');
         $domp->loadHTML($vista);

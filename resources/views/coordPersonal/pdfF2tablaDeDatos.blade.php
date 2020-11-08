@@ -16,7 +16,8 @@
     <th style="text-align:center; margin-top: 10px;">@if($request->input('mierc'.$i)=='on')<img src="almacenamiento\documentos\DeclaracionJurada\tick.png" width="15" height="15"></p>@else<p style="font-size: 60%; text-align:center"></p>@endif</th>
     <th style="text-align:center; margin-top: 10px;">@if($request->input('jueves'.$i)=='on')<img src="almacenamiento\documentos\DeclaracionJurada\tick.png" width="15" height="15"></p>@else<p style="font-size: 60%; text-align:center"></p>@endif</th>
     <th style="text-align:center; margin-top: 10px;">@if($request->input('viernes'.$i)=='on')<img src="almacenamiento\documentos\DeclaracionJurada\tick.png" width="15" height="15"></p>@else<p style="font-size: 60%; text-align:center"></p>@endif</th>
-    <th style="text-align:center; margin-top: 10px;"><img src="{{$request->imagen}}" border="1" style="width:  50px; height: 30px;"></th>
+    <th style="text-align:center; margin-top: 10px;">@if($request->hasFile('firmaImg'))<img src="{{$request->firmaImg}}" border="1" style="width:  50px; height: 30px;">@else<img src="{{$request->imagen}}" border="1" style="width:  50px; height: 30px;">@endif</th>
+
 
 
 
