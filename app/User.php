@@ -46,4 +46,15 @@ class User extends Authenticatable
         return $this->admin_since !=null()
             && $this->admin_since->lessThanOrEqual(now());
     }
+
+
+    public function f2()
+    {
+        return $this->hasOne('App\F2');
+    }
+
+    public function pof()
+    {
+        return $this->hasOne('App\Pof');
+    }
 }

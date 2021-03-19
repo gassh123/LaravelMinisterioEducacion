@@ -57,6 +57,16 @@ route::post('/agregarDocumento', 'AdministracionDocumentos@agregar');
 route::get('/eliminarDoc/{id}', 'AdministracionDocumentos@delete');
 route::get('/documentos', 'AdministracionDocumentos@todos');
 route::get('/descargarDoc/{id}', 'AdministracionDocumentos@download');
+
+
+
+/*------------------------------------PLANTA ORGANICA FUNCIONAL-----------------------------*/
+route::get('/Pof', 'PofController@vista')->name('Pof');
+route::post('/Buscador', 'PofController@BuscadorPersona')->name('BuscadorPersona');
+route::post('/AgregrarPofTabla', 'PofController@AgregarDatosTabla')->name('AgregarDatosTabla');
+route::get('/EliminarPersona/{id}/{id_tabla}', 'PofController@eliminar')->name('EliminarPersona');
+route::post('/PofPDF', 'PofController@pofPDF')->name('PofPDF');
+
 /*--------------------------------LIQUIDACIONES----------------------------------------*/
 /*LISTADO DE PLANILLAS*/
 //route::get('/filtplanillas','FormularioLiqController@filtlistado')->name('liquidacion.filtlistado');

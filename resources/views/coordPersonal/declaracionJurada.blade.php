@@ -6,77 +6,10 @@
             <form method="POST" action="{{ route('verF2') }}" enctype="multipart/form-data">
               @csrf
               <p>Tipo de Documento:</p>
-              <input class="form-check-input" type="radio" name="numero"  id="DNI" value="DNI" checked>
-              <label class="form-check-label" for="DNI">
-                DNI
-              </label><br>
-              <input class="form-check-input" type="radio" name="numero"  id="L.E" value="L.E">
-              <label class="form-check-label" for="L.E">
-                L.E
-              </label> <br>
-              <input class="form-check-input" type="radio" name="numero"  value="L.C">
-              <label class="form-check-label" for="L.C">
-                L.C
-              </label> 
-              <br>
-              <label for="exampleInputEmail1">Numero del Documento</label>
-              <input type="text" class="form-control" name="numDoc" style="width: 170px; height: 25px;">
-              <small id="emailHelp" class="form-text text-muted">Agregue su Documento</small>
+              @include('coordPersonal/declaracionJuradaDocumentos') 
+          
+              @include('coordPersonal/declaracionJuradaTabla') 
 
-              <label for="exampleInputEmail1">Numero de CUIL</label>
-              <input type="text" class="form-control" name="numCUIL" style="width: 170px; height: 25px;">
-              <small id="emailHelp" class="form-text text-muted">Agregue su CUIL</small>
-
-              <label for="exampleInputEmail1">Nombre y apellido</label>
-              <input type="text" class="form-control" name="apellidoNombre" style="width: 170px; height: 25px;">
-              <small id="emailHelp" class="form-text text-muted">Agregue su nombre y apellido</small>
-              <br>
-              <table border="1" class="table" id="tablaprueba">
-                <thead class="thead-dark">
-                  <tr style="width: 70px; height: 25px;">
-                    <th><p style="font-size: 70%">D</p></th>
-                    <th><p style="font-size: 60%">Dependencia o Establecimiento</p></th>
-                    <th><p style="font-size: 60%">Fecha de Ingreso</p></th>
-                    <th><p style="font-size: 60%">Cod. Cargo</p></th>
-                    <th><p style="font-size: 70%">AG</p></th>
-                    <th><p style="font-size: 70%">CR</p></th>
-                    <th><p style="font-size: 70%">Ant.</p></th>
-                    <th><p style="font-size: 60%">Asignatura o denominación del Cargo</p></th>
-                    <th><p style="font-size: 70%">H</p></th>
-                    <th><p style="font-size: 70%">N</p></th>
-                    <th><p style="font-size: 70%">C</p></th>
-                    <th><p style="font-size: 70%">D</p></th>
-                    <th><p style="font-size: 70%">T</p></th>
-                    <th><p style="font-size: 60%">Lunes</p></th>
-                    <th><p style="font-size: 60%">Martes</p></th>
-                    <th><p style="font-size: 60%">Mierc.</p></th>
-                    <th><p style="font-size: 60%">Jueves</p></th>
-                    <th><p style="font-size: 60%">Viernes</p></th>
-                    <th><p style="font-size: 60%">Firma Del Responsable</p></th>
-                  </tr>
-                  <td><input type="text" style="width : 25px; heigth : 25px" name='id1' value='1'></td>
-                  <td><input type="text" style="width : 90px; height: 25px; font-size: 80%;" name='dependencia1'></td>
-                  <td><input type="date" style="width : 100px; heigth : 60px; font-size: 60%;" name='fecha1' value="00/00/00"></td>
-                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='cargo1'></td>
-                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='ag1'></td>
-                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='cr1'></td>
-                  <td><input type="text" style="width : 90px; heigth : 30px; font-size: 80%;" name='ant1'></td>
-                  <td><input type="text" style="width : 90px; height: 25px; font-size: 80%;" name='asignatura1'></td>
-                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='h1'></td>
-                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='n1'></td>
-                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='c1'></td>
-                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='d1'></td>
-                  <td><input type="text" style="width : 30px; heigth : 30px; font-size: 80%;" name='t1'></td>
-                  <td style="text-align:center"><input type="checkbox"  name='lunes1'></td>
-                  <td style="text-align:center"><input type="checkbox"  name='martes1'></td>
-                  <td style="text-align:center"><input type="checkbox"  name='mierc1'></td>
-                  <td style="text-align:center"><input type="checkbox"  name='jueves1'></td>
-                  <td style="text-align:center"><input type="checkbox"  name='viernes1'></td>
-                  <td style="text-align:center"><p name='firma1'>........</p></td>
-                  <input type="hidden" style="width : 25px; heigth : 25px" name=cantidad value='1'>
-                </thead>
-                <tbody></tbody>
-              </table>
               <div class="form-group row">
                 <div class="col-sm-12" style="text-align:center">
                   <button name="count_click" type="button" class="btn btn-primary mr-2" onclick="agregarFila()">Agregar Fila</button>
@@ -84,33 +17,61 @@
                 </div>
               </div>
                   <br><br>
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" name="jubilacion">
-                <label class="form-check-label" for="exampleCheck1">Es Jubilado?</label>
-                <div class="form-group row">
-                  <p>fecha Jubilacion:</p>
-                  <div class="col-sm-10">
-                    <input type="date" name="fechaJubilacion">
+              @if ($usuario->f2)
+                <div class="form-group form-check">
+                  @if ($usuario->f2->jubilado == 'on')
+                    <input type="checkbox" class="form-check-input" name="jubilacion" checked>
+                  @else
+                    <input type="checkbox" class="form-check-input" name="jubilacion">
+                  @endif
+                  <label class="form-check-label" for="exampleCheck1">Es Jubilado?</label>
+                  <div class="form-group row">
+                    <p>fecha Jubilacion:</p>
+                    <div class="col-sm-10">
+                      <input type="date" name="fechaJubilacion" value="{{$usuario->f2->fecha_jubilacion}}">
+                    </div>
                   </div>
+                  <div class="form-group row">
+                    <p>Resolución N°:</p>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" name="resPart1" value="{{$usuario->f2->resolucion_numero_uno}}">
+                    </div>
+                    <h1>-</h1>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" name="resPart2" value="{{$usuario->f2->resolucion_numero_dos}}">
+                    </div>
+                  </div>              
                 </div>
-                <div class="form-group row">
-                  <p>Resolución N°:</p>
-                  <div class="col-sm-2">
-                    <input type="text" class="form-control" name="resPart1">
+              @else
+                <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" name="jubilacion">
+                  <label class="form-check-label" for="exampleCheck1">Es Jubilado?</label>
+                  <div class="form-group row">
+                    <p>fecha Jubilacion:</p>
+                    <div class="col-sm-10">
+                      <input type="date" name="fechaJubilacion">
+                    </div>
                   </div>
-                  <h1>-</h1>
-                  <div class="col-sm-2">
-                    <input type="text" class="form-control" name="resPart2">
-                  </div>
-                </div>              
-              </div>
+                  <div class="form-group row">
+                    <p>Resolución N°:</p>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" name="resPart1">
+                    </div>
+                    <h1>-</h1>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" name="resPart2">
+                    </div>
+                  </div>              
+                </div>           
+              @endif
+              
               <div class="form-group row">
                 <div class="col-sm-12" style="text-align:center">
                   <div class="col-sm-6 alert alert-success  mx-auto" role="alert">
                     Opcional: puede agregar un dibujo de su firma en el recuadro o puede subir una foto de su firma 
                     con el boton "seleccionar archivo"
                   </div>
-                  <canvas id='canvas' style='border: 1px solid black' width="150" height="90">
+                  <canvas id='canvas' name='canvas' style='border: 1px solid black' width="150" height="90">
                     <p>Tu navegador no soporta canvas</p>
                   </canvas>
                   <input type='hidden' name='imagen' id='imagen'/><br>
@@ -229,7 +190,7 @@
       }
    </script>
    <script> 
-      var i = 2
+      var i = document.getElementById("cantidad").value
       function agregarFila(){
       var m = i++;
       document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<td><input type="text" style="width : 25px; heigth : 25px" name=id'+m+' value='+m+'></td>'
@@ -262,6 +223,7 @@
           alert('No se puede eliminar el encabezado');
         else
           table.deleteRow(rowCount -1);
+          i = i - 1;
       }
 
     </script>
