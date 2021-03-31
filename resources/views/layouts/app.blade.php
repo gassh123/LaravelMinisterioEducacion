@@ -147,8 +147,8 @@
                                     Coordinación de personal
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="/F2">F2 Declaración jurada de Cargo</a>
-                                    <a class="dropdown-item" href="/Pof">Planta Funcional</a>
+                                    <a class="dropdown-item" href="/F2" >F2 Declaración jurada de Cargo</a>
+                                    <a class="dropdown-item" href="{{action('PofController@vista') }}">Planta Funcional</a>
                                     <a class="dropdown-item" href="/documentos">Ver documentos</a>
                                     <!-- el ultimo link es para coord. de persanal -->
                                     <a class="dropdown-item" href="/administracion-documentos">Administrar Documentos</a>

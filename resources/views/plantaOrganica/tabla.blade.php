@@ -19,7 +19,7 @@
         </tr>
             @foreach ($usuario->pof->pof_tabla_dato as $pof_tabla)
                 <tr>
-                <td><input type="text" style="width : 70px; font-size: 70%;" name='{{$pof_tabla->id}}documento' value='{{$pof_tabla->documento_tipo}}'></td>
+                <td><input type="text" style="width : 70px; font-size: 70%;" name='documento{{$pof_tabla->id}}' value='{{$pof_tabla->documento_tipo}}'></td>
                 <td><input type="text" style="width : 80px; font-size: 70%;" name='{{$pof_tabla->id}}cuil' value='{{$pof_tabla->cuil}}'></td>
                 <td><input type="text" style="width : 125px; font-size: 70%;" name='{{$pof_tabla->id}}apellido_nombre' value='{{$pof_tabla->apellido_nombre}}'></td>
                 <td><input type="text" style="width : 80px;  font-size: 80%;" name='{{$pof_tabla->id}}cargo' value='{{$pof_tabla->cargo}}'></td>
@@ -29,12 +29,13 @@
                 <td><input type="text" style="width : 30px;  font-size: 80%;" name='{{$pof_tabla->id}}antes' value='{{$pof_tabla->antes}}'></td>
                 <td><input type="text" style="width : 30px;  font-size: 80%;" name='{{$pof_tabla->id}}dias' value='{{$pof_tabla->dias}}'></td>
                 <td><input type="text" style="width : 70px;  font-size: 80%;" name='{{$pof_tabla->id}}celular' value='{{$pof_tabla->celular}}'></td>
-                <td><input type="text" style="width : 70px;  font-size: 80%;" name='{{$pof_tabla->id}}formacion' value=''></td>
+                <td><input type="text" style="width : 70px;  font-size: 80%;" name='{{$pof_tabla->id}}formacion' value='{{$pof_tabla->formacion}}'></td>
                 <td><input type="text" style="width : 125px; font-size: 80%;" name='{{$pof_tabla->id}}observacion' value='{{$pof_tabla->observaciones}}'></td>
                 <td><A href="{{ route('EliminarPersona', [$pof_tabla->pof_id, $pof_tabla->id]) }}" class="btn btn-danger" tabindex="-1">quitar</A></td>
                 </tr>
             @endforeach 
         </thead>
     </table>
+    <input type="hidden" name="length" value="{{$pof_tabla->id}}">
     <button type="submit" class="btn btn-success">ver</button>
 </form>
