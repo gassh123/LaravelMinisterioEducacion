@@ -14,12 +14,17 @@ class PofController extends Controller
     {   
         //dd(Persona::search('alfredo')->get());
         $usuario = Auth::user();
-        return view('plantaOrganica.vista', ['usuario'=>$usuario]);
+        //$personas=Persona::search('DNI')->where('documento', 40775272)->get();
+        //$personas=Persona::search('40775272')->get();
+        return view('plantaOrganica.vista', ['usuario'=>$usuario]); //, compact('personas')
     }
 
     public function BuscadorPersona(Request $request){
-       $personas =  Persona::search($request->dato)->get();
-       return redirect()->back()->with(['personas' => $personas]);
+       //$personas =  Persona::search($request->dato)->get();
+       $personas =  Persona::search('DNI')->where('documento', $request->dato)->get();$usuario = Auth::user();
+       //return redirect()->back()->with(['personas' => $personas]);
+       return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas' => $personas]);
+       //return redirect('Pof')->with('personas' , $personas);
     }
 
     public function AgregarDatosTabla(Request $request){
@@ -141,7 +146,8 @@ class PofController extends Controller
             for($i = 1; $i <= $request->length ; $i++){
                 $dni="documento".$i; $cuil=$i."cuil"; $nombre=$i."apellido_nombre"; $cargo=$i."cargo"; $nomenclador=$i."nomenclador"; 
                 $revista=$i."revista"; $horas=$i."horas"; $antes=$i."antes"; $dias=$i."dias";
-                $data.="<tr>
+                if($request->$dni){
+                    $data.="<tr>
                     <td>".$request->$dni."</td>
                     <td>".$request->$cuil."</td>
                     <td>".$request->$nombre."</td>
@@ -152,6 +158,7 @@ class PofController extends Controller
                     <td>".$request->$antes."</td>
                     <td>".$request->$dias."</td>
                 </tr>";
+                }
             }
         $data.="</table><br><br><br><p style:'text-align:center'>__________________________<br>Firma</p>";
         $pdf->LoadHTML($data);
