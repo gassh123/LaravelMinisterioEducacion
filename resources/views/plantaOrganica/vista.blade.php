@@ -15,21 +15,58 @@
         </form>
         @if (isset($personas))
             @foreach ($personas as $persona)
-            <form method="POST" action="{{ route('AgregarDatosTabla') }}" enctype="multipart/form-data">
-              @csrf
-                <div class="card" style="width: 18rem; background-color:#d1e2d9">
-                  <div class="card-body">
-                    <h5 class="card-title">{{$persona->nombre}}</h5>
-                    <h5 class="card-subtitle mb-2 text-muted">{{$persona->apellido}}</h6>
-                    <h5 class="card-subtitle mb-2 text-muted">{{$persona->documento}}</h5>
+            <div class="card" style="width: 18rem; background-color:#d1e2d9">
+              <div class="card-body">
+                <h5 class="card-title">{{$persona->nombre}}</h5>
+                <h5 class="card-subtitle mb-2 text-muted">{{$persona->apellido}}</h6>
+                <h5 class="card-subtitle mb-2 text-muted">{{$persona->documento}}</h5>
+              </div>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addPof">Agregar</button>
+            </div>
+            <div id="addPof" class="modal fade" role="dialog">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Actualización de datos personal vinculado y transferido</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
-                  <input type="hidden" id="apellido" name="apellido" value="{{$persona->apellido}}">
-                  <input type="hidden" id="nombre" name="nombre" value="{{$persona->nombre}}">
-                  <input type="hidden" id="documento" name="documento" value="{{$persona->documento}}">
-                  <input type="hidden" id="cuil" name="cuil" value="{{$persona->cuil}}">
-                  <button type="button" class="btn btn-success">Agregar</button>
+                  <div class="modal-body">
+                    <form method="POST" action="{{ route('AgregarDatosTabla') }}" enctype="multipart/form-data">
+                      @csrf
+                      <input type="hidden" id="apellido" name="apellido" value="{{$persona->apellido}}">
+                      <input type="hidden" id="nombre" name="nombre" value="{{$persona->nombre}}">
+                      <input type="hidden" id="documento" name="documento" value="{{$persona->documento}}">
+                      <input type="hidden" id="cuil" name="cuil" value="{{$persona->cuil}}">
+                      <input type="text" id="celular" name="celular" value="{{$persona->numero_telefono}}">
+                      <input type="text" id="formacion" name="formacion" value="{{$persona->ultimo_nivel_formacion_Concluido}}">
+                      <div class="form-group">
+                        <label for="cargo">Cargo:</label>
+                        <select class="form-control" id="cargo" name="cargo">
+                          <option value="G06">Servicios Generales (transferidos)</option>
+                          <option value="CP">Contrato Provincia</option>
+                          <option value="CM">Contrato Municipio</option>
+                          <option value="BP">Beca Provincia</option>
+                          <option value="BM">Beca Municipio</option>
+                          <option value="TP">Tutoría Provincia</option>
+                          <option value="VS">Otros (especificar en observaciones)</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="nomenclador">Funciones:</label>
+                        <select class="form-control" id="nomenclador" name="nomenclador">
+                          <option value="Administración">Administración</option>
+                          <option value="Servicios Generales">Servicios Generales</option>
+                          <option value="Otros">Otros</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Añadir</button></form>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  </div>
                 </div>
-            </form>
+              </div>
+            </div>
               <hr>
             @endforeach
         @endif
@@ -64,7 +101,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form action="{{ route('AgregarDatosTabla') }}" method="POST" id="NewPer">
+          <form action="{{ route('AgregarDatosTablaPersona') }}" method="POST" id="NewPer">
           @csrf
             <div class="form-group">
               <label for="nombre">Nombre/s:</label>
@@ -82,6 +119,39 @@
               <label for="cuil">CUIL:</label>
               <input type="number" class="form-control" id="cuil" name="cuil" placeholder="C.U.I.L.">
             </div>
+            <div class="form-group">
+              <label for="nacimiento">Fecha de Nacimiento:</label>
+              <input type="date" class="form-control" id="nacimiento" name="nacimiento" placeholder="dd-mm-aaaa">
+            </div>
+            <div class="form-group">
+              <label for="est_civil">Estado Civil:</label>
+              <select class="form-control" id="est_civil" name="est_civil">
+                <option value="Soltero">Soltero/a</option>
+                <option value="Casado">Casado/a</option>
+                <option value="Divorciado">Divorciado/a</option>
+                <option value="Separado">Separado/a</option>
+                <option value="Viudo">Viudo/a</option>
+                <option value="Union de Hecho">En Union de Hecho</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="anti_doc">Antigüedad docente:</label>
+              <input type="number" class="form-control" id="anti_doc" name="anti_doc" required placeholder="N°">
+            </div>
+            <div class="form-group">
+              <label for="fec_i_doc">Fecha de inicio de la docencia:</label>
+              <input type="date" class="form-control" id="fec_i_doc" name="fec_i_doc" placeholder="dd-mm-aaaa">
+            </div>
+
+            <div class="form-group">
+              <label for="anti_adm">Antigüedad administración:</label>
+              <input type="number" class="form-control" id="anti_adm" name="anti_adm" placeholder="N°">
+            </div>
+            <div class="form-group">
+              <label for="fec_i_adm">Fecha inicio administracion:</label>
+              <input type="date" class="form-control" id="fec_i_adm" name="fec_i_adm" placeholder="dd-mm-aaaa">
+            </div>
+
             <div class="form-group">
               <label for="cargo">Cargo:</label>
               <select class="form-control" id="cargo" name="cargo">
@@ -119,25 +189,6 @@
               </select>
             </div>
 
-            <div class="form-group">
-              <label for="antiguedad">Antigüedad:</label>
-              <div class="form-row">
-                <div class="col">
-                  <input type="number" class="form-control" id="antiguedad_n" name="antiguedad_n" required placeholder="N°">
-                </div>
-                <div class="col">
-                  <select class="form-control" id="antiguedad_t" name="antiguedad_t">
-                    <option value="Dias">Dia/s</option>
-                    <option value="Meses">Mes/es</option>
-                    <option value="Años">Año/s</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="nacimiento">Fecha de Nacimiento:</label>
-              <input type="date" class="form-control" id="nacimiento" name="nacimiento" required placeholder="xx-xx-xxxx">
-            </div>
             <div class="form-group">
               <label for="email">Email:</label>
               <input type="mail" class="form-control" id="email" name="email" required placeholder="ejemplo@mail.com">

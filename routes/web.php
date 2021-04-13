@@ -64,6 +64,7 @@ route::get('/descargarDoc/{id}', 'AdministracionDocumentos@download');
 route::get('/Pof', 'PofController@vista')->name('Pof');
 route::post('/Buscador', 'PofController@BuscadorPersona')->name('BuscadorPersona');
 route::post('/AgregrarPofTabla', 'PofController@AgregarDatosTabla')->name('AgregarDatosTabla');
+route::post('/AgregrarPersonaTabla', 'PofController@AgregarDatosPersona')->name('AgregarDatosTablaPersona');
 route::get('/EliminarPersona/{id}/{id_tabla}', 'PofController@eliminar')->name('EliminarPersona');
 route::post('/PofPDF', 'PofController@pofPDF')->name('PofPDF');
 

@@ -29,14 +29,11 @@ class PofController extends Controller
 
     public function AgregarDatosTabla(Request $request){
         $usuario = Auth::user();
-        
         if(is_null($usuario->pof)){ 
-            
             $pof = new Pof();
             $pof->user_id = $usuario->id;
             $pof->institution_id = 1;
             $pof->save();
-            
             $pof_tabla_dato = new Pof_tabla_dato();
             $pof_tabla_dato->pof_id = $pof->id;
             $pof_tabla_dato->documento_tipo = $request->documento;
@@ -59,16 +56,29 @@ class PofController extends Controller
             $pof_tabla_dato->formacion = $request->formacion;
             $pof_tabla_dato->save();
         }
-        
-
-        //dd($usuario->pof);
-        
-        
-
         return redirect('Pof')->with('status', 'Persona agregada al listado de la planta organizacional');
      }
 
-    public function eliminar($id, $id_tabla){
+    public function AgregarDatosPersona(Request $request){
+        $newPersona = new Persona(); 
+        $newPersona->documento = $request->documento;
+        $newPersona->tipo_doc='DNI';
+        $newPersona->apellido=$request->apellido;
+        $newPersona->nombre=$request->nombre;
+        $newPersona->fnac=$request->nacimiento; 
+        $newPersona->cuil = $request->cuil;
+        $newPersona->est_civil=$request->est_civil; 
+        $newPersona->anti_doc=$request->anti_doc; 
+        $newPersona->fec_i_doc=$request->fec_i_doc;
+        $newPersona->anti_adm=$request->anti_adm; 
+        $newPersona->fec_i_adm=$request->fec_i_adm; 
+        $newPersona->numero_telefono = $request->celular;
+        $newPersona->ultimo_nivel_formacion_Concluido = $request->formacion;     
+        $newPersona->save();
+        AgregarDatosTabla($request);
+    }
+    
+     public function eliminar($id, $id_tabla){
         
         $pof_tabla_dato = Pof_tabla_dato::find($id_tabla)->delete();
         $pof = Pof::find($id);
