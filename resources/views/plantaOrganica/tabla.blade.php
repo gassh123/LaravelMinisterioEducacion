@@ -1,5 +1,26 @@
 <form method="POST" action="{{ route('PofPDF') }}" enctype="multipart/form-data">
     @csrf
+    <label for="localidad">Localidad:</label>
+              <select class="form-control" id="localidad" name="localidad">
+                <option>Arauco</option>
+                <option>Capital</option>
+                <option>Castro Barros</option>
+                <option>Chamical</option>
+                <option>Chilecito</option>
+                <option>Coronel Felipe Varela</option>
+                <option>Famatina</option>
+                <option>General Angel Vicente Peñaloza</option>
+                <option>General Belgrano</option>
+                <option>General Juan Facundo Quiroga</option>
+                <option>General Lamadrid</option>
+                <option>General Ocampo</option>
+                <option>Genral San Martin</option>
+                <option>Independencia</option>
+                <option>Rosario Vera Peñaloza</option>
+                <option>San Blas de los Sauces</option>
+                <option>Sanagasta</option>
+                <option>Vinchina</option>
+              </select>
     <table border="1" class="table" id="tablaprueba">
         <thead class="thead-dark">
         <tr style="width: 70px; height: 10px;">
@@ -32,6 +53,12 @@
                 <td><input type="text" style="width : 70px;  font-size: 80%;" name='{{$pof_tabla->id}}formacion' value='{{$pof_tabla->formacion}}'></td>
                 <td><input type="text" style="width : 125px; font-size: 80%;" name='{{$pof_tabla->id}}observacion' value='{{$pof_tabla->observaciones}}'></td>
                 <td><A href="{{ route('EliminarPersona', [$pof_tabla->pof_id, $pof_tabla->id]) }}" class="btn btn-danger" tabindex="-1">quitar</A></td>
+                
+                @foreach($personas2 as $persona2)
+                    @if($persona2->documento==$pof_tabla->documento_tipo)
+                        <input type="hidden" name='{{$pof_tabla->id}}anti' value='{{$persona2->anti_doc}}'>
+                    @endif
+                @endforeach
                 </tr>
             @endforeach 
         </thead>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Persona;
 use App\Pof;
 use App\Pof_tabla_dato;
+use App\Pofaditional;
 
 class PofController extends Controller
 {
@@ -16,7 +17,8 @@ class PofController extends Controller
         $usuario = Auth::user();
         //$personas=Persona::search('DNI')->where('documento', 40775272)->get();
         //$personas=Persona::search('40775272')->get();
-        return view('plantaOrganica.vista', ['usuario'=>$usuario]); //, compact('personas')
+        $personas2=Persona::all();
+        return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas2'=>$personas2]); //, compact('personas')
     }
 
     public function BuscadorPersona(Request $request){
@@ -44,6 +46,21 @@ class PofController extends Controller
             $pof_tabla_dato->nomenclador = $request->nomenclador;
             $pof_tabla_dato->formacion = $request->formacion;
             $pof_tabla_dato->save();
+
+            $pofaditional = new Pofaditional();
+            $pofaditional->pof_tabla_datos_id=$pof_tabla_dato->id;
+            $pofaditional->dni=$request->documento;
+            $pofaditional->domicilio=$request->dom_c.' N° '.$request->dom_n;
+            if(isset($request->dom_p)){
+                $pofaditional->domicilio.=' piso: '.$request->dom_p." departamento: ".$request->dom_d;
+            }
+            $pofaditional->turno=$request->turno;
+            $pofaditional->virtualidad=$request->virtualidad;
+            $pofaditional->licencia=$request->licencia;
+            if(isset($request->dom_p)){
+                $pofaditional->reincorporacion=$request->reincorporacion;
+            }
+            $pofaditional->save();
         }else{
             $pof_tabla_dato = new Pof_tabla_dato();
             $pof_tabla_dato->pof_id = $usuario->pof->id;
@@ -55,6 +72,20 @@ class PofController extends Controller
             $pof_tabla_dato->nomenclador = $request->nomenclador;
             $pof_tabla_dato->formacion = $request->formacion;
             $pof_tabla_dato->save();
+            $pofaditional = new Pofaditional();
+            $pofaditional->pof_tabla_datos_id=$pof_tabla_dato->id;
+            $pofaditional->dni=$request->documento;
+            $pofaditional->domicilio=$request->dom_c.' N° '.$request->dom_n;
+            if(isset($request->dom_p)){
+                $pofaditional->domicilio.=' piso: '.$request->dom_p." departamento: ".$request->dom_d;
+            }
+            $pofaditional->turno=$request->turno;
+            $pofaditional->virtualidad=$request->virtualidad;
+            $pofaditional->licencia=$request->licencia;
+            if(isset($request->dom_p)){
+                $pofaditional->reincorporacion=$request->reincorporacion;
+            }
+            $pofaditional->save();
         }
         return redirect('Pof')->with('status', 'Persona agregada al listado de la planta organizacional');
      }
@@ -73,13 +104,72 @@ class PofController extends Controller
         $newPersona->anti_adm=$request->anti_adm; 
         $newPersona->fec_i_adm=$request->fec_i_adm; 
         $newPersona->numero_telefono = $request->celular;
-        $newPersona->ultimo_nivel_formacion_Concluido = $request->formacion;     
+        $newPersona->ultimo_nivel_formación_Concluido = $request->formacion;     
         $newPersona->save();
-        AgregarDatosTabla($request);
+        
+        $usuario = Auth::user();
+        if(is_null($usuario->pof)){ 
+            $pof = new Pof();
+            $pof->user_id = $usuario->id;
+            $pof->institution_id = 1;
+            $pof->save();
+            $pof_tabla_dato = new Pof_tabla_dato();
+            $pof_tabla_dato->pof_id = $pof->id;
+            $pof_tabla_dato->documento_tipo = $request->documento;
+            $pof_tabla_dato->cuil = $request->cuil;
+            $pof_tabla_dato->apellido_nombre = $request->apellido.' '.$request->nombre;
+            $pof_tabla_dato->celular = $request->celular;
+            $pof_tabla_dato->cargo = $request->cargo;
+            $pof_tabla_dato->nomenclador = $request->nomenclador;
+            $pof_tabla_dato->formacion = $request->formacion;
+            $pof_tabla_dato->save();
+            $pofaditional = new Pofaditional();
+            $pofaditional->pof_tabla_datos_id=$pof_tabla_dato->id;
+            $pofaditional->dni=$request->documento;
+            $pofaditional->domicilio=$request->dom_c.' N° '.$request->dom_n;
+            if(isset($request->dom_p)){
+                $pofaditional->domicilio.=' piso: '.$request->dom_p." departamento: ".$request->dom_d;
+            }
+            $pofaditional->turno=$request->turno;
+            $pofaditional->virtualidad=$request->virtualidad;
+            $pofaditional->licencia=$request->licencia;
+            if(isset($request->dom_p)){
+                $pofaditional->reincorporacion=$request->reincorporacion;
+            }
+            $pofaditional->save();
+        }else{
+            $pof_tabla_dato = new Pof_tabla_dato();
+            $pof_tabla_dato->pof_id = $usuario->pof->id;
+            $pof_tabla_dato->documento_tipo = $request->documento;
+            $pof_tabla_dato->cuil = $request->cuil;
+            $pof_tabla_dato->apellido_nombre = $request->apellido.' '.$request->nombre;  
+            $pof_tabla_dato->celular = $request->celular;
+            $pof_tabla_dato->cargo = $request->cargo;
+            $pof_tabla_dato->nomenclador = $request->nomenclador;
+            $pof_tabla_dato->formacion = $request->formacion;
+            $pof_tabla_dato->save();
+            $pofaditional = new Pofaditional();
+            $pofaditional->pof_tabla_datos_id=$pof_tabla_dato->id;
+            $pofaditional->dni=$request->documento;
+            $pofaditional->domicilio=$request->dom_c.' N° '.$request->dom_n;
+            if(isset($request->dom_p)){
+                $pofaditional->domicilio.=' piso: '.$request->dom_p." departamento: ".$request->dom_d;
+            }
+            $pofaditional->turno=$request->turno;
+            $pofaditional->virtualidad=$request->virtualidad;
+            $pofaditional->licencia=$request->licencia;
+            if(isset($request->dom_p)){
+                $pofaditional->reincorporacion=$request->reincorporacion;
+            }
+            $pofaditional->save();
+        }
+        return redirect('Pof')->with('status', 'Persona agregada al listado de la planta organizacional');
     }
     
      public function eliminar($id, $id_tabla){
         
+        $pofaditional = Pofaditional::find($id_tabla)->delete;
+
         $pof_tabla_dato = Pof_tabla_dato::find($id_tabla)->delete();
         $pof = Pof::find($id);
         //dd($pof->pof_tabla_dato->isEmpty());
@@ -137,40 +227,38 @@ class PofController extends Controller
           <h1>Ministerio de educación</h1>
           <table>
             <tr>
-                <th colspan='9'>REPORTE DE P.O.F: 000 / CASA CENTRAL MINISTERIO DE EDUCACION</th>
+                <th colspan='8'>REPORTE DE P.O.F: 000 / CASA CENTRAL MINISTERIO DE EDUCACION</th>
             </tr>
             <tr>
-                <th colspan='9'>PERIODO: ".$mes." - ".date("Y")." - AREA: CASA CENTRAL</th>
+                <th colspan='8'>PERIODO: ".$mes." - ".date("Y")." - AREA: CASA CENTRAL</th>
             </tr>
             <tr>
+                <th>N°</th>
                 <th>DNI</th>
                 <th>CUIL</th>
                 <th>NOMBRE</th>
                 <th>CARGO</th>
-                <th>NOMENCLADOR</th>
-                <th>S. REVISTA</th>
-                <th>HORAS</th>
-                <th>ANTES</th>
-                <th>DIAS</th>
-            </tr>";
+                <th>FUNCIÓN</th>
+                <th>ANTIGÜEDAD</th>
+                <th>ÚLTIMO NIVEL DE FORMACION CONCLUIDO</th>
+            </tr>"; $j=1;
             for($i = 1; $i <= $request->length ; $i++){
                 $dni="documento".$i; $cuil=$i."cuil"; $nombre=$i."apellido_nombre"; $cargo=$i."cargo"; $nomenclador=$i."nomenclador"; 
-                $revista=$i."revista"; $horas=$i."horas"; $antes=$i."antes"; $dias=$i."dias";
+                $formacion=$i."formacion"; $anti=$i."anti"; 
                 if($request->$dni){
                     $data.="<tr>
+                    <td>".$j++."</td>
                     <td>".$request->$dni."</td>
                     <td>".$request->$cuil."</td>
                     <td>".$request->$nombre."</td>
                     <td>".$request->$cargo."</td>
                     <td>".$request->$nomenclador."</td>
-                    <td>".$request->$revista."</td>
-                    <td>".$request->$horas."</td>
-                    <td>".$request->$antes."</td>
-                    <td>".$request->$dias."</td>
+                    <td>".$request->$formacion."</td>
+                    <td>".$request->$anti."</td>
                 </tr>";
                 }
             }
-        $data.="</table><br><br><br><p style:'text-align:center'>__________________________<br>Firma</p>";
+        $data.="</table><br><br><br><p style:'text-align:center'>__________________________<br>Firma del resp. de área/directivo:</p>";
         $pdf->LoadHTML($data);
         return $pdf->stream('mi-archivo.pdf');
     }

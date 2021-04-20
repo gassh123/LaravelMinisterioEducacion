@@ -38,7 +38,7 @@
                       <input type="hidden" id="documento" name="documento" value="{{$persona->documento}}">
                       <input type="hidden" id="cuil" name="cuil" value="{{$persona->cuil}}">
                       <input type="text" id="celular" name="celular" value="{{$persona->numero_telefono}}">
-                      <input type="text" id="formacion" name="formacion" value="{{$persona->ultimo_nivel_formacion_Concluido}}">
+                      <input type="text" id="formacion" name="formacion" value="{{$persona->ultimo_nivel_formación_Concluido}}">
                       <div class="form-group">
                         <label for="cargo">Cargo:</label>
                         <select class="form-control" id="cargo" name="cargo">
@@ -121,7 +121,7 @@
             </div>
             <div class="form-group">
               <label for="nacimiento">Fecha de Nacimiento:</label>
-              <input type="date" class="form-control" id="nacimiento" name="nacimiento" placeholder="dd-mm-aaaa">
+              <input type="date" class="form-control" id="nacimiento" name="nacimiento" required placeholder="dd-mm-aaaa">
             </div>
             <div class="form-group">
               <label for="est_civil">Estado Civil:</label>
@@ -144,11 +144,11 @@
             </div>
 
             <div class="form-group">
-              <label for="anti_adm">Antigüedad administración:</label>
+              <label for="anti_adm">Antigüedad en la administración:</label>
               <input type="number" class="form-control" id="anti_adm" name="anti_adm" placeholder="N°">
             </div>
             <div class="form-group">
-              <label for="fec_i_adm">Fecha inicio administracion:</label>
+              <label for="fec_i_adm">Fecha de incorporación en la administracion:</label>
               <input type="date" class="form-control" id="fec_i_adm" name="fec_i_adm" placeholder="dd-mm-aaaa">
             </div>
 
@@ -191,16 +191,16 @@
 
             <div class="form-group">
               <label for="email">Email:</label>
-              <input type="mail" class="form-control" id="email" name="email" required placeholder="ejemplo@mail.com">
+              <input type="mail" class="form-control" id="email" name="email" placeholder="ejemplo@mail.com">
             </div>
-            <!--<div class="form-group">
+            <div class="form-group">
               <label for="antiguedad">Domicilio:</label>
               <div class="form-row">
                 <div class="col">
-                  <input type="text" class="form-control" id="dom_c" name="dom_c" required placeholder="Calle">
+                  <input type="text" class="form-control" id="dom_c" name="dom_c" placeholder="Calle">
                 </div>
                 <div class="col-xs-4">
-                  <input type="number" class="form-control" id="dom_n" name="dom_n" required placeholder="N°">
+                  <input type="number" class="form-control" id="dom_n" name="dom_n" placeholder="N°">
                 </div>
               </div>
               <div class="form-row">
@@ -211,7 +211,7 @@
                   <input type="number" class="form-control" id="dom_d" name="dom_d" placeholder="Departamento">
                 </div>
               </div>
-              <label for="localidad">Localidad:</label>
+              <!--<label for="localidad">Localidad:</label>
               <select class="form-control" id="localidad" name="localidad">
                 <option>Arauco</option>
                 <option>Capital</option>
@@ -231,9 +231,34 @@
                 <option>San Blas de los Sauces</option>
                 <option>Sanagasta</option>
                 <option>Vinchina</option>
+              </select>-->
+            </div>
+            <div class="form-group">
+              <label for="turno">Turno:</label>
+              <select class="form-control" id="turno" name="turno">
+                <option>Mañana</option>
+                <option>Tarde</option>
+                <option>Noche</option>
               </select>
-            </div>-->
-
+            </div>
+            <div class="form-group">
+              <label for="virtualidad">¿Está habilitado para trabajar en la virtualidad?:</label>
+              <select class="form-control" id="virtualidad" name="virtualidad">
+                <option>Sí</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="licencia">Cuenta con uso de licencia o justificación de inasistencia?:</label>
+              <select class="form-control" id="licencia" name="licencia">
+                <option>Sí</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="reincorporacion"><i>(En caso que la respuesta anterior fuera <b>Sí</b>)</i> Fecha de reincorporacion:</label>
+              <input type="date" class="form-control" id="reincorporacion" name="reincorporacion" placeholder="dd-mm-aaaa">
+            </div>
             <div class="form-group">
               <label for="observacion">Observaciones:</label>
               <textarea class="form-control" rows="3" id="observacion" name="observacion"></textarea>
