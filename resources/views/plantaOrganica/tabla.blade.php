@@ -52,11 +52,11 @@
                 <td><input type="text" style="width : 70px;  font-size: 80%;" name='{{$pof_tabla->id}}celular' value='{{$pof_tabla->celular}}'></td>
                 <td><input type="text" style="width : 70px;  font-size: 80%;" name='{{$pof_tabla->id}}formacion' value='{{$pof_tabla->formacion}}'></td>
                 <td><input type="text" style="width : 125px; font-size: 80%;" name='{{$pof_tabla->id}}observacion' value='{{$pof_tabla->observaciones}}'></td>
-                <td><A href="{{ route('EliminarPersona', [$pof_tabla->pof_id, $pof_tabla->id]) }}" class="btn btn-danger" tabindex="-1">quitar</A></td>
+                <td><A href="{{ route('EliminarPersona', [$pof_tabla->pof_id, $pof_tabla->id]) }}" class="btn btn-danger" tabindex="-1">quitar</A>
                 
-                @foreach($personas2 as $persona2)
+                @foreach($personas as $persona2)
                     @if($persona2->documento==$pof_tabla->documento_tipo)
-                        <input type="hidden" name='{{$pof_tabla->id}}anti' value='{{$persona2->anti_doc}}'>
+                        <input type="hidden" name='{{$pof_tabla->id}}anti' value='{{$persona2->anti_doc}}'></td>
                     @endif
                 @endforeach
                 </tr>

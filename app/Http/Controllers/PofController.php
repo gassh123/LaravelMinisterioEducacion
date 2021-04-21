@@ -17,15 +17,16 @@ class PofController extends Controller
         $usuario = Auth::user();
         //$personas=Persona::search('DNI')->where('documento', 40775272)->get();
         //$personas=Persona::search('40775272')->get();
-        $personas2=Persona::all();
-        return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas2'=>$personas2]); //, compact('personas')
+        $personas=Persona::all();
+        return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas]); //, compact('personas')
     }
 
     public function BuscadorPersona(Request $request){
        //$personas =  Persona::search($request->dato)->get();
-       $personas =  Persona::search('DNI')->where('documento', $request->dato)->get();$usuario = Auth::user();
+       $personas2 =  Persona::search('DNI')->where('documento', $request->dato)->get();$usuario = Auth::user();
        //return redirect()->back()->with(['personas' => $personas]);
-       return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas' => $personas]);
+       $personas=Persona::all();
+       return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas' => $personas], ['personas2'=>$personas2]);
        //return redirect('Pof')->with('personas' , $personas);
     }
 
@@ -227,10 +228,10 @@ class PofController extends Controller
           <h1>Ministerio de educación</h1>
           <table>
             <tr>
-                <th colspan='8'>REPORTE DE P.O.F: 000 / CASA CENTRAL MINISTERIO DE EDUCACION</th>
+                <th colspan='8'>ACTUALIZACIÓN DE DATOS PERSONAL VINCULADO Y TRANSFERIDO</th>
             </tr>
             <tr>
-                <th colspan='8'>PERIODO: ".$mes." - ".date("Y")." - AREA: CASA CENTRAL</th>
+                <th colspan='8'>PERIODO: ".$mes." - ".date("Y")."</th>
             </tr>
             <tr>
                 <th>N°</th>

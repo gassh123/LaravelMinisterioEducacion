@@ -13,8 +13,8 @@
           </div>
           <button type="submit" class="btn btn-primary" onclick="Buscar(document.getElementById('dato').value)">Buscar persona</button>
         </form>
-        @if (isset($personas))
-            @foreach ($personas as $persona)
+        @if (isset($personas2))
+            @foreach ($personas2 as $persona)
             <div class="card" style="width: 18rem; background-color:#d1e2d9">
               <div class="card-body">
                 <h5 class="card-title">{{$persona->nombre}}</h5>
