@@ -35,7 +35,7 @@ class PofController extends Controller
         if(is_null($usuario->pof)){ 
             $pof = new Pof();
             $pof->user_id = $usuario->id;
-            $pof->institution_id = 1;
+            $pof->institution_id = $usuario->instituciones_id;
             $pof->save();
             $pof_tabla_dato = new Pof_tabla_dato();
             $pof_tabla_dato->pof_id = $pof->id;
@@ -112,7 +112,7 @@ class PofController extends Controller
         if(is_null($usuario->pof)){ 
             $pof = new Pof();
             $pof->user_id = $usuario->id;
-            $pof->institution_id = 1;
+            $pof->institution_id = $usuario->instituciones_id;
             $pof->save();
             $pof_tabla_dato = new Pof_tabla_dato();
             $pof_tabla_dato->pof_id = $pof->id;

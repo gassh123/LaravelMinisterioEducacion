@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Institution;
 
 class RegisterController extends Controller
 {
@@ -39,7 +40,10 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $instituciones=Institution::all();
     }
+
+    
 
     /**
      * Get a validator for an incoming registration request.
@@ -54,6 +58,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'rol' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'instituciones_id' => [ 'string', 'max:255'],
         ]);
     }
 
@@ -70,6 +75,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'rol' =>$data['rol'],
             'password' => Hash::make($data['password']),
+            'instituciones_id' => $data['institution']
         ]);
     }
 }

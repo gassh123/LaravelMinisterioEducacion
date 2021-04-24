@@ -22,7 +22,6 @@ class CreatePofaditionalTable extends Migration
             $table->string('licencia', 10)->nullable();
             $table->string('virtualidad', 10)->nullable();
             $table->date('reincorporacion')->nullable();
-            $table->timestamps();
         });
     }
 

@@ -1,6 +1,6 @@
 <form method="POST" action="{{ route('PofPDF') }}" enctype="multipart/form-data">
     @csrf
-    <label for="localidad">Localidad:</label>
+    <!--<label for="localidad">Localidad:</label>
               <select class="form-control" id="localidad" name="localidad">
                 <option>Arauco</option>
                 <option>Capital</option>
@@ -20,7 +20,7 @@
                 <option>San Blas de los Sauces</option>
                 <option>Sanagasta</option>
                 <option>Vinchina</option>
-              </select>
+              </select>-->
     <table border="1" class="table" id="tablaprueba">
         <thead class="thead-dark">
         <tr style="width: 70px; height: 10px;">
@@ -53,10 +53,11 @@
                 <td><input type="text" style="width : 70px;  font-size: 80%;" name='{{$pof_tabla->id}}formacion' value='{{$pof_tabla->formacion}}'></td>
                 <td><input type="text" style="width : 125px; font-size: 80%;" name='{{$pof_tabla->id}}observacion' value='{{$pof_tabla->observaciones}}'></td>
                 <td><A href="{{ route('EliminarPersona', [$pof_tabla->pof_id, $pof_tabla->id]) }}" class="btn btn-danger" tabindex="-1">quitar</A>
-                
+                {{$personas[$pof_tabla->id]->anti_doc}}
                 @foreach($personas as $persona2)
                     @if($persona2->documento==$pof_tabla->documento_tipo)
-                        <input type="hidden" name='{{$pof_tabla->id}}anti' value='{{$persona2->anti_doc}}'></td>
+                        <!--<input type="text" name='{{$pof_tabla->id}}anti' value='{{$persona2->anti_doc}}'></td>-->
+                        {{$persona2->id}}
                     @endif
                 @endforeach
                 </tr>

@@ -123,7 +123,7 @@
               <label for="nacimiento">Fecha de Nacimiento:</label>
               <input type="date" class="form-control" id="nacimiento" name="nacimiento" required placeholder="dd-mm-aaaa">
             </div>
-            <div class="form-group">
+            <!--<div class="form-group">
               <label for="est_civil">Estado Civil:</label>
               <select class="form-control" id="est_civil" name="est_civil">
                 <option value="Soltero">Soltero/a</option>
@@ -141,14 +141,13 @@
             <div class="form-group">
               <label for="fec_i_doc">Fecha de inicio de la docencia:</label>
               <input type="date" class="form-control" id="fec_i_doc" name="fec_i_doc" placeholder="dd-mm-aaaa">
-            </div>
-
+            </div>-->
             <div class="form-group">
-              <label for="anti_adm">Antigüedad en la administración:</label>
+              <label for="anti_adm">Antigüedad:</label>
               <input type="number" class="form-control" id="anti_adm" name="anti_adm" placeholder="N°">
             </div>
             <div class="form-group">
-              <label for="fec_i_adm">Fecha de incorporación en la administracion:</label>
+              <label for="fec_i_adm">Fecha de incorporación:</label>
               <input type="date" class="form-control" id="fec_i_adm" name="fec_i_adm" placeholder="dd-mm-aaaa">
             </div>
 
@@ -188,7 +187,6 @@
                 <option value="Otro">Otro</option>
               </select>
             </div>
-
             <div class="form-group">
               <label for="email">Email:</label>
               <input type="mail" class="form-control" id="email" name="email" placeholder="ejemplo@mail.com">
@@ -242,15 +240,15 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="virtualidad">¿Está habilitado para trabajar en la virtualidad?:</label>
-              <select class="form-control" id="virtualidad" name="virtualidad">
+              <label for="licencia">Cuenta con uso de licencia o justificación de inasistencia?:</label>
+              <select class="form-control" id="licencia" name="licencia">
                 <option>Sí</option>
                 <option>No</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="licencia">Cuenta con uso de licencia o justificación de inasistencia?:</label>
-              <select class="form-control" id="licencia" name="licencia">
+              <label for="virtualidad">¿Está habilitado para trabajar en la virtualidad?:</label>
+              <select class="form-control" id="virtualidad" name="virtualidad">
                 <option>Sí</option>
                 <option>No</option>
               </select>
