@@ -8,6 +8,7 @@ use App\Persona;
 use App\Pof;
 use App\Pof_tabla_dato;
 use App\Pofaditional;
+use App\Institution;
 
 class PofController extends Controller
 {
@@ -26,7 +27,7 @@ class PofController extends Controller
        $personas2 =  Persona::search('DNI')->where('documento', $request->dato)->get();$usuario = Auth::user();
        //return redirect()->back()->with(['personas' => $personas]);
        $personas=Persona::all();
-       return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas' => $personas], ['personas2'=>$personas2]);
+       return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas2'=>$personas2], ['personas'=>$personas]);
        //return redirect('Pof')->with('personas' , $personas);
     }
 
@@ -190,6 +191,7 @@ class PofController extends Controller
         $mpdf->WriteHTML($data);
         $mpdf->Output('archivo.pdf', 'D');*/
         $pdf = app('dompdf.wrapper');
+        //$institution =  Institution::search('DNI')->where('documento', $request->dato)->get();
         date_default_timezone_set("America/Buenos_Aires");
         switch(date("m")){
             case 1: $mes="Enero";
@@ -254,8 +256,8 @@ class PofController extends Controller
                     <td>".$request->$nombre."</td>
                     <td>".$request->$cargo."</td>
                     <td>".$request->$nomenclador."</td>
-                    <td>".$request->$formacion."</td>
                     <td>".$request->$anti."</td>
+                    <td>".$request->$formacion."</td>
                 </tr>";
                 }
             }
