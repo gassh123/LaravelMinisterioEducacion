@@ -183,7 +183,8 @@ class PofController extends Controller
     }
 
     public function pofPDF(Request $request){
-        
+        $usuario = Auth::user(); 
+        $institucion=Institution::where('id', $usuario->instituciones_id)->first();
         //dd($request);
         /*require_once 'C:\xampp\htdocs\educacion_declarajurada\LaravelMinisterioEducacion\vendor/autoload.php';
         $mpdf=new \Mpdf\Mpdf();
@@ -226,11 +227,23 @@ class PofController extends Controller
           }table{
             width: 100%;
             border-collapse: collapse;
+          }
+          table .ppal{
+            border: 1px solid black;
           }</style>
           <h1>Ministerio de educación</h1>
-          <table>
+          <table class='ppal'>
             <tr>
                 <th colspan='8'>ACTUALIZACIÓN DE DATOS PERSONAL VINCULADO Y TRANSFERIDO</th>
+            </tr>
+            <tr>
+                <th colspan='2'>ÁREA: ".$institucion->zona."</th>
+                <th colspan='4'>ESCUELA: ".$institucion->nombre."</th>
+                <th colspan='2'>C.U.E.: ".$institucion->cue."</th>
+            </tr>
+            <tr>
+                <th colspan='4'>DOMICILIO: ".$institucion->domicilio."</th>
+                <th colspan='4'>LOCALIDAD: ".$institucion->localidad."</th>
             </tr>
             <tr>
                 <th colspan='8'>PERIODO: ".$mes." - ".date("Y")."</th>
@@ -261,7 +274,27 @@ class PofController extends Controller
                 </tr>";
                 }
             }
-        $data.="</table><br><br><br><p style:'text-align:center'>__________________________<br>Firma del resp. de área/directivo:</p>";
+        $data.="</table><br><p>La información consignada precedentemente reviste carácter de <b>declaración jurada</b>. La falsedad en los datos, dará lugar al inicio del correspondiente trámite administrativo.</p><br>";
+        $data.="<table>
+            <tr>
+                <td style='border: 1px solid black;'>Firma del resp. de área/directivo:</td>
+                <td style='border-top: white; border-bottom: white;'></td>
+                <td style='border: 1px solid black;'>Firma del supervisor:</td>
+            </tr>
+            <tr>
+                <td style='border: 1px solid black;'>Aclaración y  DNI:</td>
+                <td style='border-top: white; border-bottom: white;'></td>
+                <td style='border: 1px solid black;'>Aclaración y  DNI:</td>
+            </tr>
+            <tr>
+                <td style='border: 1px solid black;'>Celular:</td>
+                <td rowsan='2' style='border-top: white; border-bottom: white;'
+                <td rowspan='2' style='border-top: 1px solid black;'></td>
+            </tr>
+            <tr>
+                <td style='border: 1px solid black;'>Fecha:</td>
+            </tr>
+        </table>";
         $pdf->LoadHTML($data);
         return $pdf->stream('mi-archivo.pdf');
     }
