@@ -19,7 +19,9 @@ class PofController extends Controller
         //$personas=Persona::search('DNI')->where('documento', 40775272)->get();
         //$personas=Persona::search('40775272')->get();
         $personas=Persona::all();
-        return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas]); //, compact('personas')
+        $pofaditional=Pofaditional::all();
+        //$pofaditional=Pofaditional::where('pof_tabla_datos_id', );
+        return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional); //, compact('personas')
     }
 
     public function BuscadorPersona(Request $request){
@@ -222,13 +224,11 @@ class PofController extends Controller
             default: $mes="Error";
                 break;
         }
-        $data="<style>h1{ color:red; } table, td, th {
-            border: 1px solid black;
-          }table{
+        $data="<style>h1{ color:red; } table{
             width: 100%;
             border-collapse: collapse;
           }
-          table .ppal{
+          table.ppal td, th{
             border: 1px solid black;
           }</style>
           <h1>Ministerio de educación</h1>
@@ -242,8 +242,8 @@ class PofController extends Controller
                 <th colspan='2'>C.U.E.: ".$institucion->cue."</th>
             </tr>
             <tr>
-                <th colspan='4'>DOMICILIO: ".$institucion->domicilio."</th>
-                <th colspan='4'>LOCALIDAD: ".$institucion->localidad."</th>
+                <th colspan='5'>DOMICILIO: ".$institucion->domicilio."</th>
+                <th colspan='3'>LOCALIDAD: ".$institucion->localidad."</th>
             </tr>
             <tr>
                 <th colspan='8'>PERIODO: ".$mes." - ".date("Y")."</th>
@@ -277,22 +277,24 @@ class PofController extends Controller
         $data.="</table><br><p>La información consignada precedentemente reviste carácter de <b>declaración jurada</b>. La falsedad en los datos, dará lugar al inicio del correspondiente trámite administrativo.</p><br>";
         $data.="<table>
             <tr>
-                <td style='border: 1px solid black;'>Firma del resp. de área/directivo:</td>
+                <td style='border: 1px solid black; height:50px;'>Firma del resp. de área/directivo:</td>
                 <td style='border-top: white; border-bottom: white;'></td>
                 <td style='border: 1px solid black;'>Firma del supervisor:</td>
             </tr>
             <tr>
-                <td style='border: 1px solid black;'>Aclaración y  DNI:</td>
+                <td style='border: 1px solid black;height:50px;'>Aclaración y  DNI:</td>
                 <td style='border-top: white; border-bottom: white;'></td>
                 <td style='border: 1px solid black;'>Aclaración y  DNI:</td>
             </tr>
             <tr>
-                <td style='border: 1px solid black;'>Celular:</td>
-                <td rowsan='2' style='border-top: white; border-bottom: white;'
-                <td rowspan='2' style='border-top: 1px solid black;'></td>
+                <td style='border: 1px solid black;height:50px;'>Celular:</td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
-                <td style='border: 1px solid black;'>Fecha:</td>
+                <td style='border: 1px solid black;height:50px;'>Fecha:</td>
+                <td></td>
+                <td></td>
             </tr>
         </table>";
         $pdf->LoadHTML($data);
