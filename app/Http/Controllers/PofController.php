@@ -29,7 +29,8 @@ class PofController extends Controller
        $personas2 =  Persona::search('DNI')->where('documento', $request->dato)->get();$usuario = Auth::user();
        //return redirect()->back()->with(['personas' => $personas]);
        $personas=Persona::all();
-       return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas2'=>$personas2], ['personas'=>$personas]);
+       $pofaditional=Pofaditional::all();
+       return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas2'=>$personas2])->with('adicional', $pofaditional)->with('personas', $personas);
        //return redirect('Pof')->with('personas' , $personas);
     }
 

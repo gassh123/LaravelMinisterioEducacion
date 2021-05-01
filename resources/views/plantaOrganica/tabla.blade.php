@@ -21,6 +21,8 @@
                 <option>Sanagasta</option>
                 <option>Vinchina</option>
               </select>-->
+    <div style="overflow-y: auto;">
+    
     <table border="1" class="table" id="tablaprueba">
         <thead class="thead-dark">
         <tr style="width: 70px; height: 10px;">
@@ -121,7 +123,7 @@
                 </tr>
             @endforeach 
         </thead>
-    </table>
+    </table></div>
     <input type="hidden" name="length" value="{{$pof_tabla->id}}">
     <button type="submit" class="btn btn-success" target="_blank">ver</button>
 </form>
