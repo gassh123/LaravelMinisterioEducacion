@@ -191,13 +191,13 @@ class PofController extends Controller
         //dd($request);
         /*require_once 'C:\xampp\htdocs\educacion_declarajurada\LaravelMinisterioEducacion\vendor/autoload.php';
         $mpdf=new \Mpdf\Mpdf();
-        $data="<h1>datos</h1>";
+        $data="<img src='Logo.png'>";
         $mpdf->WriteHTML($data);
         $mpdf->Output('archivo.pdf', 'D');*/
         $pdf = app('dompdf.wrapper');
         //$institution =  Institution::search('DNI')->where('documento', $request->dato)->get();
         date_default_timezone_set("America/Buenos_Aires");
-        switch(date("m")){
+        switch(date("m")+1){
             case 1: $mes="Enero";
                 break;
             case 2: $mes="Febrero";
@@ -232,17 +232,17 @@ class PofController extends Controller
           table.ppal td, th{
             border: 1px solid black;
           }</style>
-          <h1>Ministerio de educación</h1>
+          <img src='Logo.png'>
           <table class='ppal'>
             <tr>
-                <th colspan='8'>ACTUALIZACIÓN DE DATOS PERSONAL VINCULADO Y TRANSFERIDO</th>
+                <th colspan='8' style='background-color: #1F497D; color:white;'>ACTUALIZACIÓN DE DATOS PERSONAL VINCULADO Y TRANSFERIDO</th>
             </tr>
-            <tr>
+            <tr style='background-color: #538DD5; color: white;'>
                 <th colspan='2'>ÁREA: ".$institucion->zona."</th>
                 <th colspan='4'>ESCUELA: ".$institucion->nombre."</th>
                 <th colspan='2'>C.U.E.: ".$institucion->cue."</th>
             </tr>
-            <tr>
+            <tr style='background-color: #538DD5; color: white;'>
                 <th colspan='5'>DOMICILIO: ".$institucion->domicilio."</th>
                 <th colspan='3'>LOCALIDAD: ".$institucion->localidad."</th>
             </tr>
@@ -252,21 +252,21 @@ class PofController extends Controller
             <tr>
                 <th>N°</th>
                 <th>DNI</th>
-                <th>CUIL</th>
-                <th>NOMBRE</th>
-                <th>CARGO</th>
+                <th>CELULAR</th>
+                <th>APELLIDOS Y NOMBRES</th>
+                <th>CARGO / MODALIDAD DE CONTRATACIÓN</th>
                 <th>FUNCIÓN</th>
-                <th>ANTIGÜEDAD</th>
+                <th>ANTIGÜEDAD EN EL MINISTERIO DE EDUCACIÓN</th>
                 <th>ÚLTIMO NIVEL DE FORMACION CONCLUIDO</th>
             </tr>"; $j=1;
             for($i = 1; $i <= $request->length ; $i++){
-                $dni="documento".$i; $cuil=$i."cuil"; $nombre=$i."apellido_nombre"; $cargo=$i."cargo"; $nomenclador=$i."nomenclador"; 
+                $dni="documento".$i; $celular=$i."celular"; $nombre=$i."apellido_nombre"; $cargo=$i."cargo"; $nomenclador=$i."nomenclador"; 
                 $formacion=$i."formacion"; $anti=$i."anti"; 
                 if($request->$dni){
                     $data.="<tr>
                     <td>".$j++."</td>
                     <td>".$request->$dni."</td>
-                    <td>".$request->$cuil."</td>
+                    <td>".$request->$celular."</td>
                     <td>".$request->$nombre."</td>
                     <td>".$request->$cargo."</td>
                     <td>".$request->$nomenclador."</td>
@@ -300,5 +300,6 @@ class PofController extends Controller
         </table>";
         $pdf->LoadHTML($data);
         return $pdf->stream('mi-archivo.pdf');
+        //echo $data;
     }
 }

@@ -47,7 +47,7 @@
             <th><p style="width: 10px; font-size: 70%">AÑOS DE ANTIGÜEDAD</p></th>
             <th><p style="width: 10px; font-size: 70%">TURNO</p></th>
             <th><p style="width: 10px; font-size: 70%">FECHA DE NACIMIENTO</p></th>
-            <th><p style="width: 10px; font-size: 70%">CARGO</p></th>
+            <th><p style="width: 10px; font-size: 70%">CARGO/MODALIDAD DE CONTRATACIÓN</p></th>
             <th><p style="width: 10px; font-size: 70%">FUNCION</p></th>
             <th><p style="width: 10px; font-size: 70%">FORMACIÓN</p></th>
             <th><p style="width: 10px; font-size: 70%">¿CON USO DE LICENCIA O JUSTIF. DE INASISTENCIA?</p></th>

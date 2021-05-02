@@ -13,6 +13,7 @@
           </div>
           <button type="submit" class="btn btn-primary" onclick="Buscar(document.getElementById('dato').value)">Buscar persona</button>
         </form>
+        
         @if (isset($personas2))
             @foreach ($personas2 as $persona)
             <div class="card" style="width: 18rem; background-color:#d1e2d9">
@@ -103,93 +104,21 @@
         <div class="modal-body">
           <form action="{{ route('AgregarDatosTablaPersona') }}" method="POST" id="NewPer">
           @csrf
+          <div class="form-group">
+              <label for="apellido">Apellido/s:</label>
+              <input type="text" class="form-control" id="apellido" name="apellido" required placeholder="Apellido/s">
+            </div>
             <div class="form-group">
               <label for="nombre">Nombre/s:</label>
               <input type="text" class="form-control" id="nombre" name="nombre" required placeholder="Nombre/s">
             </div>
             <div class="form-group">
-              <label for="apellido">Apellido/s:</label>
-              <input type="text" class="form-control" id="apellido" name="apellido" required placeholder="Apellido/s">
-            </div>
-            <div class="form-group">
-              <label for="documento">Documento:</label>
+              <label for="documento">D.N.I.:</label>
               <input type="number" class="form-control" id="documento" name="documento" required placeholder="D.N.I.">
             </div>
             <div class="form-group">
-              <label for="cuil">CUIL:</label>
+              <label for="cuil">C.U.I.L.:</label>
               <input type="number" class="form-control" id="cuil" name="cuil" placeholder="C.U.I.L.">
-            </div>
-            <div class="form-group">
-              <label for="nacimiento">Fecha de Nacimiento:</label>
-              <input type="date" class="form-control" id="nacimiento" name="nacimiento" required placeholder="dd-mm-aaaa">
-            </div>
-            <!--<div class="form-group">
-              <label for="est_civil">Estado Civil:</label>
-              <select class="form-control" id="est_civil" name="est_civil">
-                <option value="Soltero">Soltero/a</option>
-                <option value="Casado">Casado/a</option>
-                <option value="Divorciado">Divorciado/a</option>
-                <option value="Separado">Separado/a</option>
-                <option value="Viudo">Viudo/a</option>
-                <option value="Union de Hecho">En Union de Hecho</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="anti_doc">Antigüedad docente:</label>
-              <input type="number" class="form-control" id="anti_doc" name="anti_doc" required placeholder="N°">
-            </div>
-            <div class="form-group">
-              <label for="fec_i_doc">Fecha de inicio de la docencia:</label>
-              <input type="date" class="form-control" id="fec_i_doc" name="fec_i_doc" placeholder="dd-mm-aaaa">
-            </div>-->
-            <div class="form-group">
-              <label for="anti_adm">Antigüedad:</label>
-              <input type="number" class="form-control" id="anti_adm" name="anti_adm" placeholder="N°">
-            </div>
-            <div class="form-group">
-              <label for="fec_i_adm">Fecha de incorporación:</label>
-              <input type="date" class="form-control" id="fec_i_adm" name="fec_i_adm" placeholder="dd-mm-aaaa">
-            </div>
-
-            <div class="form-group">
-              <label for="cargo">Cargo:</label>
-              <select class="form-control" id="cargo" name="cargo">
-                <option value="G06">Servicios Generales (transferidos)</option>
-                <option value="CP">Contrato Provincia</option>
-                <option value="CM">Contrato Municipio</option>
-                <option value="BP">Beca Provincia</option>
-                <option value="BM">Beca Municipio</option>
-                <option value="TP">Tutoría Provincia</option>
-                <option value="VS">Otros (especificar en observaciones)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="nomenclador">Funciones:</label>
-              <select class="form-control" id="nomenclador" name="nomenclador">
-                <option value="Administración">Administración</option>
-                <option value="Servicios Generales">Servicios Generales</option>
-                <option value="Otros">Otros</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="celular">Celular:</label>
-              <input type="text" class="form-control" id="celular" name="celular" required placeholder="Celular">
-            </div>
-            <div class="form-group">
-              <label for="formacion">Último nivel de formación concluido:</label>
-              <select class="form-control" id="formacion" name="formacion">
-                <option value="Ninguna">Ninguna</option>
-                <option value="Inicial">Inicial</option>
-                <option value="Primario">Primario</option>
-                <option value="Secundario">Secundario</option>
-                <option value="Terciario">Terciario</option>
-                <option value="Universitario">Universitario</option>
-                <option value="Otro">Otro</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="mail" class="form-control" id="email" name="email" placeholder="ejemplo@mail.com">
             </div>
             <div class="form-group">
               <label for="antiguedad">Domicilio:</label>
@@ -232,11 +161,82 @@
               </select>-->
             </div>
             <div class="form-group">
+              <label for="nacimiento">Fecha de Nacimiento:</label>
+              <input type="date" class="form-control" id="nacimiento" name="nacimiento" required placeholder="dd-mm-aaaa">
+            </div>
+            <div class="form-group">
+              <label for="celular">Celular:</label>
+              <input type="text" class="form-control" id="celular" name="celular" required placeholder="Celular">
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="mail" class="form-control" id="email" name="email" placeholder="ejemplo@mail.com">
+            </div>
+            <!--<div class="form-group">
+              <label for="est_civil">Estado Civil:</label>
+              <select class="form-control" id="est_civil" name="est_civil">
+                <option value="Soltero">Soltero/a</option>
+                <option value="Casado">Casado/a</option>
+                <option value="Divorciado">Divorciado/a</option>
+                <option value="Separado">Separado/a</option>
+                <option value="Viudo">Viudo/a</option>
+                <option value="Union de Hecho">En Union de Hecho</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="anti_doc">Antigüedad docente:</label>
+              <input type="number" class="form-control" id="anti_doc" name="anti_doc" required placeholder="N°">
+            </div>
+            <div class="form-group">
+              <label for="fec_i_doc">Fecha de inicio de la docencia:</label>
+              <input type="date" class="form-control" id="fec_i_doc" name="fec_i_doc" placeholder="dd-mm-aaaa">
+            </div>-->
+            <div class="form-group">
+              <label for="anti_adm">Antigüedad:</label>
+              <input type="number" class="form-control" id="anti_adm" name="anti_adm" placeholder="N°">
+            </div>
+            <div class="form-group">
+              <label for="fec_i_adm">Fecha de incorporación:</label>
+              <input type="date" class="form-control" id="fec_i_adm" name="fec_i_adm" placeholder="dd-mm-aaaa">
+            </div>
+            <div class="form-group">
               <label for="turno">Turno:</label>
               <select class="form-control" id="turno" name="turno">
                 <option>Mañana</option>
                 <option>Tarde</option>
                 <option>Noche</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cargo">Cargo:</label>
+              <select class="form-control" id="cargo" name="cargo">
+                <option value="G06">Servicios Generales (transferidos)</option>
+                <option value="CP">Contrato Provincia</option>
+                <option value="CM">Contrato Municipio</option>
+                <option value="BP">Beca Provincia</option>
+                <option value="BM">Beca Municipio</option>
+                <option value="TP">Tutoría Provincia</option>
+                <option value="VS">Otros (especificar en observaciones)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="nomenclador">Funciones:</label>
+              <select class="form-control" id="nomenclador" name="nomenclador">
+                <option value="Administración">Administración</option>
+                <option value="Servicios Generales">Servicios Generales</option>
+                <option value="Otros">Otros</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="formacion">Último nivel de formación concluido:</label>
+              <select class="form-control" id="formacion" name="formacion">
+                <option value="Ninguna">Ninguna</option>
+                <option value="Inicial">Inicial</option>
+                <option value="Primario">Primario</option>
+                <option value="Secundario">Secundario</option>
+                <option value="Terciario">Terciario</option>
+                <option value="Universitario">Universitario</option>
+                <option value="Otro">Otro</option>
               </select>
             </div>
             <div class="form-group">
