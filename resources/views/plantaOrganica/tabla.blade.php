@@ -1,11 +1,16 @@
 <form method="POST" action="{{ route('PofPDF') }}" enctype="multipart/form-data">
     @csrf
-    <h5>Datos de la institución</h5>
-    <label>{{$institucion->nombre}}</label>
-    <label>(CUE: {{$institucion->cue}})</label><br>
-    <label>{{$institucion->domicilio}}</label><br>
-    <label>{{$institucion->localidad}}</label>
-    <label>(Zona: {{$institucion->zona}})</label><br>
+    @if(isset($institucion))
+        <h5>Datos de la institución</h5>
+        <label>{{$institucion->nombre}}</label>
+        <label>(CUE: {{$institucion->cue}})</label><br>
+        <label>{{$institucion->domicilio}}</label><br>
+        <label>{{$institucion->localidad}}</label>
+        <label>(Zona: {{$institucion->zona}})</label><br>
+    @else
+        <h5>Datos de Área</h5>
+        <label>(Zona: {{$area->area}})</label><br>
+    @endif
     <i>Por favor, complete los siguientes datos: </i><br>
     <label for="departamento">Departamento:</label>
               <select class="form-control" id="departamento" name="departamento">

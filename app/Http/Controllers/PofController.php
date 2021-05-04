@@ -9,6 +9,8 @@ use App\Pof;
 use App\Pof_tabla_dato;
 use App\Pofaditional;
 use App\Institution;
+use App\Director;
+use App\JefeArea;
 
 class PofController extends Controller
 {
@@ -21,9 +23,15 @@ class PofController extends Controller
         $personas=Persona::all();
         $pofaditional=Pofaditional::all();
         //$pofaditional=Pofaditional::where('pof_tabla_datos_id', );
-        $institucion=Institution::where('id', $usuario->instituciones_id)->first();
-        //echo $usuario->institutions->cue;
-        return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional)->with('institucion', $institucion); //, compact('personas')
+        $director=Director::where('id', $usuario->id)->first();
+        $jefearea=JefeArea::where('id', $usuario->id)->first();
+        if(isset($director)){
+            $institucion=Institution::where('id', $usuario->instituciones_id)->first();
+            return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional)->with('institucion', $institucion); //, compact('personas')
+        }else{
+            return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional)->with('area', $jefearea); 
+        }
+        //return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional)->with('institucion', $institucion); //, compact('personas')
     }
 
     public function BuscadorPersona(Request $request){
@@ -32,16 +40,30 @@ class PofController extends Controller
        //return redirect()->back()->with(['personas' => $personas]);
        $personas=Persona::all();
        $pofaditional=Pofaditional::all();
-       return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas2'=>$personas2])->with('adicional', $pofaditional)->with('personas', $personas)->with('institucion', $institucion);
+       $director=Director::where('id', $usuario->id)->first();
+       $jefearea=JefeArea::where('id', $usuario->id)->first();
+       if(isset($director)){
+        $institucion=Institution::where('id', $usuario->instituciones_id)->first();
+        return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas2'=>$personas2])->with('adicional', $pofaditional)->with('personas', $personas)->with('institucion', $institucion);
+       }else{
+        return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas2'=>$personas2])->with('adicional', $pofaditional)->with('personas', $personas)->with('area', $jefearea);
+       }
        //return redirect('Pof')->with('personas' , $personas);
     }
 
     public function AgregarDatosTabla(Request $request){
-        $usuario = Auth::user();
+        $usuario = Auth::user(); $director=Director::where('id', $usuario->id)->first(); $jefearea=JefeArea::where('id', $usuario->id)->first();
         if(is_null($usuario->pof)){ 
             $pof = new Pof();
             $pof->user_id = $usuario->id;
-            $pof->institution_id = $usuario->instituciones_id;
+            //
+            //$pof->institution_id = $usuario->instituciones_id;
+            if(isset($director)){
+                $pof->institution_id = $director->instituciones_id;
+            }else{
+                $pof->institution_id = 0;
+            }
+            //
             $pof->save();
             $pof_tabla_dato = new Pof_tabla_dato();
             $pof_tabla_dato->pof_id = $pof->id;
@@ -114,11 +136,18 @@ class PofController extends Controller
         $newPersona->ultimo_nivel_formación_Concluido = $request->formacion;     
         $newPersona->save();
         
-        $usuario = Auth::user();
+        $usuario = Auth::user(); $director=Director::where('id', $usuario->id)->first(); $jefearea=JefeArea::where('id', $usuario->id)->first();
         if(is_null($usuario->pof)){ 
             $pof = new Pof();
             $pof->user_id = $usuario->id;
-            $pof->institution_id = $usuario->instituciones_id;
+            //
+            //$pof->institution_id = $usuario->instituciones_id;
+            if(isset($director)){
+                $pof->institution_id = $director->instituciones_id;
+            }else{
+                $pof->institution_id = 0;
+            }
+            //
             $pof->save();
             $pof_tabla_dato = new Pof_tabla_dato();
             $pof_tabla_dato->pof_id = $pof->id;
@@ -188,8 +217,10 @@ class PofController extends Controller
     }
 
     public function pofPDF(Request $request){
-        $usuario = Auth::user(); 
-        $institucion=Institution::where('id', $usuario->instituciones_id)->first();
+        $usuario = Auth::user(); $director=Director::where('id', $usuario->id)->first(); $jefearea=JefeArea::where('id', $usuario->id)->first();
+        if(isset($director)){
+            $institucion=Institution::where('id', $usuario->instituciones_id)->first();
+        }
         //dd($request);
         /*require_once 'C:\xampp\htdocs\educacion_declarajurada\LaravelMinisterioEducacion\vendor/autoload.php';
         $mpdf=new \Mpdf\Mpdf();
@@ -238,8 +269,9 @@ class PofController extends Controller
           <table class='ppal'>
             <tr>
                 <th colspan='8' style='background-color: #1F497D; color:white;'>ACTUALIZACIÓN DE DATOS PERSONAL VINCULADO Y TRANSFERIDO</th>
-            </tr>
-            <tr style='background-color: #538DD5; color: white;'>
+            </tr>";
+        if(isset($director)){
+            $data.="<tr style='background-color: #538DD5; color: white;'>
                 <th colspan='5'>ESCUELA: ".$institucion->nombre."</th>
                 <th colspan='3'>C.U.E.: ".$institucion->cue."</th>
             </tr>
@@ -248,8 +280,18 @@ class PofController extends Controller
                 <th colspan='3'>LOCALIDAD: ".$institucion->localidad.", ".$request->departamento."</th>
                 <th colspan='1'>ÁREA: ".$institucion->zona."</th>
                 <th colspan='1'>ÁMBITO: ".$request->ambito."</th>
+            </tr>";
+        }else{
+            $data.="<tr style='background-color: #538DD5; color: white;'>
+                <th colspan='8'>AREA ADMINISTRADOR</th>
             </tr>
-            <tr>
+            <tr style='background-color: #538DD5; color: white;'>
+                <th colspan='3'>DEPARTAMENTO: ".$request->departamento."</th>
+                <th colspan='1'>ÁREA: ".$jefearea->area."</th>
+                <th colspan='1'>ÁMBITO: ".$request->ambito."</th>
+            </tr>";
+        }
+        $data.="<tr>
                 <th colspan='8'>PERIODO: ".$mes." - ".date("Y")."</th>
             </tr>
             <tr>
