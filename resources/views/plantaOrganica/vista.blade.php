@@ -38,8 +38,22 @@
                       <input type="hidden" id="nombre" name="nombre" value="{{$persona->nombre}}">
                       <input type="hidden" id="documento" name="documento" value="{{$persona->documento}}">
                       <input type="hidden" id="cuil" name="cuil" value="{{$persona->cuil}}">
-                      <input type="text" id="celular" name="celular" value="{{$persona->numero_telefono}}">
-                      <input type="text" id="formacion" name="formacion" value="{{$persona->ultimo_nivel_formación_Concluido}}">
+                      <div class="form-group">
+                        <label for="celular">Celular:</label>
+                        <input type="text" class="form-control" id="celular" name="celular" required placeholder="Celular" value="{{$persona->numero_telefono}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="formacion">Último nivel de formación concluido:</label>
+                        <select class="form-control" id="formacion" name="formacion">
+                          <option value="Ninguna" >Ninguna</option>
+                          <option value="Inicial" <?php if($persona->ultimo_nivel_formación_Concluido=="Inicial"){ echo "selected";}?>>Inicial</option>
+                          <option value="Primario" <?php if($persona->ultimo_nivel_formación_Concluido=="Primario"){ echo "selected";}?>>Primario</option>
+                          <option value="Secundario" <?php if($persona->ultimo_nivel_formación_Concluido=="Secundario"){ echo "selected";}?>>Secundario</option>
+                          <option value="Terciario" <?php if($persona->ultimo_nivel_formación_Concluido=="Terciario"){ echo "selected";}?>>Terciario</option>
+                          <option value="Universitario" <?php if($persona->ultimo_nivel_formación_Concluido=="Universitario"){ echo "selected";}?>>Universitario</option>
+                          <option value="Otro" <?php if($persona->ultimo_nivel_formación_Concluido=="Otro"){ echo "selected";}?>>Otro</option>
+                        </select>
+                      </div>
                       <div class="form-group">
                         <label for="cargo">Cargo:</label>
                         <select class="form-control" id="cargo" name="cargo">
