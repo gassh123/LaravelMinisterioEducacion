@@ -21,7 +21,9 @@ class PofController extends Controller
         $personas=Persona::all();
         $pofaditional=Pofaditional::all();
         //$pofaditional=Pofaditional::where('pof_tabla_datos_id', );
-        return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional); //, compact('personas')
+        $institucion=Institution::where('id', $usuario->instituciones_id)->first();
+        //echo $usuario->institutions->cue;
+        return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional)->with('institucion', $institucion); //, compact('personas')
     }
 
     public function BuscadorPersona(Request $request){
@@ -30,7 +32,7 @@ class PofController extends Controller
        //return redirect()->back()->with(['personas' => $personas]);
        $personas=Persona::all();
        $pofaditional=Pofaditional::all();
-       return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas2'=>$personas2])->with('adicional', $pofaditional)->with('personas', $personas);
+       return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas2'=>$personas2])->with('adicional', $pofaditional)->with('personas', $personas)->with('institucion', $institucion);
        //return redirect('Pof')->with('personas' , $personas);
     }
 
@@ -238,13 +240,14 @@ class PofController extends Controller
                 <th colspan='8' style='background-color: #1F497D; color:white;'>ACTUALIZACIÓN DE DATOS PERSONAL VINCULADO Y TRANSFERIDO</th>
             </tr>
             <tr style='background-color: #538DD5; color: white;'>
-                <th colspan='2'>ÁREA: ".$institucion->zona."</th>
-                <th colspan='4'>ESCUELA: ".$institucion->nombre."</th>
-                <th colspan='2'>C.U.E.: ".$institucion->cue."</th>
+                <th colspan='5'>ESCUELA: ".$institucion->nombre."</th>
+                <th colspan='3'>C.U.E.: ".$institucion->cue."</th>
             </tr>
             <tr style='background-color: #538DD5; color: white;'>
-                <th colspan='5'>DOMICILIO: ".$institucion->domicilio."</th>
-                <th colspan='3'>LOCALIDAD: ".$institucion->localidad."</th>
+                <th colspan='3'>DOMICILIO: ".$institucion->domicilio."</th>
+                <th colspan='3'>LOCALIDAD: ".$institucion->localidad.", ".$request->departamento."</th>
+                <th colspan='1'>ÁREA: ".$institucion->zona."</th>
+                <th colspan='1'>ÁMBITO: ".$request->ambito."</th>
             </tr>
             <tr>
                 <th colspan='8'>PERIODO: ".$mes." - ".date("Y")."</th>

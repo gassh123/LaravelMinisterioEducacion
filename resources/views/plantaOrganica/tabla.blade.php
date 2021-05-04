@@ -1,7 +1,14 @@
 <form method="POST" action="{{ route('PofPDF') }}" enctype="multipart/form-data">
     @csrf
-    <!--<label for="localidad">Localidad:</label>
-              <select class="form-control" id="localidad" name="localidad">
+    <h5>Datos de la institución</h5>
+    <label>{{$institucion->nombre}}</label>
+    <label>(CUE: {{$institucion->cue}})</label><br>
+    <label>{{$institucion->domicilio}}</label><br>
+    <label>{{$institucion->localidad}}</label>
+    <label>(Zona: {{$institucion->zona}})</label><br>
+    <i>Por favor, complete los siguientes datos: </i><br>
+    <label for="departamento">Departamento:</label>
+              <select class="form-control" id="departamento" name="departamento">
                 <option>Arauco</option>
                 <option>Capital</option>
                 <option>Castro Barros</option>
@@ -20,9 +27,15 @@
                 <option>San Blas de los Sauces</option>
                 <option>Sanagasta</option>
                 <option>Vinchina</option>
-              </select>-->
+              </select>
+    <label for="ambito">Ámbito:</label>
+              <select class="form-control" id="ambito" name="ambito">
+                <option>Rural dispersa</option>
+                <option>Rural aglomerado</option>
+                <option>Urbanas</option>
+              </select>
     <div style="overflow-y: auto;">
-    
+    <h4>Personal: </h4>
     <table border="1" class="table" id="tablaprueba">
         <thead class="thead-dark">
         <tr style="width: 70px; height: 10px;">
