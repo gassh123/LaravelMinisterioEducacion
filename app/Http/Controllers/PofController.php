@@ -25,12 +25,13 @@ class PofController extends Controller
         //$pofaditional=Pofaditional::where('pof_tabla_datos_id', );
         $director=Director::where('id', $usuario->id)->first();
         $jefearea=JefeArea::where('id', $usuario->id)->first();
-        if(isset($director)){
+        /*if(isset($director)){
             $institucion=Institution::where('id', $usuario->instituciones_id)->first();
             return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional)->with('institucion', $institucion); //, compact('personas')
         }else{
             return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional)->with('area', $jefearea); 
-        }
+        }*/
+        return view('plantaOrganica.user_type', ['usuario'=>$usuario]);
         //return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional)->with('institucion', $institucion); //, compact('personas')
     }
 

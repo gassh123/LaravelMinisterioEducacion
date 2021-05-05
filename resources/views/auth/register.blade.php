@@ -42,8 +42,11 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('rol ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="rol" type="rol" class="form-control @error('rol') is-invalid @enderror" name="rol" required autocomplete="new-rol">
-
+                                <!--<input id="rol" type="rol" class="form-control @error('rol') is-invalid @enderror" name="rol" required autocomplete="new-rol">-->
+                                <select id="rol" type="rol" class="form-control" name="rol">
+                                    <option>Directivo</option>
+                                    <option>Jefe de Área</option>
+                                </select>
                                 @error('rol')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -74,23 +77,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Institucion') }}</label>
-
-                            <div class="col-md-6">
-                                <?php use App\Institution; $instituciones=Institution::all();?>
-                                <select class="form-control" id="institution" name="institution">
-                                    @foreach($instituciones as $escuela)
-                                        <option value="{{$escuela->id}}">{{$escuela->nombre}} (CUE: {{$escuela->cue}})</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registrar usuario') }}
                                 </button>
                             </div>
                         </div>
