@@ -301,7 +301,7 @@ class PofController extends Controller
             <tr style='background-color: #538DD5; color: white;'>
                 <th colspan='3'>DOMICILIO: ".$institucion->domicilio."</th>
                 <th colspan='3'>LOCALIDAD: ".$institucion->localidad.", ".$request->departamento."</th>
-                <th colspan='1'>ÁREA: ".$institucion->zona."</th>
+                <th colspan='1'>ZONA: ".$institucion->zona."</th>
                 <th colspan='1'>ÁMBITO: ".$request->ambito."</th>
             </tr>";
         }else{
@@ -309,9 +309,8 @@ class PofController extends Controller
                 <th colspan='8'>AREA ADMINISTRADOR</th>
             </tr>
             <tr style='background-color: #538DD5; color: white;'>
-                <th colspan='4'>DEPARTAMENTO: ".$request->departamento."</th>
-                <th colspan='2'>ÁREA: ".$jefearea->area."</th>
-                <th colspan='2'>ÁMBITO: ".$request->ambito."</th>
+                <th colspan='5'>DEPARTAMENTO: ".$request->departamento."</th>
+                <th colspan='3'>ZONA: ".$jefearea->area."</th>
             </tr>";
         }
         $data.="<tr>

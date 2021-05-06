@@ -33,6 +33,7 @@
                 <option>Sanagasta</option>
                 <option>Vinchina</option>
               </select>
+    @if($usuario->rol=='Directivo')              
     <label for="ambito">Ámbito:</label>
               <select class="form-control" id="ambito" name="ambito">
                 <option>Rural dispersa</option>
@@ -40,6 +41,7 @@
                 <option>Urbanas</option>
               </select>
     <div style="overflow-y: auto;">
+    @endif
     <h4>Personal: </h4>
     <table border="1" class="table" id="tablaprueba">
         <thead class="thead-dark">
@@ -145,5 +147,5 @@
         </thead>
     </table></div>
     <input type="hidden" name="length" value="{{$pof_tabla->id}}">
-    <button type="submit" class="btn btn-success" target="_blank">ver</button>
+    <button type="submit" class="btn btn-success" target="_blank">Ver</button>
 </form>
