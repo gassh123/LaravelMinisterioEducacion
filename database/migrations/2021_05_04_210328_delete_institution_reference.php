@@ -14,7 +14,7 @@ class DeleteInstitutionReference extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            
+            //$table->dropIndex(['users_instituciones_id_foreign']); 
         });
     }
 
@@ -25,6 +25,8 @@ class DeleteInstitutionReference extends Migration
      */
     public function down()
     {
-        $table->dropIndex(['users_instituciones_id_foreign']);
+        Schema::table('users', function (Blueprint $table) {
+            //$table->dropIndex(['users_instituciones_id_foreign']); 
+        });
     }
 }

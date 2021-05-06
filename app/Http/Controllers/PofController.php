@@ -23,15 +23,21 @@ class PofController extends Controller
         $personas=Persona::all();
         $pofaditional=Pofaditional::all();
         //$pofaditional=Pofaditional::where('pof_tabla_datos_id', );
-        $director=Director::where('id', $usuario->id)->first();
-        $jefearea=JefeArea::where('id', $usuario->id)->first();
-        /*if(isset($director)){
-            $institucion=Institution::where('id', $usuario->instituciones_id)->first();
+        $director=Director::where('users_id', $usuario->id)->first();
+        $jefearea=JefeArea::where('users_id', $usuario->id)->first();
+        if(isset($director)){
+            $institucion=Institution::where('id', $director->instituciones_id)->first();
             return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional)->with('institucion', $institucion); //, compact('personas')
-        }else{
+        }else if(isset($jefearea)){
             return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional)->with('area', $jefearea); 
-        }*/
-        return view('plantaOrganica.user_type', ['usuario'=>$usuario]);
+        }else{
+            if($usuario->rol=="Directivo"){
+                $instituciones=Institution::all();
+                //return view('plantaOrganica.user_type', ['usuario'=>$usuario])->with('instituciones', $instituciones);
+            }else if($usuario->rol=="JefeArea"){
+                return view('plantaOrganica.user_type', ['usuario'=>$usuario]);
+            }
+        }
         //return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas'=>$personas])->with('adicional', $pofaditional)->with('institucion', $institucion); //, compact('personas')
     }
 
@@ -41,8 +47,8 @@ class PofController extends Controller
        //return redirect()->back()->with(['personas' => $personas]);
        $personas=Persona::all();
        $pofaditional=Pofaditional::all();
-       $director=Director::where('id', $usuario->id)->first();
-       $jefearea=JefeArea::where('id', $usuario->id)->first();
+       $director=Director::where('users_id', $usuario->id)->first();
+       $jefearea=JefeArea::where('users_id', $usuario->id)->first();
        if(isset($director)){
         $institucion=Institution::where('id', $usuario->instituciones_id)->first();
         return view('plantaOrganica.vista', ['usuario'=>$usuario], ['personas2'=>$personas2])->with('adicional', $pofaditional)->with('personas', $personas)->with('institucion', $institucion);
@@ -53,7 +59,7 @@ class PofController extends Controller
     }
 
     public function AgregarDatosTabla(Request $request){
-        $usuario = Auth::user(); $director=Director::where('id', $usuario->id)->first(); $jefearea=JefeArea::where('id', $usuario->id)->first();
+        $usuario = Auth::user(); $director=Director::where('users_id', $usuario->id)->first(); $jefearea=JefeArea::where('users_id', $usuario->id)->first();
         if(is_null($usuario->pof)){ 
             $pof = new Pof();
             $pof->user_id = $usuario->id;
@@ -137,7 +143,7 @@ class PofController extends Controller
         $newPersona->ultimo_nivel_formación_Concluido = $request->formacion;     
         $newPersona->save();
         
-        $usuario = Auth::user(); $director=Director::where('id', $usuario->id)->first(); $jefearea=JefeArea::where('id', $usuario->id)->first();
+        $usuario = Auth::user(); $director=Director::where('users_id', $usuario->id)->first(); $jefearea=JefeArea::where('users_id', $usuario->id)->first();
         if(is_null($usuario->pof)){ 
             $pof = new Pof();
             $pof->user_id = $usuario->id;
@@ -217,8 +223,24 @@ class PofController extends Controller
         return redirect()->back();
     }
 
+    public function CreatePof(Request $request){
+        $usuario = Auth::user();
+        if($usuario->rol=="Directivo"){
+            $director = new Director();
+            $director->users_id=$usuario->id;
+            $director->instituciones_id=$request->institution;
+            $director->save();
+        }else if($usuario->rol=="JefeArea"){
+            $jefearea = new JefeArea();
+            $jefearea->users_id=$usuario->id;
+            $jefearea->area=$request->area;
+            $jefearea->save();
+        }
+        return redirect('home');
+    }
+
     public function pofPDF(Request $request){
-        $usuario = Auth::user(); $director=Director::where('id', $usuario->id)->first(); $jefearea=JefeArea::where('id', $usuario->id)->first();
+        $usuario = Auth::user(); $director=Director::where('users_id', $usuario->id)->first(); $jefearea=JefeArea::where('users_id', $usuario->id)->first();
         if(isset($director)){
             $institucion=Institution::where('id', $usuario->instituciones_id)->first();
         }
@@ -287,9 +309,9 @@ class PofController extends Controller
                 <th colspan='8'>AREA ADMINISTRADOR</th>
             </tr>
             <tr style='background-color: #538DD5; color: white;'>
-                <th colspan='3'>DEPARTAMENTO: ".$request->departamento."</th>
-                <th colspan='1'>ÁREA: ".$jefearea->area."</th>
-                <th colspan='1'>ÁMBITO: ".$request->ambito."</th>
+                <th colspan='4'>DEPARTAMENTO: ".$request->departamento."</th>
+                <th colspan='2'>ÁREA: ".$jefearea->area."</th>
+                <th colspan='2'>ÁMBITO: ".$request->ambito."</th>
             </tr>";
         }
         $data.="<tr>

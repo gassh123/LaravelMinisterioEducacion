@@ -6,24 +6,61 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Registro') }}</div>
+                <div class="card-header">{{ __('Completar datos') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('CreatePof') }}">
                         @csrf
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre y Apellido') }}</label>
-                            <div class="col-md-6">
-                                @if($usuario->rol=="Directivo")
-                                <?php use App\Institution; $instituciones=Institution::all();?>
-                                <select class="form-control" id="institution" name="institution">
-                                    @foreach($instituciones as $escuela)
-                                        <option value="{{$escuela->id}}">{{$escuela->nombre}} (CUE: {{$escuela->cue}})</option>
-                                    @endforeach
-                                </select>
-                                @else
-                                <input id="area-confirm" type="text" class="form-control" name="area" autocomplete="area">    
-                                @endif
+                            @if($usuario->rol=='Directivo')
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Seleccione la Escuela:') }}</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" id="institution" name="institution">
+                                        @foreach($instituciones as $escuela)
+                                            <option value="{{$escuela->id}}">{{$escuela->nombre}} (CUE: {{$escuela->cue}})</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            @else
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Indique su Área:') }}</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" id="area" name="area">
+                                        <option value=" ">Otro</option>
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>D</option>
+                                        <option>E</option>
+                                        <option>F</option>
+                                        <option>G</option>
+                                        <option>H</option>
+                                        <option>I</option>
+                                        <option>J</option>
+                                        <option>K</option>
+                                        <option>L</option>
+                                        <option>M</option>
+                                        <option>N</option>
+                                        <option>O</option>
+                                        <option>P</option>
+                                        <option>Q</option>
+                                        <option>R</option>
+                                        <option>S</option>
+                                        <option>T</option>
+                                        <option>U</option>
+                                        <option>V</option>
+                                        <option>W</option>
+                                        <option>X</option>
+                                        <option>Y</option>
+                                        <option>Z</option>
+                                    </select>   
+                                </div>
+                            @endif
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Registrar modificaciones') }}
+                                </button>
                             </div>
                         </div>
                     </form>

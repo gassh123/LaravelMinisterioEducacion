@@ -23,6 +23,8 @@ class DeleteColumnInsitutions extends Migration
      */
     public function down()
     {
-        $table->dropColumn(['instituciones_id']);
+        Schema::table('users', function (Blueprint $table) {
+            //$table->dropColumn(['instituciones_id']);
+        });
     }
 }

@@ -44,8 +44,8 @@
                             <div class="col-md-6">
                                 <!--<input id="rol" type="rol" class="form-control @error('rol') is-invalid @enderror" name="rol" required autocomplete="new-rol">-->
                                 <select id="rol" type="rol" class="form-control" name="rol">
-                                    <option>Directivo</option>
-                                    <option>Jefe de Área</option>
+                                    <option value="Directivo">Directivo</option>
+                                    <option value="JefeArea">Jefe de Área</option>
                                 </select>
                                 @error('rol')
                                     <span class="invalid-feedback" role="alert">

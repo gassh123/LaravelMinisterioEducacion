@@ -68,7 +68,7 @@ route::post('/AgregrarPersonaTabla', 'PofController@AgregarDatosPersona')->name(
 route::get('/EliminarPersona/{id}/{id_tabla}', 'PofController@eliminar')->name('EliminarPersona');
 route::post('/PofPDF', 'PofController@pofPDF')->name('PofPDF');
 route::get('/UserType', 'PofController@vista')->name('UserType');
-
+route::post('/CreatePof', 'PofController@CreatePof')->name('CreatePof');
 /*--------------------------------LIQUIDACIONES----------------------------------------*/
 /*LISTADO DE PLANILLAS*/
 //route::get('/filtplanillas','FormularioLiqController@filtlistado')->name('liquidacion.filtlistado');
